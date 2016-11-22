@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/animation.css" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/indexlist/listclub_banner.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/indexlist/listnews_latest.png" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/club/listClub']);
+			});
+		</script>
+		<style type="text/css">
+			/*定义刷新Start*/
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: 220px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 999;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			/*定义刷新End*/
+			
+			#header a {
+				color: #999;
+			}
+			
+			.header-search {
+				position: fixed;
+				width: 60%;
+				margin-left: 20%;
+				/*text-align: center;*/
+				background-color: rgba(0, 0, 0, .25);
+				border-radius: 10px;
+				height: 25px;
+				font-size: 14px;
+				top: 8px;
+			}
+			
+			.header-search div {
+				padding-top: 2px;
+			}
+			
+			.header-search span {
+				color: white;
+				padding-left: 5px;
+			}
+			
+			.mui-content {
+				background-color: #EEE9E8;
+			}
+			
+			.mem-star {
+				margin: 5px;
+				padding: 5px;
+				position: relative;
+				padding-bottom: 20px;
+				background-color: white;
+				border: solid #DFDFDF;
+			}
+			
+			body img {
+				width: 100%;
+			}
+			
+			.mem-star #imgLabel {
+				position: absolute;
+				width: 20%;
+				top: 5px;
+				left: 5px;
+			}
+			
+			.mem-star div {
+				font-size: 18px;
+				color: #666666;
+			}
+			
+			.mem-star p,
+			.mem-star span {
+				font-size: 16px;
+				color: #999999;
+			}
+			
+			.mem-star p {
+				float: right;
+			}
+			
+			.mem-star span {
+				float: left;
+			}
+			
+			.mem-title {
+				background-color: white;
+				font-size: 17px;
+				padding: 5px 10px 5px 10px;
+				height: 30px;
+			}
+			
+			.mem-title span:first-child {
+				float: left;
+				color: #FE655B;
+			}
+			
+			.mem-title span:last-child {
+				float: right;
+				font-size: 14px;
+				color: #DAB668;
+			}
+			
+			.mem-item {
+				position: relative;
+				margin: 8px;
+				background-color: white;
+				font-size: 0;
+				height: 93px;
+				padding: 8px;
+				padding-top: 5px;
+			}
+			
+			.item-left {
+				width: 110px;
+				height: 90px;
+				margin-left: -3px;
+				float: left;
+			}
+			
+			.item-right {
+				width: calc(100% - 110px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: black;
+				padding-left: 4px;
+				font-size: 16px;
+			}
+			
+			.item-right p {
+				padding-top: 0px;
+				padding-left: 4px;
+				color: #313131;
+				height: 18px;
+				font-size: 14px;
+				line-height: 20px;
+			}
+			
+			.item-right div:last-child {
+				color: #999999;
+				font-size: 12px;
+				line-height: 16px;
+				padding-left: 4px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-transparent">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="header-search" v-on:tap="goSearch">
+				<div>
+					<span><i class="y y-search"></i>&nbsp;俱乐部名称</span>
+				</div>
+			</div>
+		</header>
+		<img id="headImage" />
+		<div class="mui-hidden mui-content mui-scroll-wrapper" style="margin-top: 188px; ">
+			<div class="mui-scroll">
+				<div class="mem-star" data-data='{\"id\":\"{{serverData.NewItem.NewsID}}\",\"title\":\"{{serverData.NewItem.Title}}\",\"img\":\"{{serverData.NewItem.ImgUrl}}\"}'>
+					<img src="../../img/default_640x320.png" data-img="{{serverData.NewItem.ImgUrl+'?iopcmd=thumbnail&type=8&width=560&height=280'}}" />
+					<img id="imgLabel" src="http://chorse-sports.ufile.ucloud.com.cn/sys/indexlist/listnews_latest.png" />
+					<div v-text="serverData.NewItem.Title"></div>
+					<p><span><i class="y y-yueduliang" style="color: #C7C6C6;" v-text="' '+serverData.NewItem.LookNums"></i></span>
+					</p>
+					<span data-starid="T" data-star="{{serverData.NewItem.Level|f-star 'T'}}">
+				
+					</span>
+				</div>
+				<div class="mem-title">
+					<span>最新俱乐部</span>
+					<span v-text="'共 '+serverData.Count+' 条'"></span>
+				</div>
+				<div class="mem-item" v-for="item in serverData.Items" data-data='{\"id\":\"{{item.NewsID}}\",\"title\":\"{{item.Title}}\",\"img\":\"{{item.ImgUrl}}\"}'>
+					<div class="item-left">
+						<img src="../../img/default_640x480.png" data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" />
+					</div>
+					<div class="item-right">
+						<div class="mui-ellipsis" v-text="item.Title"></div>
+						<p class="mui-ellipsis-2">
+							<span data-starid="{{item.NewsID}}" data-star="{{item.Level|f-star item.NewsID}}">
+					</span>
+						</p>
+						<div class="mui-ellipsis-2" v-text="item.ContentSpl">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

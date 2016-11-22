@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/index/listsearch']);
+			});
+		</script>
+		<style type="text/css">
+			/*定义刷新Start*/
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: 200px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 999;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			/*定义刷新End*/
+			
+			body img {
+				width: 100%;
+			}
+			
+			.mui-bar.mui-bar-nav.ts-header {
+				background-color: whitesmoke;
+			}
+			
+			.header-search {
+				background-color: inherit;
+				height: 44px;
+				position: fixed;
+				width: 100%;
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+			
+			.header-search input {}
+			/*会员Start*/
+			
+			.mem-main-mem {
+				/*background-color: white;*/
+				padding: 0.5% 1%;
+				font-size: 0;
+			}
+			
+			.mem-item-mem {
+				display: inline-block;
+				width: 32%;
+				background-color: white;
+				margin: .6666666666%;
+				padding-bottom: 8px;
+			}
+			
+			.mem-item-mem img {
+				padding: 5px;
+				/*border: solid 1px black;*/
+				padding-bottom: 0;
+			}
+			
+			.mem-item-mem img,
+			.mem-item-mem span {
+				width: 100%;
+				color: #666;
+				font-size: 14px;
+				margin-bottom: -8px;
+				text-align: center;
+			}
+			
+			.mem-item-mem span {
+				margin-top: -2px;
+			}
+			/*会员End*/
+			/*新闻Start*/
+			
+			.mem-item-news {
+				position: relative;
+				margin: 8px;
+				background-color: white;
+				font-size: 0;
+				height: 60px;
+				padding: 8px;
+			}
+			
+			.item-left-news {
+				width: 50px;
+				/*height: 90px;*/
+				margin-left: -4px;
+				margin-top: -4px;
+				float: left;
+			}
+			
+			.item-right-news {
+				width: 200px;
+				width: calc(100% - 50px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right-news div:first-child {
+				color: black;
+				text-align: justify;
+				font-size: 14px;
+			}
+			
+			.item-right-news p {
+				padding-top: 5px;
+				color: #666666;
+				height: 45px;
+				font-size: 16px;
+			}
+			/*.item-right-news div:last-child {
+				color: #999999;
+				font-size: 16px;
+				float: right;
+			}*/
+			/*新闻End*/
+			/*俱乐部Start*/
+			
+			.mem-item-club {
+				position: relative;
+				margin: 8px;
+				background-color: white;
+				font-size: 0;
+				height: 93px;
+				padding: 8px;
+				padding-top: 5px;
+			}
+			
+			.item-left-club {
+				width: 110px;
+				height: 90px;
+				margin-left: -3px;
+				float: left;
+			}
+			
+			.item-right-club {
+				width: calc(100% - 110px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right-club div:first-child {
+				color: black;
+				padding-left: 4px;
+				font-size: 16px;
+			}
+			
+			.item-right-club p {
+				padding-top: 0px;
+				padding-left: 4px;
+				color: #313131;
+				height: 18px;
+				font-size: 14px;
+				line-height: 20px;
+			}
+			
+			.item-right-club div:last-child {
+				color: #999999;
+				font-size: 12px;
+				line-height: 16px;
+				padding-left: 4px;
+			}
+			/*俱乐部End*/
+			/*马术讲堂Start*/
+			
+			.mem-item-hs {
+				position: relative;
+				margin: 8px;
+				background-color: white;
+				font-size: 0;
+				height: 60px;
+				padding: 8px;
+			}
+			
+			.item-left-hs {
+				width: 50px;
+				/*height: 90px;*/
+				margin-left: -4px;
+				margin-top: -4px;
+				float: left;
+			}
+			
+			.item-right-hs {
+				width: 200px;
+				width: calc(100% - 50px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right-hs div:first-child {
+				color: black;
+				text-align: justify;
+				font-size: 14px;
+			}
+			
+			.item-right-hs p {
+				padding-top: 5px;
+				color: #666666;
+				height: 45px;
+				font-size: 16px;
+			}
+			/*马术讲堂End*/
+			
+			#header a {
+				color: #999;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header id="header" class="mui-bar mui-bar-nav ts-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left "></a>
+			<div class="header-search">
+				<form onsubmit="return false">
+					<div class="mui-input-row mui-search mui-active">
+						<!--<form action="#">-->
+						<input v-on:keyup.enter="search" v-model="reqPar.search" style="color: #666666;" type="search" class="mui-input-clear" placeholder="">
+						<span class="mui-icon mui-icon-clear mui-hidden"></span>
+						<span class="mui-placeholder">
+							<span class="mui-icon mui-icon-search"></span>
+						<span></span>
+						</span>
+						<!--</form>-->
+					</div>
+				</form>
+			</div>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--mui-hidden-->
+				<div id="mem" class="mem-main-mem mui-hidden ">
+					<div class="mem-item-mem" v-for="item in serverData.Items" data-id='{{item.NewsID}}' data-title='{{item.Title}}'>
+						<img src="../../img/head.png" data-img="{{item.ImgUrl}}" />
+						<span class="mui-ellipsis" v-text="item.Title"></span>
+					</div>
+				</div>
+				<div id="club" class="mui-hidden">
+					<div class="mem-item-club " v-for="item in serverData.Items" data-id='{{item.NewsID}}' data-title='{{item.Title}}'>
+						<div class="item-left-club">
+							<img src="../../img/default_640x320.png" data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" />
+						</div>
+						<div class="item-right-club">
+							<div class="mui-ellipsis" v-text="item.Title"></div>
+							<p class="mui-ellipsis-2">
+								<span data-starid="{{item.NewsID}}" data-star="{{item.Level|f-star item.NewsID}}">
+					</span>
+							</p>
+							<div class="mui-ellipsis-2" v-text="item.ContentSpl">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="news" class="mui-hidden">
+					<div class="mem-item-news" v-for="item in serverData.Items" data-id='{{item.NewsID}}' data-title='{{item.Title}}'>
+						<div class="item-left-news">
+							<img src="../../img/default_320x320.png" data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=100&height=100'}}" />
+						</div>
+						<div class="item-right-news">
+							<div class="mui-ellipsis-2" v-text="item.Title"></div>
+							<!--<p class="mui-ellipsis-2" v-text="item.ContentSpl"></p>
+						<div>
+							{{item.IssueDT|f-time}} <span><i class="y y-yueduliang" style="color: #C7C6C6;"></i><span v-text="item.LookNums"></span></span>
+						</div>-->
+						</div>
+					</div>
+				</div>
+				<div id="hs" class="mui-hidden">
+					<div class="mem-item-hs " v-for="item in serverData.Items" data-id='{{item.NewsID}}' data-title='{{item.Title}}'>
+						<div class="item-left-hs">
+							<img src="../../img/default_320x320.png" data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=100&height=100'}}" />
+						</div>
+						<div class="item-right-hs">
+							<div class="mui-ellipsis-2" v-text="item.Title"></div>
+							<!--<span v-text="item.IssueDT|f-time"></span>
+						<p class="mui-ellipsis-3" v-text="item.ContentSpl"></p>-->
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+
+</html>

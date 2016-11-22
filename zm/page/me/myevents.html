@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function() {
+				require(['../jsmax/page/me/myevents']);
+			});
+		</script>
+		<style type="text/css">
+			.item-cell {
+				margin-right: 30px;
+			}
+			
+			.y-content>p {
+				color: black;
+				font-size: 16px;
+				padding: 8px 5px 8px 5px;
+			}
+			
+			.y-list-img .y-content>div {
+				padding: 5px 0;
+				background-color: #fff;
+			}
+			
+			.y-list-img .y-content .mui-table {
+				background-color: #fff;
+			}
+			
+			.y-dot-circle {
+				color: blue;
+				margin-top: 5px;
+				margin-left: -10px;
+				margin-bottom: 5px;
+			}
+			
+			.y-list-img .y-content .mui-table .mui-table-cell {
+				text-align: center;
+				color: #666;
+				font-size: 15px;
+				border-right: solid 1px #d3d3d3;
+				padding-bottom: 3px;
+			}
+			
+			.y-list-img .y-content .mui-table .mui-table-cell:last-child {
+				border-right: none;
+			}
+			
+			.y-tag {
+				padding: 2px 3px;
+				color: #fff;
+				font-size: 12px;
+				border-radius: 3px;
+				text-align: center;
+				line-height: 11px;
+			}
+			
+			.y-list-img.mui-table-view {
+				background-color: #efeff4;
+			}
+			
+			.y-tag.y-green {
+				background-color: #53be1c;
+			}
+			
+			.y-list-img .mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.mui-scroll-wrapper {
+				background-color: #efeff4;
+			}
+			
+			.item-top {
+				border-left: solid 1px #d3d3d3;
+				margin-left: 10px;
+				font-size: 15px;
+			}
+			
+			.item-top-content {
+				color: #666;
+				height: 20px;
+				margin: -25px 0px 3px 15px;
+			}
+			/*.mui-table-view-cell>div:first-child {
+				border-left: solid 1px #d3d3d3;
+				margin-left: 10px;
+			}
+			
+			.mui-table-view-cell>div:first-child >div {
+				color: #666;
+				height: 20px;
+				margin-top: -25px;
+				margin-bottom: 3px;
+				margin-left: 15px;
+			}*/
+			
+			.selclub-content-radio {
+				position: absolute;
+				right: -25px;
+				top: -90px;
+			}
+			/***自定义radio Start****/
+			
+			.club-radio {
+				position: relative;
+			}
+			
+			.club-radio input[type=radio] {
+				position: absolute;
+				top: 4px;
+				right: 20px;
+				display: inline-block;
+				width: 28px;
+				height: 26px;
+				border: 0;
+				outline: 0!important;
+				background-color: transparent;
+				-webkit-appearance: none
+			}
+			
+			.club-radio input[type=radio]:before {
+				/*font-family: Muiicons;*/
+				font: normal normal normal 14px/1 iconfont;
+				font-size: 25px;
+				font-weight: 400;
+				line-height: 1;
+				text-decoration: none;
+				color: #aaa;
+				border-radius: 0;
+				background: 0 0;
+				-webkit-font-smoothing: antialiased
+			}
+			
+			.club-radio input[type=radio]:before {
+				content: '\e627';
+			}
+			
+			.club-radio input[type=radio]:checked:before {
+				color: #2AC845;
+			}
+			
+			.club-radio input[type=radio]:checked:before {
+				/*content: url(../../img/pub/pub-chk-sel.png);*/
+				content: '\e629'
+			}
+			/****自定义radio End***/
+			
+			.s-ma {
+				color: yellow;
+				background-color: black;
+				border-radius: 2px;
+				padding: 0 1px 0 1px;
+			}
+			
+			.s-qi {
+				color: black;
+				background-color: yellow;
+				border-radius: 2px;
+				padding: 0 1px 0 1px;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<button class="mui-btn mui-btn-link mui-pull-right" v-on:tap="eitor" v-text="editable?'完成':'管理'"></button>
+			<h1 class="mui-title">我的比赛</h1>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll ">
+				<ul class="mui-table-view y-list-img ">
+					<!--<li class="mui-table-view-cell ">
+						<div>
+							<i class="y y-dot-circle y-3x y-blue "></i> 2016-6-20 <span class="y-tag y-green ">积</span>
+							<p class="mui-pull-right y-orange ">总奖金：2000.00</p>
+						</div>
+						<div class="y-content ">
+							<p>1111222222</p>
+							<div>
+								<div class="mui-table ">
+									<div class="mui-table-cell mui-col-xs-4 ">参数名单</div>
+									<div class="mui-table-cell mui-col-xs-4 ">公布成绩</div>
+									<div class="mui-table-cell mui-col-xs-4 ">规则</div>
+								</div>
+							</div>
+						</div>
+					</li>-->
+					<!--<li v-for='s in o.Projects' class="mui-table-view-cell">
+						<div>
+							<i class="y y-dot-circle y-3x {{s.SDate|f-status s.EDate}}"></i> {{s.SDate|f-time 'yyyy年MM月dd日 hh:mm'}} <span class="y-tag y-green" v-if='s.PType'>积</span>
+							<p class="mui-pull-right y-orange">总奖金：{{s.TotalFee}}</p>
+						</div>
+						<div class="y-content">
+							<p>{{s.Name}}</p>
+							<div>
+								<div class="mui-table">
+									<div class="mui-table-cell mui-col-xs-4">参数名单</div>
+									<div class="mui-table-cell mui-col-xs-4">公布成绩</div>
+									<div class="mui-table-cell mui-col-xs-4">规则</div>
+								</div>
+							</div>
+						</div>
+					</li>-->
+					<template v-for='s in pageData.events'>
+						<li class="mui-table-view-cell">
+							<!--<div class="mui-slider-right mui-disabled mui-hidden">
+								<a class="mui-btn mui-btn-red">删除</a>
+							</div>
+							<div class="mui-slider-handle mui-table">
+								<div class="mui-table-cell">-->
+							<div class="{{editable&&'item-cell'}}">
+								<div class="item-top">
+									<i class="y y-dot-circle y-3x"></i>
+									<div class="item-top-content {{s.SDate|f-status s.EDate}}">
+										{{s.SDate|f-time 'yyyy年MM月dd日'}}
+										<span class="y-tag y-green" v-if='s.PType==1'>积</span>
+										<p class="mui-pull-right y-orange">总奖金：{{s.TotalFee}}</p>
+									</div>
+								</div>
+								<div class="y-content">
+									<p>{{s.Name}}</p>
+									<div>
+										<div class="mui-table">
+											<div class="mui-table-cell mui-col-xs-4" v-on:tap="detail(s.PID,s.RewardSourceType!=3?1:2,s.PType==1,s.Name)" v-text="s.RewardSourceType!=3?'参数名单':'支持奖励'"></div>
+											<div class="mui-table-cell mui-col-xs-5" v-on:tap="detail(s.PID,s.RewardSourceType==1&&s.RewardSourceType==2?3:4,s.PType==1,s.Name)">
+												<!--<span class="s-ma" v-if="s.RewardSourceType==2">马</span>-->
+												<span class="s-qi" v-if="s.RewardSourceType==1">骑</span>
+												<!--<i class="y y-ma" style="color:black; background-color:yellow;"></i>
+												<i class="y y-qi" style="color: yellow; background-color: black;"></i>-->
+												{{(s.RewardSourceType==1||s.RewardSourceType==2)?'领取奖励':'公布成绩'}}
+											</div>
+											<div class="mui-table-cell mui-col-xs-4" v-on:tap="detail(s.PID,5,s.PType==1)">规则</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="club-radio selclub-content-radio" v-if="editable">
+								<!--v-model="pageData.PID"  v-on:change="del(s.eventID,$event)"-->
+								<input name="radioclub" type="radio" v-on:change="del(s.RewardSourceType!=0,$event)" value="{{s.PID}}">
+							</div>
+							<!--</div>
+
+							</div>-->
+						</li>
+					</template>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

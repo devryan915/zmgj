@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.y-icon.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 0px;
+			}
+			
+			.y-icon.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				width: 20%;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+				padding: 5px 0;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell .y {
+				font-size: 38px;
+			}
+			/*.mui-slider,.mui-slider img {
+				min-height: 200px;
+				min-height: 333px;
+			}*/
+			
+			.mui-table-view .mui-media-object {
+				width: 50px;
+				max-width: 50px;
+				height: 50px;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				border-right: none;
+			}
+			
+			.mui-table-view.mui-grid-view {
+				background-color: #efeff4;
+			}
+			
+			#ulClub.mui-table-view.mui-grid-view a {
+				background-color: #fff;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 13px;
+				margin-top: 5px;
+			}
+			
+			.mui-table-view .mui-media-body {
+				height: 50px;
+				display: table-cell;
+				/*vertical-align: middle;*/
+			}
+			
+			.mui-table-view .mui-media-body>div {
+				/*margin: 4px auto;*/
+				font-size: 14px;
+				font-weight: 400;
+				margin-bottom: 14px;
+			}
+			
+			.mui-table-view .mui-media-body>div:last-child {
+				margin-bottom: 0;
+			}
+			
+			.mui-bar-nav.mui-hidden~.mui-content {
+				padding-top: 0;
+			}
+			
+			.addequestrian {
+				position: absolute;
+				z-index: 10;
+				width: 100%;
+				top: 0px;
+				height: 30px;
+				background-color: rgba(0, 0, 0, .3);
+				color: #fff;
+				text-align: center;
+				font-size: 14px;
+				padding: 5px 3px;
+			}
+			/*.addequestrian .mui-btn {
+				height: 40px;
+				width: 110px;
+				border-radius: 15px;
+				padding: 5px 3px;
+				margin: 0 auto;
+				background-color: rgba(0,0,0,.3);
+			}*/
+			
+			.mui-grid-view .y-game {
+				color: #1951b1;
+			}
+			
+			.mui-grid-view .y-activity {
+				color: #fc791e;
+			}
+			
+			.mui-backdrop-1 {
+				top: 0;
+				bottom: 50px;
+			}
+			
+			#ulshortcutNav .mui-table-view-cell {
+				width: 20%;
+			}
+			
+			.y-img.mui-grid-view.mui-grid-9 {
+				background-color: transparent;
+				padding: 0 10px;
+				min-height: 100px;
+			}
+			
+			.y-img.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				width: 25%;
+				height: auto;
+				padding: 0px;
+			}
+			
+			.head-user {
+				width: 70px;
+				height: 70px;
+				border-radius: 35px;
+			}
+			
+			.y-title {
+				background-color: #fff;
+				font-weight: 600;
+			}
+			
+			.y-title a {
+				color: #d8b667;
+				font-size: 14px;
+				font-weight: normal;
+				margin: -7px -10px;
+				padding: 7px 20px;
+			}
+			
+			.y-purple {
+				color: #9189ec;
+			}
+			
+			.y-blue {
+				color: #4db1ea;
+			}
+			
+			.mui-table-view .mui-media-object {
+				width: 50px;
+				max-width: 50px;
+				height: 50px;
+			}
+			
+			.mui-card {
+				box-shadow: none;
+			}
+			
+			.mui-card img {
+				max-width: 100%;
+				width: 100%;
+			}
+			
+			.y-saishihuodong {
+				color: #fcb41f;
+			}
+			/*.y-tianmashangcheng {
+				color: #9186e9;
+			}*/
+			
+			.y-zhongxunsai {
+				color: #ff655b;
+			}
+			/*.y-mashupeixun {
+				color: #94d10a;
+			}
+			
+			.y-julebuqicheng {
+				color: #4eafec;
+			}*/
+			
+			#ulNews {
+				margin: 10px 15px;
+			}
+			
+			#ulNews>div {
+				padding: 5px 5px 0 5px;
+			}
+			
+			.mui-icon.mui-icon-arrowright {
+				font-size: 16px;
+			}
+			
+			#ulshortcutNav {
+				padding: 5px 0;
+			}
+			
+			#ulNews i {
+				width: 100%;
+				height: 120px;
+			}
+			
+			#ulClub i {
+				width: 100%;
+				height: 100px;
+			}
+			
+			#ulClub .mui-ellipsis {
+				/*padding: 3px 5px;*/
+				height: 30px;
+				line-height: 28px;
+				font-size: 13px;
+				text-align: center;
+			}
+			
+			#ulClub>div {
+				margin: 15px;
+				padding: 0 5px;
+				background-color: #efeff4;
+			}
+			
+			#ulClub>div>div {
+				background-color: #fff;
+			}
+			
+			.mui-card {
+				border: none;
+				margin: 10px 15px;
+				border-radius: 0;
+			}
+			
+			#ulNews p {
+				margin-bottom: 0;
+			}
+			
+			#ulNews img {
+				width: 100%;
+			}
+			
+			#ulNews>div {
+				position: relative;
+			}
+			
+			#ulNews h5 {
+				position: absolute;
+				width: 100%;
+				width: calc(100% - 10px);
+				text-align: left;
+				bottom: 0px;
+				background-color: rgba(0, 0, 0, 0.7);
+				color: #fff;
+				padding: 5px 10px;
+				font-size: 17px;
+				line-height: 21px;
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
+			
+			#ulClass p {
+				font-size: 14px;
+				color: #333;
+			}
+			
+			#ulClass .mui-media-body {
+				vertical-align: middle;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['page/home/home']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="pr" class="mui-content">
+			<div id="slider" class="mui-slider nav">
+				<div class="mui-slider-group mui-slider-loop">
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="javascript:void(0);">
+							<img src="../../img/default_640x320.png" data-id='{{s.Id}}' data-href='{{o.Banners[o.Banners.length-1].Href}}' data-data='{{o.Banners[o.Banners.length-1].Data}}' data-img="{{o.Banners[o.Banners.length-1].ImgUrl}}">
+						</a>
+					</div>
+					<div v-for='s in o.Banners' class="mui-slider-item">
+						<a href="javascript:void(0);">
+							<img src="../../img/default_640x320.png" data-id='{{s.Id}}' data-href='{{s.Href}}' data-data='{{s.Data}}' data-img="{{s.ImgUrl}}">
+						</a>
+					</div>
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="javascript:void(0);">
+							<img src="../../img/default_640x320.png" data-id='{{s.Id}}' data-href='{{o.Banners[0].Href}}' data-data='{{o.Banners[0].Data}}' data-img="{{o.Banners[0].ImgUrl}}">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div v-for='s in o.Banners' class="mui-indicator {{$index==0?'mui-active':''}}"></div>
+				</div>
+			</div>
+			<ul id="ulshortcutNav" class="mui-table-view mui-grid-view mui-grid-9 y-icon">
+				<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+					<a href="javascript:void(0);" data-id='wactivity_list' data-href='../activity/list.html'>
+						<i class="y y-saishihuodong"></i>
+						<div class="mui-media-body">赛事活动</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+					<a href="javascript:void(0);">
+						<i class="y y-tianmashangcheng"></i>
+						<div class="mui-media-body">天马商城</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+					<a href="javascript:void(0);" data-id='wgame_list' data-href='../game/list.html'>
+						<i class="y y-zhongxunsai"></i>
+						<div class="mui-media-body">中巡赛</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+					<a href="javascript:void(0);">
+						<i class="y y-mashupeixun"></i>
+						<div class="mui-media-body">马术培训</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+					<a href="javascript:void(0);">
+						<i class="y y-julebuqicheng"></i>
+						<div class="mui-media-body">马场骑乘</div>
+					</a>
+				</li>
+			</ul>
+			<div class="y-title y-purple">会员风采
+				<a class="mui-pull-right" href="javascript:void(0);" data-id='wclub_listMem' data-href='../club/listMem.html'>查看更多
+					<i class="mui-icon mui-icon-arrowright"></i></a>
+			</div>
+			<ul id="ulUser" class="mui-table-view mui-grid-view mui-grid-9 y-img">
+				<template v-for='s in o.NewsFirsts.MemberShow'>
+					<li v-if='$index<4' class="mui-table-view-cell mui-media mui-col-xs-4" data-id='wnews_detail' data-href='../news/detail.html' data-data='{\"id\":\"{{s.IDX}}\",\"title\":\"{{s.Name}}\",\"img\":\"{{s.ImgUrl}}\"}'>
+						<a href="#">
+							<i class="head head-user" data-img='{{s.ImgUrl|f-imgUrl 100}}'></i>
+							<div class="mui-media-body" v-text="s.Name"></div>
+						</a>
+					</li>
+				</template>
+			</ul>
+
+			<div class="y-title y-blue">天马俱乐部联盟
+				<a class="mui-pull-right" href="javascript:void(0);" data-id='wclub_listClub' data-href='../club/listClub.html'>查看更多
+					<i class="mui-icon mui-icon-arrowright"></i></a>
+			</div>
+			<div class="mui-card" style="margin: 10px 10px;">
+				<div id="ulClub" class="mui-table">
+					<template v-for='s in o.NewsFirsts.ClubShow'>
+						<!--data-id='{{s.IDX}}' data-title='{{s.Name}}'-->
+						<div v-if='$index<2' class="mui-table-cell mui-col-xs-6" data-id='wnews_detail' data-href='../news/detail.html' data-data='{\"id\":\"{{s.IDX}}\",\"title\":\"{{s.Name}}\",\"img\":\"{{s.ImgUrl}}\"}'>
+							<div>
+								<img class="mui-media-object" data-img='{{s.ImgUrl}}' src="../../img/default_640x320.png">
+								<!--<i data-img='{{s.ImgUrl}}' class="mui-media-object mui-pull-left head-horse"></i>-->
+								<div class="mui-ellipsis" style="width: 100%;">{{s.Name}}</div>
+							</div>
+						</div>
+					</template>
+				</div>
+			</div>
+			<div class="y-title y-red">天马头条
+				<a class="mui-pull-right" href="javascript:void(0);" data-id='wnews_listNews' data-href='../news/listNews.html'>查看更多
+					<i class="mui-icon mui-icon-arrowright"></i></a>
+			</div>
+			<div id="ulNews" class="mui-card">
+				<template v-for='s in o.NewsFirsts.TiannmaNews'>
+					<div data-id='wnews_detail' data-href='../news/detail.html' data-data='{\"id\":\"{{s.IDX}}\",\"title\":\"{{s.Title}}\",\"img\":\"{{s.ImgUrl}}\"}'>
+						<img class="mui-media-object" data-img='{{s.ImgUrl}}' src="../../img/default_640x320.png">
+						<h5>{{s.Title}}</h5>
+					</div>
+				</template>
+			</div>
+
+			<div class="y-title y-green">马术讲堂
+				<a class="mui-pull-right" href="javascript:void(0);" data-id='wcourse_listHSCourse' data-href='../course/listHSCourse.html'>查看更多
+					<i class="mui-icon mui-icon-arrowright"></i></a>
+			</div>
+			<div class="mui-card">
+				<ul id="ulClass" class="mui-table-view">
+					<template v-for='s in o.NewsFirsts.HorseClass'>
+						<li class="mui-table-view-cell mui-media" data-id='wnews_detail' data-href='../news/detail.html' data-data='{\"id\":\"{{s.IDX}}\",\"title\":\"{{s.Title}}\",\"img\":\"{{s.ImgUrl}}\"}'>
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left" data-img='{{s.ImgUrl|f-imgUrl 100}}' src="../../img/default_320x320.png">
+								<div class="mui-media-body">
+									<p class='mui-ellipsis-2'>{{s.Title}}</p>
+								</div>
+							</a>
+						</li>
+					</template>
+				</ul>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

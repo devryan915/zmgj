@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.previewimage.css" />
+		<style type="text/css">
+			.mui-media-body {
+				padding-left: 12px;
+			}
+			.y-attention {
+				height: 24px;
+				font-size: 13px;
+				padding-top: 2px;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/dynamic/my_collection']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的收藏</h1>
+		</header>
+		<div id="pr" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll y-card-list">
+				<template v-for='(index, s) in list'>
+					<div class="mui-card">
+						<div class="mui-card-header mui-card-media">
+							<img src="../../img/head.png" data-img='{{s.ImgUrl|f-imgUrl 100}}' />
+							<div class="mui-media-body">
+								<button v-if="s.UserID!=user.UserID" type="button" data-userid='{{s.UserID}}' data-isattention={{s.IsFollow.toString()}} class="mui-btn mui-btn-green mui-pull-right mui-btn-outlined y-attention" v-text='s.IsFollow?"取消关注":"+ 关注"'></button> {{s.Name}}
+								<p v-text='s.IssDT|f-time "MM-dd hh:mm"'></p>
+							</div>
+						</div>
+						<div class="mui-card-content y-ellipsis y-ellipsis-flag" v-text='s.Content'></div>
+						<div v-if='s.Imgs.length>0' class="mui-card-content ">
+							<div class="mui-row">
+								<template v-for='s1 in s.Imgs'>
+									<div v-if='s.Imgs.length==1'> <img src="../../img/default_640x320.png" data-img='{{s1}}'style="width: 210px; "  data-preview-src="{{s1}}" data-preview-group="{{index}}" /> </div>
+									<div v-else class="mui-col-xs-4"> <img src="../../img/default_320x320.png" data-img='{{s1|f-imgUrl 210}}' data-preview-src="{{s1}}" data-preview-group="{{index}}" /> </div>
+								</template>
+							</div>
+						</div>
+						<div class="mui-card-footer" data-id='{{s.PostId}}' data-list-index='1' data-index='{{index}}'>
+							<a class="mui-card-link mui-col-xs-4" data-type='{{s.IsCollect?5:1}}'><i class="y y-2x {{s.IsCollect?'y-collect y-yellow':'y-collect-o'}}"></i> {{s.CNums||'收藏'}}</a>
+							<a class="mui-card-link mui-col-xs-4" data-type='101'><i class="y y-2x y-comment-o"></i> {{s.DNums|'评论'}}</a>
+							<a class="mui-card-link mui-col-xs-4" data-type='{{s.IsPoint?9:2}}'><i class="y y-2x {{s.IsPoint?'y-heart y-red':'y-heart-o'}}"></i> {{s.PNums||'点赞'}}</a>
+							<!--<a class="mui-card-link mui-col-xs-3" data-type='100'><i class="y y-2x y-share"></i> 分享</a>-->
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</body>
+
+</html>

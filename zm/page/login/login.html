@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.y-table .mui-input-row .mui-pull-left,
+			.y-table .mui-input-row .mui-pull-right {
+				width: 50%;
+			}
+			
+			.y-table .mui-input-row .mui-pull-right {
+				text-align: right;
+			}
+			
+			#divOauth {
+				text-align: center;
+			}
+			
+			#divOauth i {
+				padding: 10px 11px;
+				border: solid 1px;
+				border-radius: 100%;
+				margin: 10px;
+			}
+			
+			.mui-icon-weixin {
+				color: #35cd35;
+			}
+			
+			.mui-icon-qq {
+				color: #429ffc;
+			}
+			
+			.oauth-transition {
+				/*display: inline-block;*/
+				/* 否则 scale 动画不起作用 */
+			}
+			
+			.oauth-enter {
+				animation: oauth-in .5s;
+			}
+			
+			@keyframes oauth-in {
+				0% {
+					margin: 100px;
+				}
+				100% {
+					margin: 10px;
+				}
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				background-color: transparent;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+				padding: 0;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 10px 0 0 0;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				margin-top: 0;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function() {
+				require(['../jsmax/page/login/login']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">登录</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div class="mui-content-padded y-table">
+				<div class="mui-input-row">
+					<span>	<i class="y y-phone"></i></span>
+					<input type="text" v-model='par.loginName' placeholder="请输入手机号码">
+				</div>
+				<div class="mui-input-row">
+					<span><i class="y y-password"></i></span>
+					<input type="password" v-model='par.password' placeholder="请输入密码">
+				</div>
+				<div class="mui-input-row">
+					<div v-on:tap='forget_password' class="mui-pull-right">
+						忘记密码
+					</div>
+					<div v-on:tap='register' class="mui-pull-left">
+						注册
+					</div>
+				</div>
+				<button type="button" v-on:tap='login' disabled="{{!isValid}}" class="mui-btn mui-btn-warning mui-btn-block">登录</button>
+				<button type="button" v-on:tap='register' class="mui-btn mui-btn-warning mui-btn-block mui-btn-outlined mui-hidden">注册</button>
+
+			</div>
+			<ul id="divOauth" class="mui-table-view mui-grid-view mui-grid-9" v-show='show' transition="oauth">
+				<template v-for='s in auths'>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="javascript:void(0);" data-index='{{$index}}'>
+							<i class="mui-icon mui-icon-{{s.id}} y-11x"></i>
+							<div class="mui-media-body">{{s.description}}登录</div>
+						</a>
+					</li>
+				</template>
+			</ul>
+		</div>
+
+	</body>
+
+</html>

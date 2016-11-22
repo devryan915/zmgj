@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			/*.mui-content img {
+				height: 120px;
+				width: 100%;
+			}*/
+			
+			#sliderBanner {
+				height: 120px;
+			}
+			
+			#sliderBanner img {
+				height: 120px;
+				width: 100%;
+			}
+			/*#slider {
+				position: absolute;
+				height: calc(100% - 120px);
+				z-index: 10;
+				top: 120px; 
+			}
+			
+			#slider .mui-slider-group {
+				height: calc(100% - 38px);
+			}*/
+			
+			html,
+			body,
+			.mui-content {
+				height: 100%;
+			}
+			
+			.mui-slider {
+				height: calc(100% - 120px);
+			}
+			
+			.mui-slider-group {
+				height: calc(100% - 88px);
+			}
+			
+			.mui-control-content {
+				background-color: #fff;
+			}
+			
+			.mui-slider-progress-bar {
+				width: 20%;
+			}
+			/*team 定义Start*/
+			
+			#teams .mui-media-object.mui-pull-left {
+				height: 80px;
+				max-width: 80px;
+			}
+			
+			#teams .mui-media-body {
+				height: 65px;
+			}
+			
+			#teams .footer .mui-pull-left {
+				color: black;
+			}
+			
+			#teams .footer .mui-pull-right {
+				color: #DD524D;
+			}
+			/*team 定义End*/
+			/*rider 定义Start*/
+			
+			#riders .mui-media-body {
+				position: relative;
+				text-align: center;
+				padding-bottom: 20px;
+				top: -10px;
+			}
+			
+			#riders .rider-img {
+				width: 80px;
+				height: 80px;
+				margin-bottom: 0;
+				z-index: 10;
+			}
+			
+			#riders .rider-icon {
+				position: absolute;
+				right: 2px;
+				top: 11px;
+				z-index: 20;
+			}
+			
+			#riders .y-huiyuan {
+				color: #D7B765;
+			}
+			
+			#riders .y-zhuanjia {
+				color: #6887F0;
+			}
+			/*rider 定义End*/
+			/*horses 定义Start*/
+			
+			#horses .mui-media-body {
+				position: relative;
+				text-align: center;
+				padding-bottom: 20px;
+				top: -10px;
+			}
+			
+			#horses .horse-img {
+				width: 80px;
+				height: 80px;
+				margin-bottom: 0;
+				z-index: 10;
+			}
+			
+			.btn-active {
+				color: white;
+				background-color: #F0AD4E;
+			}
+			
+			.btn-default {
+				color: #999999;
+			}
+			/*分页样式*/
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: 150px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			
+			#scroll3>.mui-scroll {
+				height: 100%;
+			}
+			
+			#scroll3 .y-head {
+				padding: 10px 15px;
+				background-color: #EFEFF4;
+			}
+			
+			#scroll3 .y-head p.mui-text-right {
+				font-size: 12px;
+				margin-bottom: 0;
+				padding: 3px 0;
+			}
+			
+			#scroll3 .y-head p.mui-text-right span {
+				font-size: 18px;
+				color: #dbb668;
+			}
+			
+			#scroll3 .mui-segmented-control .mui-control-item {
+				font-size: 12px;
+				line-height: 26px;
+				border-color: #dbb668;
+				border-left: none;
+				background-color: #C0C0C0;
+				color: #666;
+			}
+			
+			#scroll3 .mui-segmented-control .mui-control-item.mui-active {
+				background-color: #dbb668;
+				color: #fff;
+			}
+			
+			#scroll3 .y-footer {
+				height: 100%;
+			}
+			
+			#scroll3 .mui-segmented-control {
+				border: none;
+			}
+			
+			#scroll3 .mui-control-content {
+				height: calc(100% - 85px);
+			}
+			
+			.y-list-3 .y-left {
+				width: 40px;
+				padding-left: 0;
+				font-size: 22px;
+				color: #DBB668;
+			}
+			
+			.y-list-3 .y-center {
+				width: 70px;
+			}
+			
+			.y-list-3 .mui-text-center i {
+				width: 60px;
+				height: 60px;
+				max-width: 60px;
+			}
+			
+			.y-h4 {
+				font-size: 17px;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/game/list']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-slide-in">
+			<!--菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-right" style="width:150px;background-color: rgba(255,255,255,0.9);">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<!--<button id="offCanvasHide" type="button" v-on:tap="closeOffCanvas" class="mui-btn">关闭侧滑菜单</button>-->
+						<div style="width: 100px;margin-left: auto;margin-right: auto;margin-top: 20px;">
+							<!--<button type="button" class="mui-btn btn-active" style="width: 100%;margin: 5px 0 5px 0;">黄色</button>
+							<button type="button" class="mui-btn btn-default" style="width: 100%;margin: 5px 0 5px 0;">黄色</button>-->
+							<template v-for='s in searchFilterData'>
+								<button id="{{s.value}}" type="button" class="mui-btn btn-default" style="width: 100%;margin: 5px 0 5px 0;" v-on:tap="searchH(s.value)" v-text="s.name"></button>
+							</template>
+						</div>
+					</div>
+				</div>
+			</aside>
+			<div class="mui-inner-wrap">
+				<header id="header" class="mui-bar mui-bar-transparent">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<a id="search" class="mui-icon mui-icon-search  mui-pull-right mui-hidden" v-on:click="search"></a>
+					<h1 class="mui-title"></h1>
+				</header>
+
+				<div class="mui-content">
+
+					<div id="sliderBanner" class="mui-slider">
+						<div class="mui-slider-group mui-slider-loop">
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/horse.png?iopcmd=thumbnail&type=8&width=400&height=120" :src="Banners[Banners.length-1].ImgUrl|f-imgUrl 400 120">
+								</a>
+							</div>
+							<div v-for='s in Banners' class="mui-slider-item">
+								<a href="#">
+									<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/horse.png?iopcmd=thumbnail&type=8&width=400&height=120" :src="s.ImgUrl|f-imgUrl 400 120">
+								</a>
+							</div>
+
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/horse.png?iopcmd=thumbnail&type=8&width=400&height=120" :src="Banners[0].ImgUrl|f-imgUrl 400 120">
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div v-for='s in Banners' class="mui-indicator {{$index==0?'mui-active':''}}"></div>
+
+						</div>
+					</div>
+
+					<div id="slider" class="mui-slider">
+						<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<a class="mui-control-item" href="#item1">
+				赛程
+			    </a>
+							<a class="mui-control-item" href="#item2">
+				战队
+			     </a>
+							<a class="mui-control-item" href="#item3">
+				战绩
+			     </a>
+							<a class="mui-control-item" href="#item4">
+				骑手
+			     </a>
+							<a class="mui-control-item" href="#item5">
+				马匹
+			     </a>
+						</div>
+						<div id="sliderProgressBar" class="mui-slider-progress-bar"></div>
+						<div class="mui-slider-group">
+							<div id="item1" class="mui-slider-item mui-control-content ">
+								<div class="mui-scroll-wrapper">
+									<div id="prStroke" class="mui-scroll">
+										<ul class="mui-table-view y-list-img">
+											<template v-for='s in strokeList'>
+												<li class="mui-table-view-cell" data-id='{{s.EventId}}'>
+													<div><i class="y y-dot-circle y-3x {{s.SDate|f-status s.EDate}}"></i> {{s.SDate|f-time 'yyyy年MM月dd日'}}
+														<p class="mui-pull-right"><i class="y y-map-marker y-orange"></i> {{s.Address}}</p>
+													</div>
+													<div class="y-img"><i v-bind:style='s.ImgUrl|f-img 370 150'></i></div>
+												</li>
+											</template>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item2" class="mui-slider-item mui-control-content ">
+								<div id="scroll2" class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul id="teams" class="mui-table-view">
+											<template v-for='s in teamData.Items'>
+												<li class="mui-table-view-cell mui-media" data-id="{{s.CorpsId}}">
+													<a href="javascript:;">
+														<img class="mui-media-object mui-pull-left" :src="s.ImgUrl">
+														<div class="mui-media-body">
+															<span v-text="s.Name"></span>
+															<p class='mui-ellipsis-2' v-text="s.CDes"></p>
+														</div>
+														<div class="footer">
+															<p class='mui-ellipsis mui-pull-left' v-text="s.ClubName"></p>
+															<p class="mui-pull-right"> <i class="y y-aixin"></i>{{s.PNum}}</p>
+														</div>
+													</a>
+												</li>
+											</template>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+							<div id="item3" class="mui-slider-item mui-control-content mui-active">
+								<div id="scroll3" class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+
+										<div class="y-head">
+											<div id="segmentedControl" class="mui-segmented-control">
+												<a class="mui-control-item mui-active" href="#rank1">团体组(1000)</a>
+												<a class="mui-control-item" href="#rank2">会员组(2000)</a>
+												<a class="mui-control-item" href="#rank3">专业组(3000)</a>
+											</div>
+											<p class="mui-text-right">当前战队排名<span>20</span></p>
+										</div>
+
+										<div class="y-footer">
+											<div id="rank1" class="mui-control-content mui-active">
+												<div class="mui-scroll-wrapper">
+													<div id="rankScrol1" class="mui-scroll">
+														<ul class="mui-table-view y-list-3">
+															<template v-for='s in rank.list1'>
+																<li class="mui-table-view-cell mui-media">
+																	<a href="javascript:;">
+																		<div class="mui-table">
+																			<div class="mui-table-cell mui-text-center y-left">{{$index+1}}</div>
+																			<div class="mui-table-cell mui-text-center y-center">
+																				<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																			</div>
+																			<div class="mui-table-cell">
+																				<div class='mui-ellipsis y-h4'>{{s.Name}}</div>
+																				<p class='mui-ellipsis-2'>{{s.CDes}}</p>
+																				<h5>累计积分：{{s.Point}}</h5>
+																			</div>
+																		</div>
+																	</a>
+																</li>
+															</template>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div id="rank2" class="mui-control-content">
+												<div class="mui-scroll-wrapper">
+													<div id="rankScrol2" class="mui-scroll">
+														<ul class="mui-table-view y-list-3">
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">21</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis y-h4'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">2</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">3</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">4</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">4</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">4</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">4</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div id="rank3" class="mui-control-content">
+												<div class="mui-scroll-wrapper">
+													<div id="rankScrol2" class="mui-scroll">
+														<ul class="mui-table-view y-list-3">
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">31</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis y-h4'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">2</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">3</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li class="mui-table-view-cell mui-media">
+																<a href="javascript:;">
+																	<div class="mui-table">
+																		<div class="mui-table-cell mui-text-center y-left">4</div>
+																		<div class="mui-table-cell mui-text-center y-center">
+																			<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+																		</div>
+																		<div class="mui-table-cell">
+																			<div class='mui-ellipsis'>11</div>
+																			<p class='mui-ellipsis-2'>2111122</p>
+																			<h5>5555</h5>
+																		</div>
+																	</div>
+																</a>
+															</li>
+														</ul>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div id="item4" class="mui-slider-item mui-control-content">
+								<div id="scroll4" class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul id="riders" class="mui-table-view  mui-grid-view mui-grid-9">
+											<!--<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-id="riderid1" style="padding: 0;border-width: 0;">
+												<a href="#">
+													<i class="y y-zhuanjia rider-icon"></i>
+													<img src="../../img/clubuserheader/head1.png" class="mui-icon mui-icon-home rider-img" />
+													<div class="mui-media-body">任命</div>
+												</a>
+											</li>-->
+											<template v-for='s in riderData.Items'>
+												<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-id="{{s.UserID}}" style="padding: 0 ;border-width: 0;">
+													<a href="#">
+														<i class="y {{s.RiderLevel==1?'y-zhuanjia':(s.RiderLevel==2?'y-huiyuan':'')}} rider-icon"></i>
+														<img :src="s.ImgUrl" class="mui-icon mui-icon-home rider-img" /> 
+														<div class="mui-media-body" v-text="s.NickName"></div>
+													</a>
+												</li>
+											</template>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item5" class="mui-slider-item mui-control-content">
+								<div id="scroll5" class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<div style="height: 30px;">
+											<span class="mui-pull-left" style="line-height: 30px;margin-left: 10px;" v-text="'共'+horseData.Total+'匹'"></span>
+											<button type="button" v-on:tap="showOffCanvas" class="mui-btn mui-btn-link mui-pull-right" style="color: #6D6D6D;">筛选<span class="mui-icon mui-icon-forward"></span> </button>
+										</div>
+										<ul id="horses" class="mui-table-view  mui-grid-view mui-grid-9">
+											<!--<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-id="horseid1" style="padding: 0 ;border-width: 0;">
+												<a href="#">
+													<img src="../../img/clubuserheader/head1.png" class="mui-icon mui-icon-home horse-img" />
+													<div class="mui-media-body">我的名字</div>
+												</a>
+											</li>-->
+											<template v-for='s in horseData.Items'>
+												<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-id="{{s.HID}}" style="padding: 0 ;border-width: 0;">
+													<a href="#">
+														<img :src="s.ImgUrl" class="mui-icon mui-icon-home horse-img" />
+														<div class="mui-media-body" v-text="s.Name"></div>
+													</a>
+												</li>
+											</template>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+	</body>
+
+</html>

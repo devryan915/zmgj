@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+		<script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../js/main'],function(){
+				require(['hot news.js']);
+			});
+		</script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style:none;
+			}
+			
+			.nav{
+				width: 100%;
+				height:85px;
+				background-color:#5DC89E;
+				overflow:hidden;
+			}
+			header .nav-list{
+				width:80%;
+				height:30px;
+				margin:50px auto 0 auto;
+
+			}
+			header .nav-list a{
+				display: block;
+				float:left;
+				height:30px;
+				line-height:30px;
+				margin-left: 13%;
+				color:#fff;
+				text-align:center;
+			}
+			header .nav-list .current{
+				color:#5DC89E;
+				width: 25%;
+				background-color: #fff;
+				border-radius:20px;
+			}
+			    
+			.banner{
+				height: 200px;
+				background-color:red;
+			}
+			.mui-card{
+				box-shadow: none;
+			}
+			.mui-card-media{
+				float: left;
+			}
+			.mui-bar-nav~.mui-content{
+				padding-top:10px;
+			}
+			.mui-scroll-wrapper{
+				position:static;
+			}
+			.mui-card-header{
+				height: 60px;		
+			}
+			.mui-card-header .mui-card-media{
+				    width: calc(100% - 44px);
+			}
+			/*.mui-card-header.mui-card-media img{
+				width: 44px;
+				height: 44px;
+			}*/
+			.mui-card-header .right{
+				width: 25%;
+				height: 25px;
+				float: right;
+				color: #666;
+				text-align: center;
+				line-height: 25px;
+				border: 1px solid #666;
+				border-radius: 5px;
+			}
+			.mui-card-header:after{
+				display: none;
+			}
+			.mui-card-content{
+				padding: 5px 5px 5px 10px;
+			}
+			.mui-card-content .picture{
+				margin-top: 5px;
+			}
+			.mui-card-content .picture img{
+				width: 31%;
+				height:75px;
+				margin-right:2px;
+			}
+			.mui-card-content .mui-ellipsis-2{
+				-webkit-line-clamp: 3;
+			}     
+			.mui-card-footer a{
+				color: #666666;
+			}
+			.mui-card-footer i{
+				margin-right: 3px;	
+			}
+			.mui-card-footer, .mui-card-header{
+				padding: 0px;
+			}
+			.mui-card-footer .mui-card-link{
+				cursor:pointer;
+			}
+			.more{
+				width: 100%;
+    			height: 50px;
+    			background-color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="nav">
+			<div class="nav-list">				
+				<a href="javascript:;" class="current">关注</a>							
+				<a href="javascript:;">热点</a>
+				<a href="javascript:;">发现</a>
+			</div>
+		</header>
+		<div class="banner">
+			<img src="../img/100.jpg" />
+		</div>
+		<div id="pr" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="news" class="mui-table-view y-list">
+					<!--<template v-for='s in list'>-->
+						
+						<li data-id='{{s.NewsID}}' data-title='{{s.Title}}' class="mui-table-view-cell mui-media">		
+							<div class="mui-card">
+									<!--页眉，放置标题-->
+								<a href="javascript:;">
+									<div class="mui-card-header">
+										<div class="mui-card-header mui-card-media">											
+											<img src="../img_cloud/bank/gongshang.png" />
+											<div class="mui-media-body">
+												江湖小妖
+												<p>06-30 15:30</p>
+											</div>
+										</div>
+										<div class="right" onclick="attention(this)">已关注</div>
+									</div>
+									<!--内容区-->
+									<div class="mui-card-content">
+										<p class='mui-ellipsis-2' v-text='s.ContentSpl'>
+											创建并显示对话框，弹出的对话框为非阻塞模式，用户点击对话框上的按钮后关闭( h5模式的对话框也可通过closepopup关闭 )，并通过callback函数返回用户点击按钮的索引值或输入框中的值。
+
+											mui会根据ua判断,弹出原生对话框还是h5绘制的对话框,在基座中默认会弹出原生对话框,可以配置type属性,使得弹出h5模式对话框
+											
+											两者区别:1.原生对话框可以跨webview,2.h5对话框样式统一而且可以修改对话框属性或样式
+										</p>
+										<div class="picture">
+											<img src="../img/100.jpg"/>
+											<img src="../img/99.jpg"/>
+											<img src="../img/98.jpg"/>
+											<img src="../img/97.jpg"/>					
+										</div>
+									</div>
+									<!--页脚，放置补充信息或支持的操作-->
+									<div class="mui-card-footer">
+										<a class="mui-card-link"><i class="y y-eye"></i>收藏</a>
+										<a class="mui-card-link"  id="pup"><i class="y y-eye"></i>评论</a>
+										<a class="mui-card-link"  id="put"><i class="y y-eye"></i>赞</a>
+										<a class="mui-card-link"><i class="y y-eye"></i>分享</a>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li data-id='{{s.NewsID}}' data-title='{{s.Title}}' class="mui-table-view-cell mui-media">		
+							<div class="mui-card">
+									<!--页眉，放置标题-->
+								<a href="javascript:;">
+									<div class="mui-card-header">
+										<div class="mui-card-header mui-card-media">											
+											<img src="../img_cloud/bank/gongshang.png" />
+											<div class="mui-media-body">
+												江湖小妖
+												<p>06-30 15:30</p>
+											</div>
+										</div>
+										<div class="right" onclick="attention(this)">已关注</div>
+									</div>
+									<!--内容区-->
+									<div class="mui-card-content">
+										<p class='mui-ellipsis-2' v-text='s.ContentSpl'>
+											创建并显示对话框，弹出的对话框为非阻塞模式，用户点击对话框上的按钮后关闭( h5模式的对话框也可通过closepopup关闭 )，并通过callback函数返回用户点击按钮的索引值或输入框中的值。
+
+											mui会根据ua判断,弹出原生对话框还是h5绘制的对话框,在基座中默认会弹出原生对话框,可以配置type属性,使得弹出h5模式对话框
+											
+											两者区别:1.原生对话框可以跨webview,2.h5对话框样式统一而且可以修改对话框属性或样式
+										</p>
+										<div class="picture">
+											<img src="../img/100.jpg"/>
+											<img src="../img/99.jpg"/>
+											<img src="../img/98.jpg"/>
+											<img src="../img/97.jpg"/>					
+										</div>
+									</div>
+									<!--页脚，放置补充信息或支持的操作-->
+									<div class="mui-card-footer">
+										<a class="mui-card-link"><i class="y y-eye"></i>收藏</a>
+										<a class="mui-card-link"  id="pup"><i class="y y-eye"></i>评论</a>
+										<a class="mui-card-link"  id="put"><i class="y y-eye"></i>赞</a>
+										<a class="mui-card-link"><i class="y y-eye"></i>分享</a>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li data-id='{{s.NewsID}}' data-title='{{s.Title}}' class="mui-table-view-cell mui-media">		
+							<div class="mui-card">
+									<!--页眉，放置标题-->
+								<a href="javascript:;">
+									<div class="mui-card-header">
+										<div class="mui-card-header mui-card-media">											
+											<img src="../img_cloud/bank/gongshang.png" />
+											<div class="mui-media-body">
+												江湖小妖
+												<p>06-30 15:30</p>
+											</div>
+										</div>
+										<div class="right" onclick="attention(this)">已关注</div>
+									</div>
+									<!--内容区-->
+									<div class="mui-card-content">
+										<p class='mui-ellipsis-2' v-text='s.ContentSpl'>
+											创建并显示对话框，弹出的对话框为非阻塞模式，用户点击对话框上的按钮后关闭( h5模式的对话框也可通过closepopup关闭 )，并通过callback函数返回用户点击按钮的索引值或输入框中的值。
+
+											mui会根据ua判断,弹出原生对话框还是h5绘制的对话框,在基座中默认会弹出原生对话框,可以配置type属性,使得弹出h5模式对话框
+											
+											两者区别:1.原生对话框可以跨webview,2.h5对话框样式统一而且可以修改对话框属性或样式
+										</p>
+										<div class="picture">
+											<img src="../img/100.jpg"/>
+											<img src="../img/99.jpg"/>
+											<img src="../img/98.jpg"/>
+											<img src="../img/97.jpg"/>					
+										</div>
+									</div>
+									<!--页脚，放置补充信息或支持的操作-->
+									<div class="mui-card-footer">
+										<a class="mui-card-link"><i class="y y-eye"></i>收藏</a>
+										<a class="mui-card-link"><i class="y y-eye"></i>评论</a>
+										<a class="mui-card-link"><i class="y y-eye"></i>赞</a>
+										<a class="mui-card-link"><i class="y y-eye"></i>分享</a>
+									</div>
+								</a>
+							</div>
+						</li>
+						
+					<!--</template> -->
+				</ul>
+			</div>
+		</div>
+		<nav class='more'>
+		</nav>
+		<nav id='nav' class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" data-id='windex'>
+				<i class="mui-icon y y-home"></i>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" data-id='wfriend_list'>
+				<i class="mui-icon y y-friend"></i>
+				<span class="mui-tab-label">好友</span>
+			</a>
+			<a class="mui-tab-item" data-id='wclub_list'>
+				<i class="mui-icon y y-club"></i>
+				<span class="mui-tab-label">西促会</span>
+			</a>
+			<a class="mui-tab-item" data-id='wme_me'>
+				<i class="mui-icon y y-me"></i>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		for (var i = 0; i<$('.mui-table-view .mui-card-footer .mui-card-link'); i++) {
+			$('.mui-table-view .mui-card-footer .mui-card-link').eq(i).attr('index',i);
+		};
+			$('.mui-table-view .mui-card-footer .mui-card-link').click(function() {
+
+    			if ($(this).html('<i class="y y-eye"></i>收藏')){
+    				$(this).html('<i class="y y-home"></i>1');
+    			}else{
+    				$(this).html('<i class="y y-eye"></i>收藏');
+    				$(this).html('<i class="y y-eye"></i>评论');
+    				$(this).html('<i class="y y-eye"></i>赞');
+    				$(this).html('<i class="y y-eye"></i>分享');
+    			}
+        	});		
+		var $listA=$('.nav-list a')
+		$listA.click(function(event) {
+			var i=$(this).index();
+			$listA.eq(i).attr('class', 'current');
+			$listA.eq(i).siblings().attr('class', '');
+		});		
+	})
+	function attention(right){
+
+			if (right.innerHTML=='已关注') {
+				right.innerHTML='+关注';
+				right.style.color='#5DC89E';
+				right.style.borderColor='#5DC89E';
+
+			}else{ 
+				right.innerHTML='已关注';
+				right.style.color='#666';
+				right.style.borderColor='#666';
+			};
+				
+		}
+</script>

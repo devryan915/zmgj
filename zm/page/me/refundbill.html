@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/me/refundbill']);
+			});
+		</script>
+		<style type="text/css">
+			.mem-item {
+				position: relative;
+				margin: 8px 0;
+				background-color: white;
+				font-size: 0;
+				height: 90px;
+				padding: 5px;
+				padding-left: 12px;
+			}
+			
+			.item-left {
+				width: 75px;
+				height: 75px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 140px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: #333;
+				font-size: 17px;
+				height: 20px;
+			}
+			
+			.item-right p {
+				padding-top: 2px;
+				color: #666;
+				height: 30px;
+				font-size: 13px;
+			}
+			
+			.item-right div:last-child {
+				color: #FFA44C;
+				font-size: 14px;
+			}
+			
+			.footer {
+				position: fixed;
+				bottom: 0;
+				height: 50px;
+				background: #fff;
+				width: 100%;
+				line-height: 50px;
+			}
+			
+			.mui-backdrop {
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .3)
+			}
+			/***自定义radio Start****/
+			
+			.club-radio {
+				position: relative;
+				padding: 5px;
+			}
+			
+			.club-radio input[type=radio] {
+				position: relative;
+				display: inline-block;
+				width: 20px;
+				height: 26px;
+				border: 0;
+				outline: 0!important;
+				background-color: transparent;
+				-webkit-appearance: none
+			}
+			
+			.club-radio input[type=radio]:before {
+				/*font-family: Muiicons;*/
+				font: normal normal normal 14px/1 iconfont;
+				font-size: 20px;
+				font-weight: 400;
+				line-height: 1;
+				text-decoration: none;
+				color: #aaa;
+				border-radius: 0;
+				background: 0 0;
+				-webkit-font-smoothing: antialiased
+			}
+			
+			.club-radio input[type=radio]:before {
+				content: '\e627';
+			}
+			
+			.club-radio input[type=radio]:checked:before {
+				color: #2AC845;
+				content: '\e629'
+			}
+			/****自定义radio End***/
+			
+			.cancelopop-content {
+				margin: 0 auto;
+			}
+			
+			.cancelopop-title {
+				padding-top: 20px;
+				padding-left: 20px;
+				padding-bottom: 10px;
+				background: #fff;
+			}
+			
+			.cancelopop-reason {
+				margin: 2px auto;
+				text-align: left;
+				padding: 5px 0 5px 25px;background: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">支付方式</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div class="mem-item">
+				<div class="item-left">
+					<!--src="../../img/default_640x480.png"-->
+					<img data-img="{{data.NImgUrl+'?iopcmd=thumbnail&type=8&width=210&height=210'}}" src="../../img/default_320x320.png" />
+				</div>
+				<div class="item-right">
+					<div class="mui-ellipsis" v-text="data.ShopName"></div>
+					<p v-text="data.ClubName">
+					</p>
+					<div v-text="data.Prc+'马币'">
+					</div>
+				</div>
+				<div style="width: 40px;float: right;color: #FFA44C;font-size: 20px;text-align: center;" v-text="'x'+data.Qty">
+				</div>
+			</div>
+			<div class="cancelopop-content">
+				<div class="cancelopop-title">请选择取消订单理由</div>
+				<div class="cancelopop-reason">
+					<div class="club-radio">
+						<input name="dradioclub" type="radio" value="1" v-model='pagePar.dClubID'> 临时有事，另行再约
+					</div>
+					<div class="club-radio">
+						<input name="dradioclub" type="radio" value="2" v-model='pagePar.dClubID'> 约错时间，重新再约
+					</div>
+					<div class="club-radio">
+						<input name="dradioclub" type="radio" value="3" v-model='pagePar.dClubID'> 其他原因
+					</div>
+				</div>
+			</div>
+			<div style="background: #fff;margin: 10px 0;padding: 20px;">
+				<div style="padding-bottom: 5px;">其他理由</div>
+				<textarea id="textarea" rows="5" placeholder="多行文本框"></textarea>
+			</div>
+			<div class="footer">
+				<button type="button" class="mui-btn-block mui-btn-yellow" style="width: 100px;height: 100%;border-radius: 0;float: right;">确认退款</button>
+				<div style="float: left;margin-left: 50px;color: #333;font-size: 17px;">实际支付&nbsp;<span style="color: #FFA44C;" v-text="data.Tprice"></span></div>
+			</div>
+			<div class="mui-backdrop mui-hidden">
+				<div style="margin: 100px auto;padding: 20px; background: #fff;width: 80%;height: auto;border-radius: 5px;text-align: center;">
+					<i class="y y-tuikuan" style="color: #03be57;font-size: 100px;"></i>
+					<div style="font-size: 17px;padding-top: 20px;">退款申请已提交</div>
+					<div style="font-size: 13px;color: #666; padding-top: 5px;">退款申请将在3个工作日内确认，请耐心等待！</div>
+					<button data-type='0' type="button" class="mui-btn-block mui-btn-yellow" style="margin: 20px 0 10px 0;">继续逛逛</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

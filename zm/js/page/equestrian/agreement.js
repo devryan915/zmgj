@@ -1,0 +1,1 @@
+define(["app","mui","vue"],function(c,a,b){new b({el:"#app",data:{},computed:{},methods:{},created:function(){},ready:function(){a.plusReady(function(){})}})});

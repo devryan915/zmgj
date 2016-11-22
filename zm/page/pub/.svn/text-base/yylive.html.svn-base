@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/pub/yylive']);
+			});
+		</script>
+		<style type="text/css">
+			html,
+			body {
+				width: 100%;
+			}
+			
+			.live {
+				width: 100%;
+				height: auto;
+				margin: 0 auto;
+			}
+			iframe {
+				width: 100%;
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">直播</h1>
+		</header>
+		<img src="../../img/yylive-bg.png" style="position: absolute;z-index: -1;width: 100%;height: 100%;" />
+		<div class="mui-content" style="background: transparent;">
+			<h2 style="font-size: 18px;color: white;text-align: center;padding: 6px;">2016年全国马术绕桶巡回赛</h2>
+			<div class="live">
+				<iframe  src="http://act.3g.yy.com/outEmbed/mashu?src=18" frameborder=0 allowfullscreen></iframe>
+			</div>
+		</div>
+
+	</body>
+
+</html>

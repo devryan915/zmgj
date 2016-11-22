@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../js/page/equestrian/agreement']);
+			});
+		</script>
+		<style type="text/css">
+			body {
+				background-color: #ECDAB4;
+			}
+			
+			.mui-content {
+				background-color: #ECDAB4;
+				margin-top: 0;
+			}
+			
+			.content {
+				box-shadow: 5px 5px 50px #ADADAD;
+				width: 80%;
+				/*http://chorse-sports.ufile.ucloud.com.cn/sys/ag-bg.png*/
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/ag-bg.png);
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.content div {
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.content div img {
+				margin-top: 10px;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">牛仔约定</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item">
+						<div class="content">
+							<div>
+								<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/ag-img-1.png" />
+							</div>
+						</div>
+					</div>
+					<div class="mui-slider-item ">
+						<div class="content">
+							<div>
+								<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/ag-img-2.png" />
+							</div>
+						</div>
+					</div>
+					<div class="mui-slider-item ">
+						<div class="content">
+							<div>
+								<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/ag-img-3.png" />
+							</div>
+						</div>
+					</div>
+					<div class="mui-slider-item ">
+						<div class="content">
+							<div>
+								<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/ag-img-4.png" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			function p() {
+				var content = document.querySelector('.mui-content');
+				var width = document.body.scrollWidth;
+				//console.log(document.body.scrollWidth + ' ' + document.body.scrollHeight + ' ' + (document.body.scrollHeight - width * 0.612));
+				//			width*0.8/535*819*05
+				content.style.marginTop = (document.body.scrollHeight - width * 0.612) * 0.2 + 'px';
+			}
+			p();
+			window.onresize = p;
+		</script>
+	</body>
+
+</html>

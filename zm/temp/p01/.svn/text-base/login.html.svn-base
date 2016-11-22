@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content">
+		    <div class="mui-input-group">
+		        <div class="mui-input-row">
+		            <input type="text" class="mui-input-clear" placeholder="账号">
+		        </div>
+		    </div>
+		    <div class="mui-input-group">
+		        <div class="mui-input-row">
+		            <input type="text" class="mui-input-clear" placeholder="密码">
+		        </div>
+		    </div>
+		    <div class="mui-button-row">
+		    	<button type="button" class="mui-btn mui-btn-blue">登录</button>
+		    	<button type="button" class="mui-btn mui-btn-green" id="btn_register">注册</button>
+		    </div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+			mui.plusReady(function() {
+				// 事件，打开注册页
+				document.getElementById("btn_register").addEventListener("tap", function() {
+					mui.openWindow({
+						url: "register.html",
+						id: "register"
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

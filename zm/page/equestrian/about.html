@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+
+		<style type="text/css">
+			.mui-control-content {
+				background-color: white;
+			}
+			
+			.mui-slider-o {
+				position: absolute;
+				height: 100%;
+				height: -moz-calc( 100% - 120px);
+				height: -webkit-calc(100% - 120px);
+				height: calc(100% - 120px);
+				z-index: 10;
+				top: 44px;
+				/*bottom: 70px;*/
+			}
+			
+			.mui-slider-o .mui-slider-group {
+				height: 100%;
+				height: calc(100% - 98px);
+				height: -webkit-calc( 100% - 98px);
+				height: -moz-calc(100% - 98px);
+			}
+			
+			.mui-slider {
+				position: absolute;
+				height: 77%;
+				height: -moz-calc( 100% - 145px);
+				height: -webkit-calc(100% - 145px);
+				height: calc(100% - 145px);
+				z-index: 10;
+				top: 44px;
+				/*bottom: 70px;*/
+			}
+			
+			.mui-slider .mui-slider-group {
+				height: 77%;
+				height: calc(100% - 108px);
+				height: -webkit-calc( 100% - 108px);
+				height: -moz-calc(100% - 108px);
+			}
+			
+			.mui-slider-item.mui-control-content {
+				height: 100%;
+				min-height: 200px;
+			}
+			
+			.y-content {
+				padding: 10px 15px;
+			}
+			
+			.y-content p {
+				font-size: 14px;
+				color: #666;
+				text-indent: 2em;
+			}
+			
+			.y-content>ol {
+				text-align: left;
+				margin: 0px;
+				padding-left: 20px;
+			}
+			
+			.y-content>ol>li {
+				font-size: 14px;
+				color: #666;
+				margin-bottom: 5px;
+			}
+			
+			.y-content>ul {
+				list-style: none;
+				text-align: left;
+				margin: 0px;
+				padding-left: 0;
+			}
+			
+			.y-content>ul>li {
+				font-size: 14px;
+				color: #666;
+				margin-bottom: 5px;
+			}
+			
+			.y-content>h4 {
+				color: #333;
+				font-weight: 400;
+				font-size: 16px;
+			}
+			
+			.y-content .y-list-row-3>div {
+				width: 32%;
+				color: #666;
+				display: inline-block;
+			}
+			
+			.y-content .y-list-row-2>div {
+				width: 48%;
+				color: #666;
+				display: inline-block;
+			}
+			
+			.y-footer {
+				padding: 10px 30px;
+			}
+			
+			.header {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/banner.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				text-align: center;
+				padding-top: 30px !important;
+				padding-bottom: 10px !important;
+			}
+			
+			.header img {
+				height: 80px;
+				/*margin-top: 10px;*/
+			}
+			
+			.header div {
+				color: #fff;
+			}
+			
+			.mui-action-back {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				color: #fff;
+			}
+			
+			.mui-action-back:active {
+				color: #fff;
+			}
+			
+			#scroll3 .y-content>p,
+			#scroll4 .y-content>p {
+				text-indent: 0;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function() {
+				require(['../jsmax/page/equestrian/about']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">西促会</h1>
+		</header>-->
+	 
+		<div id="app" class="mui-content">
+			<div class="header">
+				<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+				<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/equestrian.png" />
+				<div>中国西部马术促进会</div>
+			</div>
+			<!--class="{{user.ChapterID?'mui-slider-o':'mui-slider'}}"-->
+			<div id="slider" class="mui-slider" style="margin-top: 100px;">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item" href="#item1">
+						协会简介
+					</a>
+					<a class="mui-control-item" href="#item2">
+						主要赛事
+					</a>
+					<a class="mui-control-item" href="#item3">
+						理事会
+					</a>
+					<a class="mui-control-item" href="#item4">
+						分会组织
+					</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
+				<div class="mui-slider-group">
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="y-content">
+									<p>
+										<span style="font-size: 14px; font-family: arial,helvetica,sans-serif;">中国西部马术促进会（以下简称“西促会”）是目前国内规模最大、最专业、最权威的、最具综合实力的第一个西部马术联盟式社团组织。自2012年成立以来，一直积极致力于推广西部马术运动，从事马术基础培训、组织西部马术赛事、促进国内外西部马术运动交流、宣传西部马文化等活动，是国内马行业公认的西部马术文化传播者和实践者。遵循“发展体育运动，增强人民体质”的国家体育发展战略规划，体现马术体育比赛与文化活动相结合、专业西部马术赛事与群体活动相互动、高收入人群与普通百姓共参与的特色，集赛事、娱乐、活动于一体，将西部马术赛事打造成为中国最受欢迎的马术赛事品牌。<br/>成立至今，西促会已发展到个人会员29000余人，理事单位22家，团体会员单位60家，地区分会42家，青少年培训基地20家。西促会的成立之本，积极致力于推广西部马术运动，从事马术基础培训、推广马术健身运动，促进国内外西部马术运动交流、宣传西部马术文化等具有群众广泛参与基础的马术活动。<br/><strong><span style="font-family: arial,helvetica,sans-serif; font-size: 16px; color: rgb(0, 176, 80);">成立目的</span></strong><br/>西促会的成立之本，积极致力于推广西部马术运动，从事马术基础培训、推广马术健身运动，促进国内外西部马术运动交流、宣传西部马术文化等具有群众广泛参与基础的马术活动。并积极响应国务院发布的《全民健身计划》（2016-2020）的通知，积极开展马术运动赛事和活动，促进马术体育产业的发展，提升马术文化及马术运动的理念在人民群众中的认知度。<br/><strong><span style="font-family: arial,helvetica,sans-serif; font-size: 16px; color: rgb(0, 176, 80);">中国西部马术促进会功能</span></strong><br/>1.制定统一的赛事活动规则。<br/>2.为马匹、骑手进行注册登记。<br/>3.聘请国外知名马术教练及专家为教练、骑手、裁判、会员等成员提供专业培训课程。<br/>4.着力打造青少年西部马术赛事及西部马术培训。<br/>5.与国外相关的马术团体建立联系，包括代购进口马匹、马具引进等工作。<br/>6.积极开展国内技术培训与国外马术团体的交流和学习，组织骑手参加国际比赛。<br/>7.吸引更多的马术爱好者成为西促会会员。<br/><span style="font-family: arial,helvetica,sans-serif; font-size: 16px;"><strong><span style="font-family: arial,helvetica,sans-serif; color: rgb(0, 176, 80);">中国西部马术促进会登记马匹</span></strong>
+										</span><br/>2012年，统计中国进口夸特马数量及国内繁育夸特马数量，并建立相关的马匹和骑手登记注册制度。<br/>2013年，向银川IBHF绕桶世界杯总决赛提供参赛马匹60匹。<br/>2014年，向上海IBHF绕桶世界杯总决赛主办方提供参赛马匹50匹，国内其他经过训练具备西部马术技术的进口和国产马匹200余匹。<br/>2015年，向青岛世界休闲体育大会西部马术邀请赛提供参赛马匹70余匹。<br/>2016年，在中国西部马术绕桶巡回赛中马匹的登记和护照办理中创以往参赛马匹数量的最高纪录。<br/><strong><span style="font-family: arial,helvetica,sans-serif; font-size: 16px; color: rgb(0, 176, 80);">发展方向及工作成绩</span></strong><br/>从成立之初到现在，以中国西部马术促进会会长于瑞宗先生为核心的领导班子带领下，西促会的工作成绩显著，仅4年时间，参加西部马术绕桶赛的马匹中，夸特马的比例已经达到参赛马匹的90%以上。创立伊始至今，出国学习、考察、邀请国外教练骑手培训50余次；已参与并举办过大小赛事已达百余场；并从美国、加拿大、澳大利亚、法国等其他国家进口马匹数量200余匹。<br/>2015年末，新建立的西促会办公室全面投入使用，由西促会秘书长张昊先生设计专业的商务办公区、会议室及商务洽谈区等为西促会的硬件设施再次注入精彩的一笔。完善的赛事制度、专业的赛事执裁团队、出色的文化活动组织、丰富的赛事执行经验吸引了众多房地产、名车品牌、奢侈品商、古玩收藏、高档服装、酒类品牌等相关企业的关注；西促会更以独具特色的西部马术氛围与国内各地政府和国内外马术团体进行友好合作，并与众多企业集团、五星级酒店、私人会所及俱乐部达成了紧密的合作关系。<br/></span>
+									</p>
+									<p>
+										<span style="font-size: 14px; font-family: arial,helvetica,sans-serif;">西促会在今后的工作中，将会一直持续致力于中国西部马术的推广与普及，发展壮大会员，并与国内外团体、企业和相关赛事机构合作，共同开发、推广马术运动，组织更多更专业级别的马术赛事及活动。西促会总部办公地址位于北京市大兴区，地理位置优越，风景优美，交通便利，周围环绕着商务中心、国际财富中心、高档社区及别墅区等，欢迎各界爱马人士莅临到访和合作！<br/></span>
+									</p>
+									<p>
+										<strong><span style="font-size: 14px; font-family: arial,helvetica,sans-serif; color: rgb(0, 176, 80);">联系方式：<br/>王江祁：13501100484<br/>张&nbsp; 昊：13801001860<br/>办公室电话：010-87856672<br/>办公地址：北京市大兴区荣华中路11号3楼301室</span></strong><span style="font-size: 14px; font-family: arial,helvetica,sans-serif;"><br/><br/><br/></span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item2" class="mui-slider-item mui-control-content ">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="y-content">
+									<strong><span style="font-size: 14px; font-family: arial,helvetica,sans-serif; color: rgb(0, 176, 80);">2012年</span></strong><span style="font-size: 14px; font-family: arial,helvetica,sans-serif;"><br/>2012年4月 “青岛沙滩西部马术绕桶公开赛”<br/>2012年4月 “烟台养马岛马术嘉年华”<br/>2012年6月 河北丰宁县坝上草原孤石军马场“首届星海钢琴杯首届名人马主（30公里）越野邀请赛”<br/>2012年6月 河北丰宁县坝上草原孤石军马场“全国牧人竞技绕桶巡回赛”<br/>2012年7月 内蒙古太仆寺旗“第三届皇家御马文化节?全国马术绕桶冠军赛”<br/>2012年8月 内蒙古“2012达拉特旗全国绕桶冠军赛”<br/>2012年9月 内蒙古“伊金霍洛旗中国首届马术大赛绕桶赛”<br/>2012年9月 宁夏“2012银川全国牧人竞技绕桶巡回赛”<br/>2012年9月 北京“北京康西草原‘红星二锅头杯’全国牧人竞技绕桶巡回赛”<br/>2012年12月 北京“AQHA美国夸特马协会首届中国区绕桶赛”<br/><strong><span style="font-size: 14px; font-family: arial,helvetica,sans-serif; color: rgb(0, 176, 80);">2013年</span></strong><br/>2013年4月 北京“北京马术节‘贝晶杯’西部马术绕桶挑战赛”<br/>2013年5月 青岛“2013年‘广和源杯’中国绕桶巡回赛（青岛宝湖站）”<br/>2013年5月 “青岛宝湖第二届‘星海钢琴杯’名人马主（30公里）越野赛”<br/>2013年4月 北京“AQHA美国夸特马协会首届中国区牛仔竞技常规赛赛”第一站<br/>2013年6月 北京颐和马房“AQHA美国夸特马协会首届中国区牛仔竞技常规赛赛”第二站<br/>2013年7月 内蒙古西乌珠穆沁旗“首届‘中国白马之乡’文化节暨IBHA绕桶赛世界杯选拔赛”<br/>2013年8月 河北京西草原“AQHA美国夸特马协会首届中国区牛仔竞技常规赛”第三站<br/>2013年9月 内蒙古“锡林浩特马术大会暨IBHF绕桶赛世界杯选拔赛”<br/>2013年10月 北京朝阳公园“星海钢琴马术嘉年华暨IBHF绕桶赛世界杯选拔赛”<br/>2013年10月 宁夏“中国银川IBHF世界杯马术绕桶赛”<br/>2013年10月 北京“AQHA美国夸特马协会首届中国区牛仔竞技常规赛”总决赛<br/><strong><span style="font-size: 14px; font-family: arial,helvetica,sans-serif; color: rgb(0, 176, 80);">2014年</span></strong><br/>2014年4月 AQHA中国牛仔竞技常规赛<br/>2014年6月 AQHA中国西部马术公开赛<br/>2014年6月 青岛“鲜宇杯”第三届名人马主30公里耐力赛<br/>2014年6月 IBHF绕桶世界杯选拔赛第一站<br/>2014年6月 全国马术牧人竞技绕桶冠军赛<br/>2014年9月 大连铭湖绕桶世界杯选拔赛第二站<br/>2014年10月 山东潍坊滨海“铭鼎杯”全国马术邀请赛<br/>2014年11月 AQHA中国牛仔竞技赛<br/>2014年11月 IBHF绕桶世界杯上海总决赛<br/><strong><span style="font-size: 14px; font-family: arial,helvetica,sans-serif; color: rgb(0, 176, 80);">2015年</span></strong><br/>2015年4月11日 青岛市第四届体育大会暨青岛“爱丽丝珠宝杯”绕桶公开赛<br/>2015年5月4日 第四届“宝湖杯”名人马主30公里沙滩耐力赛<br/>2015年5-16-30日 康西大赛马三周联赛<br/>2015年6月27日 北京“宝利杯”2015年中国西部马术公开赛<br/>2015年8月1日 2015丰宁坝上马背嘉年华暨首届中国牛仔节<br/>2015年8月9日 2015第四届中国马术大赛全国牧人竞技绕桶冠军赛<br/>2015年8月23日 2015世界休闲体育大会全国马术邀请赛测试赛<br/>2015年9月19日 2015世界休闲体育大会全国马术邀请赛<br/><strong><span style="font-size: 14px; font-family: arial,helvetica,sans-serif; color: rgb(0, 176, 80);">2016年</span></strong><br/>2016年1月9日 2016年苏北首届西部马术邀请赛<br/>2016年1月17日 “海氏海诺”杯2016年中国青岛姜山湿地（40公里）全国马术耐力赛<br/>2016年4月16日 青岛登程“金蚂蚁杯”马术邀请赛<br/>2016年4月18日 第八届4.18东北马友开鞍节暨首届东北牛仔狂欢节<br/>2016年4月30日 苏北分会第二届马术邀请赛<br/>2016年5月2日 “激情未泯 战火再燃”2016年第五届30公里名人马主大赛暨15公里沙滩耐力公开赛<br/>2016年5月7日 中国西部马术促进会“八大洲旅游杯”西部车马嘉年华<br/>2016年5月15日 2016年中国西部马术绕桶巡回赛（北京）<br/>2016年5月21日 滨州2016中国博兴打渔张森林公园黄河沙滩马术耐力赛<br/>2016年5月28日 2016“红朗姆杯”济南首届马术嘉年华<br/>2016年5月28日 2016年天津首届“仁爱团泊湖”马术邀请赛及乐乐岛国际马术节<br/>2016年6月4日 瑞安市第二届“八骏杯”马术公开赛暨中国西部马术促进会温州分会成立大会<br/>2016年6月4日 临沂市马术协会首届县区级马术赛暨中国西部马术促进会山东会临沂分会马术邀请赛<br/>2016年6月9-11日 中国西部马术促进会“首届女牛仔集训营”<br/>2016年6月18日 第三届“伯乐杯”少年马术邀请赛<br/>2016年6月18日 深圳龙凤山庄绕桶测试赛<br/>2016年7月7日临沂分会马术裁判员培训班<br/>2016年7月9日 中国西部马术促进会“第二届女牛仔集训营”<br/>2016年7月23-24日 2016丰宁坝上国际牛仔节<br/>2016年8月12日 2016中国马术大赛绕桶赛<br/>2016年8月21日 2016年全国马术绕桶巡回赛（第二站）<br/><br/><strong><span style="font-family: arial,helvetica,sans-serif; font-size: 16px; color: rgb(0, 176, 80);">主要赛事介绍</span></strong><br/><span style="font-family: arial,helvetica,sans-serif; font-size: 14px;"><strong>2012年，中国马术绕桶巡回赛青岛站</strong></span><br/>从2009年起，每年5月，美丽的青岛都会迎来一场马术大赛。常规赛事为绕桶赛和耐力赛，截止到现在已经连续举办5年。<br/><span style="font-family: arial,helvetica,sans-serif; font-size: 14px;"><strong><span style="font-family: arial,helvetica,sans-serif;">2012年9月，内蒙古“伊金霍洛旗中国首届马术大赛?绕桶赛”</span></strong>
+									</span><br/>2012年，鄂尔多斯达拉特第二届国际马文化节举办，赛事较上一届更为盛大，近百名各国精英骑手、百余匹马匹进口量，和大型的夜场马匹表演让观众印象深刻。<br/><strong>2013年4月，北京马术文化节</strong><br/>北京第一次举办全方位的大型马术活动，此次马术节唯一一场赛事是西部马术促进会参与的绕桶比赛，此外还有马文化展示、马术表演及马球赛等。<br/><strong>2013年10月，银川IBHF绕桶世界杯总决赛</strong><br/>这是IBHF世界杯组委会第一次将总决赛移至欧洲意外的其他城市举行，这场赛事同时得到了中央电视台第五套体育频道的支持录播。<br/><strong>2014年6月，青岛IBHF绕桶世界杯选拔赛第一站</strong><br/>2014年《全国马术牧人竞技绕桶冠军赛》暨《IBHF绕桶马术世界杯中国区选拔赛》在青岛举办。<br/><strong>2014年10月，山东潍坊滨海“铭鼎杯”全国马术邀请赛</strong><br/>第二届“铭鼎杯”全国马术邀请赛汇集了70余名骑手和86匹马匹参加，其中绕桶项目占到一半以上的数量。<br/><strong>2015年9月，青岛2015世界休闲体育大会“崂山矿泉水杯”马术公开赛</strong><br/>在8月举办的测试赛和9月举办的正式比赛中，中国西部马术促进会共有100人/次人马组合参赛，共设立了团体赛、个人排名赛及穿桩表演赛等项目。<br/><strong>2016年5月2日，“激情未泯 战火再燃”2016年第五届30公里名人马主大赛暨15公里沙滩耐力公开赛</strong><br/>已成功连续举办5届的全国性大型耐力赛，参赛人数及马匹数量逐年上升，获得业内业外多家媒体报道。<br/><strong>2016年5月15日，2016年中国西部马术绕桶巡回赛（北京）</strong><br/>2016年首场“国”字号最高水平的绕桶比赛、全国12个省、17支参赛队、68位参赛运动员、84匹骏马，创以往赛事之最。<br/><strong>2016年6月18日，第三届“伯乐杯”少年马术邀请赛</strong><br/>弘扬马术文化，推广马术运动，提升青少年综合素质，通过比赛打到强身健体，磨练意志，陶怡情操的目的。<br/><strong>2016年7月23-24日，2016丰宁坝上国际牛仔节</strong><br/>西促会所举办的第二届丰宁坝上国际牛仔节，参与人数达到几千人，并参与的各理事单位及各个分会达51家，获得国内马术专业媒体报道和其他媒体报道十余家！<br/><strong>2016年8月12日，2016中国马术大赛绕桶赛</strong><br/>由中国马术协会主办,内蒙古锡林郭勒盟政府筹办的《2016年中国马术大赛绕桶赛》，该项目报名及赛事组织由中国西部马术促进会协助进行,所有获得名次的人马组合都会进入中国西部马术促进会年度积分榜。<br/><br/></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item3" class="mui-slider-item mui-control-content ">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="y-content" style="padding-left: 10px;">
+									<p>
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">青岛宝湖马术俱乐部<br/>北京宝利马术俱乐部<br/>青岛登程马术俱乐部<br/>北京万江雄马具商行<br/>河北香河吉祥马业<br/>北京西部巨人马术俱乐部<br/>四川腾辉马术俱乐部<br/>青岛青康餐饮配送有限公司<br/>上海飞鸿马术俱乐部<br/>北京美洲光芒西部马具装备店<br/>北京老何马场<br/>北京森林牧场马术俱乐部<br/>天津团泊湖国际马术俱乐部<br/>北京云通马术俱乐部<br/>河南角子山马术俱乐部<br/>青岛凤凰马术俱乐部<br/>浙江嘉兴华清马术俱乐部<br/>浙江腾龙马术俱乐部<br/>宁夏银山马会<br/>无疆牧场<br/>北京同领汇能投资顾问有限公司</span>
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div id="item4" class="mui-slider-item mui-control-content ">
+						<div id="scroll4" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="y-content" style="padding-left: 10px;">
+									<!--<div class="y-list-row-3">
+										<div>北京会</div>
+										<div>东北会</div>
+										<div>天津会</div>
+										<div>上海会</div>
+										<div>山东会</div>
+										<div>河北会</div>
+										<div>河南会</div>
+										<div>宁夏会</div>
+										<div>浙江会</div>
+										<div>江苏会</div>
+										<div>四川会</div>
+										<div>安徽会</div>
+									</div>
+									<div class="y-list-row-3">
+										<div>苏北分会</div>
+										<div>滨州分会</div>
+										<div>临沂分会</div>
+										<div>南京分会</div>
+										<div>苏州分会</div>
+										<div>台湾分会</div>
+										<div>金华分会</div>
+										<div>温州分会</div>
+										<div>潍坊分会</div>
+										<div>大连分会</div>
+										<div>锦州分会</div>
+										<div>朝阳分会</div>
+										<div>本溪分会</div>
+										<div>抚顺分会</div>
+										<div>辽阳会分</div>
+										<div>济南分会</div>
+										<div>深圳分会</div>
+										<div>菏泽分会</div>
+										<div>石家庄分会</div>
+										<div>哈尔滨分会</div>
+									</div>-->
+
+									<p style="text-indent:0;">
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">北京会<br/>上海会<br/>天津会<br/>山东会：菏泽分会、滨州分会、济南分会、</span>
+									</p>
+									<p style="text-indent:0;">
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 日照分会、潍坊分会、临沂分会</span>
+									</p>
+									<p style="text-indent:0;">
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">东北会：哈尔滨分会、大连分会、锦州分会、</span>
+									</p>
+									<p style="text-indent:0;">
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 辽阳分会、本溪分会、抚顺分会、</span>
+									</p>
+									<p style="text-indent:0;">
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 沈阳分会、瓦房店分会、长春分会、</span>
+									</p>
+									<p style="text-indent:0;">
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 盘锦分会</span>
+									</p>
+									<p>
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">河北会：石家庄分会<br/>四川会<br/>浙江会：金华分会、温州分会、宁波分会、</span>
+									</p>
+									<p>
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 绍兴分会</span>
+									</p>
+									<p>
+										<span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">江苏会：苏北分会、南京分会、苏州分会<br/>安徽会：合肥分会<br/>河南会<br/>宁夏会<br/>广东会：深圳分会<br/>新疆会：乌鲁木齐分会<br/><br/>北京touch假日牧场<br/>内蒙古德飞马业</span>
+									</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="y-footer">
+					<button type="button" disabled="{{validJoin}}" id='addEquestrian' class="mui-btn mui-btn-warning mui-btn-block">加入西促会</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

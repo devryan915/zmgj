@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.previewimage.css" />
+
+		<style type="text/css">
+			/*.mui-table-view {
+				padding: 15px;
+			}*/
+			
+			.mui-table-view textarea {
+				border: none;
+				padding: 0;
+			}
+			
+			.mui-table-view:before,
+			.mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.y-img-list-select i {
+				display: inline-block;
+				width: 64px;
+				height: 64px;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				margin: 5px 5px 0 0;
+				/*background-color: #EFEFF4;*/
+			}
+			
+			.mui-active.mui-no-active {
+				background-color: transparent;
+			}
+			
+			.y-img-list-select i:last-child {
+				background-image: url(../../img/me_addhead.png);
+			}
+			
+			img {
+				vertical-align: bottom;
+			}
+			
+			.mui-icon-trash {
+				color: #fff;
+			}
+			
+			.mui-popover-header {
+				color: #999;
+			}
+			
+			.mui-popover-header.mui-active {
+				background-color: transparent;
+			}
+			 
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/dynamic/add']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title"></h1>
+			<a id="btnSave" href="javascript:void(0);" class="mui-btn mui-btn-green mui-pull-right">发送</a>
+			<!--<button id="btnSave" class="mui-btn mui-btn-green mui-pull-right">发送</button>-->
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-no-active">
+					<textarea v-model='par.content' rows="4" placeholder="时时分享，点滴心情..."></textarea>
+				</li>
+				<li class="mui-table-view-cell mui-no-active">
+					<div class="y-img-list-select">
+						<template v-for='s in imgList'>
+							<i v-bind:style="s.img|f-img" data-preview-src="{{s.img}}" data-preview-group="1"></i>
+						</template>
+						<i v-if='imgList.length<9' id="btnSelectImg"></i>
+					</div>
+				</li>
+				<li id="btnLocation" class="mui-table-view-cell">
+					<i class="y y-3x y-location {{ref.addr==''?'y-gray':'y-green'}}"></i> <span v-text='ref.addr||"所在位置"'>所在位置</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

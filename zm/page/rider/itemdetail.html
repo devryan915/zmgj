@@ -1,0 +1,491 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/rider/itemdetail']);
+			});
+		</script>
+		<style type="text/css">
+			html,
+			body,
+			.mui-content {
+				height: 100%;
+				width: 100%;
+			}
+			
+			.wrapper {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				height: 100%;
+			}
+			
+			.goods-item {
+				height: 60px;
+				padding: 0 20px;
+				line-height: 60px;
+				font-size: 17px;
+				margin-top: 1px;
+				background: #fff;
+			}
+			
+			.g-name {
+				width: 100%;
+				color: black;
+			}
+			
+			.g-cprice {
+				font-size: 17px;
+				color: #666;
+				position: relative;
+			}
+			
+			.g-cprice-left {}
+			
+			.g-cprice-right {
+				position: absolute;
+				right: 10px;
+				top: 0;
+				height: 100%;
+				width: 100px;
+				color: #ffa44c;
+			}
+			
+			.g-cprice-right div {
+				height: 50%;
+				text-align: right;
+			}
+			
+			.g-rprice {
+				line-height: 60px;
+				font-size: 18px;
+			}
+			
+			.g-price {
+				color: #ccc;
+				font-size: 10px;
+				text-decoration: line-through;
+				line-height: 40px;
+			}
+			/*.g-oprice {
+				color: #999;
+			}
+			
+			.g-oprice span:last-child {
+				float: right;
+				text-decoration: line-through;
+			}*/
+			
+			.g-address {
+				color: #666;
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			.g-service {
+				width: 100%;
+			}
+			
+			.g-service i {
+				font-size: 15px;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				background-color: white;
+				padding: 0 20px;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+				padding: 5px 0;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 0;
+				font-size: 15px;
+				border: none;
+				text-align: left;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell.mui-active {
+				background: transparent;
+			}
+			
+			.mem-item {
+				position: relative;
+				background-color: white;
+				font-size: 0;
+				height: 100px;
+				padding: 5px 20px 100px 20px;
+			}
+			
+			.mem-item:after {
+				position: absolute;
+				content: '';
+				border-bottom: solid 1px #ccc;
+				bottom: 0px;
+				left: 20px;
+				width: calc(100% - 40px);
+			}
+			
+			.mem-item img {
+				width: 100%;
+			}
+			
+			.item-left {
+				width: 90px;
+				height: 90px;
+				float: left;
+			}
+			
+			.item-right {
+				width: calc(100% - 90px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: black;
+				padding-left: 4px;
+				line-height: 25px;
+				font-size: 17px;
+				height: 25px;
+			}
+			
+			.item-right p {
+				padding-top: 5px;
+				padding-left: 4px;
+				color: #666;
+				height: 45px;
+				font-size: 14px;
+				line-height: 20px;
+			}
+			
+			.item-right div:last-child {
+				color: #999999;
+				font-size: 12px;
+				line-height: 18px;
+				padding-left: 4px;
+			}
+			
+			nav {
+				position: relative;
+				z-index: 1;
+				font-size: 13px;
+				background: #fff;
+			}
+			
+			nav.mui-bar-tab .mui-tab-item:after {
+				position: absolute;
+				border-right: rgba(0, 0, 0, .4) 1px solid;
+				content: '';
+				height: 30px;
+				display: block;
+				top: 10px;
+				margin-left: 33.33vw;
+			}
+			
+			nav.mui-bar-tab .mui-tab-item:last-child:after {
+				border-right: none;
+			}
+			/*nav.mui-bar-tab .mui-tab-item {
+				border-right: #666 1px solid;
+			}
+			nav.mui-bar-tab .mui-tab-item:last-child {
+				border-right: none;
+			}*/
+			/*控制tab默认字体颜色*/
+			
+			nav.mui-bar-tab .mui-tab-item {
+				color: #999;
+			}
+			/*控制tab选中状态字体*/
+			
+			nav.mui-bar-tab .mui-tab-item.mui-active {
+				color: #999;
+			}
+			
+			.item-footer {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+			}
+			
+			.item-footer button {
+				border-radius: 0;
+				margin: 0;
+			}
+			
+			.footer-space {
+				margin: 0px auto;
+				text-align: center;
+				height: 91px;
+				line-height: 50px;
+				/*background: #48CBF2;*/
+			}
+			/*.innerwrapper {
+				height: calc( 100vh - 50px);
+			}
+			
+			.mui-slider,
+			.mui-slider-group,
+			.mui-scroll-wrapper {
+				height: 100vh;
+			}*/
+			
+			#sliderSegmentedControl {
+				background: #fff;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #DBB467;
+				border-bottom: 2px solid #DBB467;
+				background: 0 0;
+			}
+			
+			.comments-title {
+				color: #333;
+				line-height: 42px;
+				font-size: 17px;
+				padding-left: 40px;
+			}
+			
+			.comments-title span:last-child {
+				float: right;
+				color: #999;
+				font-size: 13px;
+			}
+			
+			.y-card-list>.mui-card>.mui-card-content {
+				margin-top: 3px;
+			}
+			
+			.service-tip {
+				background-color: #ddd;
+			}
+			
+			.service-title {
+				text-align: center;
+				background-color: #fff;
+				width: 100%;
+				height: 60px;
+				padding: 20px;
+			}
+			
+			.tip-content {
+				background: #fff;
+				float: left;
+				margin-top: 1px;
+			}
+			
+			.tip-left {
+				width: 50px;
+				text-align: center;
+				float: left;
+				font-size: 25px;
+				line-height: 65px;
+			}
+			
+			.tip-right {
+				margin-left: 50px;
+				padding-top: 10px;
+			}
+			
+			.goods-detail {
+				background-color: #fff;
+			}
+			.rich-text {
+				width: 100%;
+				padding: 10px;
+				border-top: dashed 1px #c8c7cc;
+				margin-top: 15px;
+				padding-top: 15px;
+				padding-bottom: 15px;
+				white-space: pre-wrap;
+				color: #333;
+			}
+			
+			.rich-text p {
+				font-size: 15px;
+				color: #333;
+				margin: 8px 0px;
+			}
+			
+			.rich-text img {
+				max-width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-transparent" tyle="background: rgba(0,0,0,0);">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span style="background: rgba(0,0,0,.3);border: 0px solid  #000; padding:2px;border-radius: 20px;color:white;"  class="mui-icon mui-icon-left-nav"></span>
+			</button>
+			<a class="y y-share mui-pull-right" style="padding: 0; line-height:44px;font-size: 20px;color: #fff;"></a>
+			<a class="y y-collect-o mui-pull-right" style="padding:0 10px;line-height:44px;font-size: 23px;color: #fff;"></a>
+		</header>
+		<div id="app" class="mui-content">
+			<div class="scroller">
+				<img src="../../img/default_640x480.png" data-img="{{data.ImgUrls[0]|f-imgUrl 640 430}}" style="width: 100%;" />
+				<!--v-text="data.ShopName"-->
+				<div class="g-name goods-item"><span class="mui-ellipsis" v-text="data.ShopName"></span></div>
+				<div class="g-cprice goods-item">
+					<!--v-text="data.RPrice.PN"-->
+					<div class="g-cprice-left" v-text="data.RPrice.PN+'/'+data.QUnit"></div>
+					<div class="g-cprice-right">
+						<div class="g-rprice" v-text="data.RPrice.Prc+'马币'"></div>
+						<div class="g-price" v-text="'原价'+data.Price+'马币'"></div>
+					</div>
+				</div>
+				<!--<div class="g-oprice goods-item">
+				<span v-text="'原价'+data.Price+'马币'"></span>
+			</div>-->
+				<div class="g-address goods-item">
+					<!--{{data.Addr}}-->
+					<div class="mui-ellipsis"><i class="y y-location" style="color: #ffa44c;"></i> {{data.Addr}}</div>
+				</div>
+				<div class="g-service ">
+					<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+							<a href="javascript:;">
+								<i class="y y-finish"></i><span>不支持随时退</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+							<a href="javascript:;">
+								<i class="y y-finish"></i><span>免预约</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+							<a href="javascript:;">
+								<i class="y y-finish"></i><span>过期自动退</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+							<a href="javascript:;">
+								<i class="y y-finish"></i><span>品质保证</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="mem-item goods-item" data-data='{\"id\":\"{{data.NewsID}}\",\"title\":\"{{data.NewsTitle}}\",\"img\":\"{{data.NImgUrl}}\"}'>
+					<div class="item-left">
+						<!--src="../../img/default_640x480.png"-->
+						<img data-img="{{data.UImgUrl+'?iopcmd=thumbnail&type=8&width=210&height=210'}}" src="../../img/default_320x320.png" />
+					</div>
+					<div class="item-right">
+						<!--v-text="data.ClubName"-->
+						<div class="mui-ellipsis" v-text="data.ClubName"></div>
+						<p class="mui-ellipsis-2" v-text="data.UnitSign">
+						</p>
+						<div><span data-starid="{{data.UnitID}}" data-star="{{data.ClubLevel|f-star data.UnitID}}">
+					</span> {{data.City+'|'+data.Distance+''+data.DUnit}}
+							<i class="y y-renzheng mui-hidden" style="float: right;color: #ffa44c;font-size: 17px;"></i>
+						</div>
+					</div>
+				</div>
+				<nav class="mui-bar-tab">
+					<a class="mui-tab-item" href="javascript:;">
+						<span v-text="data.ClubTotal"></span>
+						<div>全部产品</div>
+					</a>
+					<a class="mui-tab-item" href="javascript:;">
+						<span v-text="data.CNums"></span>
+						<div>关注人数</div>
+					</a>
+					<a class="mui-tab-item" href="javascript:;">
+						<span>0%</span>
+						<div>信誉度</div>
+					</a>
+				</nav>
+				<div class="footer-space" style="height: 10px;"></div>
+				<div id="goodsDetail" class="goods-detail">
+					<div>
+						<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted">
+							<a class="mui-control-item mui-active" href="#item1" data-idx="1">产品介绍</a>
+							<a class="mui-control-item" href="#item2" data-idx="2">产品须知</a>
+							<a class="mui-control-item" href="#item3" data-idx="3" v-text="'产品评价('+data.DNums+')'"></a>
+						</div>
+					</div>
+					<div>
+						<div id="item1" class="mui-control-content mui-active">
+							<!--v-html='data.Remark'-->
+							<pre id="Remark" v-html='data.Remark' class="rich-text">
+							</pre>
+						</div>
+						<div id="item2" class="mui-control-content">
+							<pre id="Notice" v-html='data.Notice' class="rich-text">
+
+							</pre>
+						</div>
+						<div id="item3" class="mui-control-content">
+							<div class="y-card-list">
+								<div class="mui-card  animated fadeInUp" data-id='{{s.PostId}}'>
+									<div class="mui-card-header mui-card-media">
+										<img src="../../img/head.png" data-img='{{s.ImgUrl|f-imgUrl 100}}' />
+										<div class="comments-title">
+											<span>我是昵称</span>
+											<span>2015-9-9</span>
+										</div>
+									</div>
+									<div class="mui-card-content y-ellipsis y-ellipsis-flag">啥地方放水电费水电费水电费水电费水电费水电费水电费水电费水电费是的发送到发送到水电费水电费</div>
+									<div class="mui-card-content">
+										<div class="mui-row">
+											<!--v-if='s.Imgs.length==1'-->
+											<!--<div > <img src="../../img/default_640x320.png" data-img='{{s1}}' style="width: 210px;" data-preview-src="{{s1}}" data-preview-group="{{index}}" /> </div>-->
+											<div class="mui-col-xs-4">
+												<img src="../../img/default_320x320.png" data-img='{{s1|f-imgUrl 210}}' data-preview-src="{{s1}}" data-preview-group="{{index}}" />
+											</div>
+										</div>
+									</div>
+									<!--<div class="mui-card-footer" data-id='{{s.PostId}}' data-list-index='0' data-index='{{index}}'>
+														<a class="mui-card-link mui-col-xs-4" data-type='{{s.IsCollect?5:1}}'><i class="y y-2x {{s.IsCollect?'y-collect y-yellow':'y-collect-o'}}"></i> {{s.CNums||'收藏'}}</a>
+														<a class="mui-card-link mui-col-xs-4" data-type='101'><i class="y y-2x y-comment-o"></i> {{s.DNums||'评论'}}</a>
+														<a class="mui-card-link mui-col-xs-4" data-type='{{s.IsPoint?9:2}}'><i class="y y-2x {{s.IsPoint?'y-heart y-red':'y-heart-o'}}"></i> {{s.PNums||'点赞'}}</a>
+													</div>-->
+								</div>
+								<div id="commentsMore" v-on:tap="commentsMore" class="footer-space" style="color: #FFA44C;background-color: #fff;">查看更多<i class="mui-icon mui-icon-arrowright"></i></div>
+
+							</div>
+						</div>
+					</div>
+					<div class="footer-space"></div>
+				</div>
+			</div>
+			<div class="item-footer">
+				<button type="button" class="mui-btn-block mui-btn-yellow">我要购买</button>
+			</div>
+			<div id="services" class="mui-popover mui-popover-action mui-popover-bottom">
+				<div class="service-tip">
+					<div class="service-title">服务说明</div>
+					<div class="service-content">
+						<div class="tip-content">
+							<div class="tip-left"><i class="y y-finish"></i></div>
+							<div class="tip-right">
+								<span>7天退货</span>
+								<p class="mui-ellipsis-2">消费者满足七天的前消费者满足七天的前提下可以选择退货消费者满足七天的前提下可以选择退货消费者满足七天的前提下可以选择退货消费者满足七天的前提下可以选择退货提下可以选择退货</p>
+							</div>
+						</div>
+						<div class="tip-content">
+							<div class="tip-left"><i class="y y-finish"></i></div>
+							<div class="tip-right">
+								<span>7天退货</span>
+								<p class="mui-ellipsis-2">消费者满足七天的前消费者满足七天的前提下可以选择退货消费者满足七天的前提下可以选择退货消费者满足七天的前提下可以选择退货消费者满足七天的前提下可以选择退货提下可以选择退货</p>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="mui-btn-block mui-btn-yellow">朕知道了</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/pub/paycode']);
+			});
+		</script>
+		<style type="text/css">
+			html,
+			body,
+			.mui-content {
+				background: #FFA44C;
+			}
+			
+			#bcid {
+				width: 100%;
+				position: absolute;
+				top: 0px;
+				bottom: 44px;
+				text-align: center;
+			}
+			
+			.tip {
+				color: #FFFFFF;
+				font-weight: bold;
+				text-shadow: 0px -1px #103E5C;
+			}
+			
+			.qr-content {
+				position: absolute;
+				top: 20vh;
+				left: 10vw;
+				right: 10vw;
+				bottom: 20vh;
+				border-radius: 8px;
+				background: #fff;
+				text-align: center;
+			}
+			
+			.qr-content img {
+				width: 100%;
+			}
+			.me-head {
+				margin-top: -25px;
+				width: 100%;
+				height: 120px;
+			}
+			
+			.me-head img {
+				position: absolute;
+				left: 50%;
+				margin-left: -25px;
+				z-index: 2;
+				width: 50px;
+			}
+			
+			.me-head #headPhoto {
+				position: absolute;
+				z-index: 1;
+				left: 50%;
+				margin-left: -25px;
+				width: 50px;
+				height: 50px;
+				border-radius: 25px;
+				background: url(../../img/head_bg.png);
+				background-size: 50px;
+			}
+			
+			.me-head p {
+				position: absolute;
+				color: #FFA44C;
+				font-size: 18px;
+				width: 100%;
+				top: 25px;
+				border-radius: 10px;
+				text-align: center;
+				/*background: rgba(0, 0, 0, .3);*/
+			}
+			.qr-img{
+				margin: 0 auto;
+				width: 60%;
+			}
+			.qr-footer {
+				position: fixed;
+				bottom: 0;
+				height: 50px;
+				z-index: 999;
+				width: 100%;
+				color: white;
+				text-align: center;
+				font-size: 12px;
+			}
+			
+			.qr-footer i {
+				font-size: 25px;
+			}
+			
+			.footer-left {
+				position: absolute;
+				left: 0;
+				width: 100px;
+			}
+			
+			.footer-right {
+				position: absolute;
+				right: 0;
+				width: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-transparent">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title" style="color: white;">付款</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<!--条形码扫描框-->
+			<!--<div id="bcid">
+				<div style="height:40%"></div>
+				<p class="tip">...载入中...</p>
+			</div>-->
+			<div class="qr-content">
+				<div class="me-head">
+					<img src="../../img/head_outline_silvery.png" />
+					<i id="headPhoto" data-img='{{user.ImgUrl|f-imgUrl 100}}'></i>
+					<p >我是黄金会员</p>
+				</div>
+				<div class="qr-img">
+					<img src="../../img/aboutus-logo.png" />
+				</div>
+					<div style="color: #999;padding-top: 10px;">每分钟刷新，仅限当面使用</div>
+			</div>
+			<div class="qr-footer">
+				<div class="footer-left">
+					<div><i class="y y-erweima" style="display: block;"></i></div>
+					<span>付款码</span>
+				</div>
+				<div class="footer-right">
+					<div><i class="y y-saoyisao" style="display: block;"></i></div>
+					<span>扫码付</span>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

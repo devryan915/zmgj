@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.y-list-img .mui-table-view-cell>div {
+				font-size: 14px;
+			}
+			
+			#sliderBanner {
+				/*height: 120px;*/
+			}
+			
+			#sliderBanner img {
+				/*height: 120px;*/
+				width: 100%;
+			}
+			
+			.mui-bar.mui-bar-transparent {
+				background-color: rgba(40, 40, 40, 0);
+			}
+			
+			.mui-bar .mui-title {
+				color: #fff;
+			}
+			
+			.event-footer {
+				margin-top: 5px;
+				margin-left: 25px;
+				height: 25px;
+			}
+			
+			.event-footer span:first-child {
+				color: #C7C6C6;
+				float: left;
+			}
+			
+			.event-footer span>span {
+				padding-left: 5px;
+				color: #666;
+			}
+			
+			.event-footer>span:last-child {
+				color: #DBB76B;
+				float: right;
+			}
+			
+			.pop-backdrop {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				z-index: 98;
+				background-color: rgba(0, 0, 0, .7);
+			}
+			
+			.pop-backdrop div {
+				background-color: white;
+				border-radius: 20px;
+				border: solid 3px #DCB76B;
+				z-index: 99;
+				position: absolute;
+				width: 86%;
+				left: 7%;
+				height: 80%;
+				padding: 30px 20px 30px 20px;
+				overflow: auto;
+				top: 10%;
+			}
+			
+			.pop-backdrop div img {
+				width: 100%;
+			}
+			
+			.pop-backdrop button {
+				position: absolute;
+				top: 92%;
+				width: 40%;
+				left: 30%;
+			}
+			
+			.y-list-img img {
+				width: 100%;
+			}
+			
+			.y-dot-circle:before {
+				vertical-align: middle;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/activity/list']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-transparent" style="">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">活动</h1>
+		</header> 
+		<div id="pr" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<img id="img1" src="../../img/default_640x320.png" style="width: 100%;position: absolute;top: -1000px;left: -1000px;" />
+				<div id="sliderBanner" class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../../img/default_640x320.png" :src="o.Banners[o.Banners.length-1].ImgUrl">
+							</a>
+						</div>
+						<div v-for='s in o.Banners' class="mui-slider-item">
+							<a href="#">
+								<img src="../../img/default_640x320.png" :src="s.ImgUrl">
+							</a>
+						</div>
+
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../../img/default_640x320.png" :src="o.Banners[0].ImgUrl">
+							</a>
+						</div>
+					</div>
+					<div class="mui-slider-indicator" v-if='o.Banners.length>1'>
+						<div v-for='s in o.Banners' class="mui-indicator {{$index==0?'mui-active':''}}"></div>
+
+					</div>
+				</div>
+				<ul id="ulList" class="mui-table-view y-list-img">
+					<template v-for='s in list'>
+						<li class="mui-table-view-cell" data-id='{{s.EventId}}' data-clicktype="{{s.ClickType}}">
+							<div>
+								<i class="y y-dot-circle y-3x {{s.SDate|f-status s.EDate}}"></i> {{s.SDate|f-time 'yyyy年MM月dd日'}}
+								<p class="mui-pull-right mui-ellipsis"><i class="y y-map-marker y-orange"></i> {{s.Address}}</p>
+							</div>
+							<!--v-bind:style='s.ImgUrl|f-img 320 150'-->
+							<div class="y-img">
+								<!--<i data-img='{{s.ImgUrl}}'></i>-->
+								<img data-img='{{s.ImgUrl}}' src="../../img/default_640x320.png">
+
+								<p><i class="y y-yueduliang"></i> {{s.LookNum}}
+									<a href="#" class="mui-pull-right" v-text="s.ClickType==1?'进入活动 >>':'活动通告 >>'"></a>
+								</p>
+							</div>
+							<!--<div class="event-footer">
+								<span><i class="y y-yueduliang" ></i><span v-text="s.LookNum"></span></span>
+							
+								<span v-text="s.ClickType==1?'进入活动 >>':'活动通告 >>'"></span>
+							</div>-->
+						</li>
+					</template>
+				</ul>
+			</div>
+		</div>
+		<div id="app_LOADING" class="mui-backdrop mui-backdrop-2">
+			<div class="con">
+				<div><i class="mui-spinner"></i></div>
+			</div>
+		</div>
+		<div class="pop-backdrop mui-hidden">
+			<div>
+			</div>
+			<button class="mui-badge-yellow" v-on:tap="close">确定</button>
+		</div>
+	</body>
+
+</html>

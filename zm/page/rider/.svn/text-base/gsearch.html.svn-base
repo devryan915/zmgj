@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/rider/gsearch']);
+			});
+		</script>
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.header-search {
+				background-color: inherit;
+				height: 44px;
+				position: fixed;
+				width: 100%;
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+			
+			.header-search input {
+				background-color: #fff;
+			}
+			
+			header.mui-bar.mui-bar-nav * {
+				color: #000000;
+			}
+			/*下拉刷新Begin*/
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			/*下拉刷新end*/
+			
+			.mem-item {
+				position: relative;
+				margin: 1px 0;
+				background-color: white;
+				height: 90px;
+				padding: 5px;
+				padding-left: 12px;
+			}
+			
+			.item-left {
+				width: 80px;
+				height: 80px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 80px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.goods-name {
+				color: #333;
+				font-size: 19px;
+				height: 20px;
+			}
+			
+			.club-name {
+				padding-top: 2px;
+				color: #666;
+				height: 20px;
+				font-size: 16px;
+			}
+			
+			.goods-distance {
+				color: #999;
+				font-size: 13px;
+				margin-top: -10px;
+			}
+			
+			.goods-price {
+				color: #FFA44C;
+				font-size: 17px;
+			}
+			
+			.goods-comments {
+				color: #999;
+				float: right;
+				font-size: 13px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="header-search">
+				<form id='frmSearch' onsubmit="return false;">
+					<div class="mui-input-row mui-search mui-active">
+						<!--<form action="#">-->
+						<input id="cityinput" v-model="par.search" type="search" class="mui-input-clear" placeholder="请输入产品名称">
+						<!--</form>-->
+					</div>
+				</form>
+			</div>
+		</header>
+		<div id="app" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="mem-item">
+					<div class="item-left">
+						<img data-img="{{data.NImgUrl+'?iopcmd=thumbnail&type=8&width=210&height=210'}}" src="../../img/default_320x320.png" />
+					</div>
+					<div class="item-right">
+						<div class="mui-ellipsis goods-name">水电费是否水电水电费是否水电费是否收到水电费是否水电费是否收到水电费是否水电费是否收到水电费是否水电费是否收到费是否收到 s</div>
+						<p class="mui-ellipsis club-name">fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费
+						</p>
+						<div class="goods-distance">
+							徐汇|1200m
+						</div>
+						<div class="goods-price">100马币
+							<span class="goods-comments">liangbairen 评价</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

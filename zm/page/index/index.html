@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>首页</title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/me-head-bg.png" />
+
+		<style type="text/css">
+			.y-icon.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 0px;
+			}
+			
+			.y-icon.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				width: 20%;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+				padding: 5px 0;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell .y {
+				font-size: 38px;
+			}
+			/*.mui-slider,.mui-slider img {
+				min-height: 200px;
+				min-height: 333px;
+			}*/
+			/*.mui-table-view .mui-media-object {
+				width: 50px;
+				max-width: 50px;
+				height: 50px;
+			}*/
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				border-right: none;
+			}
+			
+			.mui-table-view.mui-grid-view {
+				background-color: white;
+			}
+			
+			#ulClub.mui-table-view.mui-grid-view a {
+				background-color: #fff;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 13px;
+				margin-top: 5px;
+			}
+			
+			.mui-table-view .mui-media-body {
+				height: 50px;
+				display: table-cell;
+				/*vertical-align: middle;*/
+			}
+			
+			.mui-table-view .mui-media-body>div {
+				/*margin: 4px auto;*/
+				font-size: 14px;
+				font-weight: 400;
+				margin-bottom: 14px;
+			}
+			
+			.mui-table-view .mui-media-body>div:last-child {
+				margin-bottom: 0;
+			}
+			
+			.mui-bar-nav.mui-hidden~.mui-content {
+				padding-top: 0;
+			}
+			
+			.addequestrian {
+				position: absolute;
+				z-index: 10;
+				width: 100%;
+				top: 0px;
+				height: 30px;
+				background-color: rgba(0, 0, 0, .3);
+				color: #fff;
+				text-align: center;
+				font-size: 14px;
+				padding: 5px 3px;
+			}
+			/*.addequestrian .mui-btn {
+				height: 40px;
+				width: 110px;
+				border-radius: 15px;
+				padding: 5px 3px;
+				margin: 0 auto;
+				background-color: rgba(0,0,0,.3);
+			}*/
+			
+			.mui-grid-view .y-game {
+				color: #1951b1;
+			}
+			
+			.mui-grid-view .y-activity {
+				color: #fc791e;
+			}
+			
+			.mui-backdrop-1 {
+				top: 0;
+				bottom: 50px;
+			}
+			
+			#ulshortcutNav .mui-table-view-cell {
+				width: 20%;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				border: none;
+			}
+			
+			.y-img.mui-grid-view.mui-grid-9 {
+				background-color: white;
+				padding: 5px 10px;
+				min-height: 100px;
+			}
+			
+			.y-img.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				width: 25%;
+				height: auto;
+				padding: 0px;
+			}
+			
+			.head-user {
+				width: 70px;
+				height: 70px;
+				border-radius: 35px;
+			}
+			
+			.y-title {
+				background-color: #fff;
+				font-weight: 600;
+			}
+			
+			.y-title a {
+				color: #d8b667;
+				font-size: 14px;
+				font-weight: normal;
+				margin: -7px -20px;
+				padding: 7px 20px;
+			}
+			
+			.y-purple {
+				color: #9189ec;
+			}
+			
+			.y-blue {
+				color: #4db1ea;
+			}
+			
+			.mui-table-view .mui-media-object {
+				width: 100px;
+				max-width: 100px;
+				height: 100px;
+			}
+			
+			.mui-card {
+				box-shadow: none;
+			}
+			
+			.mui-card img {
+				max-width: 100%;
+				width: 100%;
+			}
+			
+			.y-saishihuodong {
+				color: #fcb41f;
+			}
+			/*.y-tianmashangcheng {
+				color: #9186e9;
+			}*/
+			
+			.y-zhongxunsai {
+				color: #ff655b;
+			}
+			/*.y-mashupeixun {
+				color: #94d10a;
+			}
+			
+			.y-julebuqicheng {
+				color: #4eafec;
+			}*/
+			
+			#ulNews {
+				margin: 2px 0px;
+				margin-top: 0;
+			}
+			
+			#ulNews>div {
+				padding: 5px 15px 5px 15px;
+			}
+			
+			.mui-icon.mui-icon-arrowright {
+				font-size: 16px;
+			}
+			
+			#ulshortcutNav {
+				padding-top: 10px;
+			}
+			
+			#ulNews i {
+				width: 100%;
+				height: 120px;
+			}
+			
+			#ulClub i {
+				width: 100%;
+				height: 100px;
+			}
+			
+			#ulClub .mui-ellipsis {
+				/*padding: 3px 5px;*/
+				height: 30px;
+				line-height: 28px;
+				font-size: 13px;
+				text-align: center;
+			}
+			
+			#ulClub>div {
+				margin: 15px;
+				padding: 0 5px;
+				background-color: #efeff4;
+			}
+			
+			#ulClub>div>div {
+				background-color: #fff;
+			}
+			
+			.mui-card {
+				border: none;
+				margin: 2px 0px;
+				margin-top: 0px;
+				border-radius: 0;
+			}
+			
+			#ulNews p {
+				margin-bottom: 0;
+			}
+			
+			#ulNews img {
+				width: 100%;
+			}
+			
+			#ulNews>div {
+				position: relative;
+			}
+			
+			#ulNews h5 {
+				position: absolute;
+				width: 100%;
+				width: calc(100% - 30px);
+				text-align: left;
+				bottom: 0px;
+				background-color: rgba(0, 0, 0, 0.7);
+				color: #fff;
+				padding: 5px 10px;
+				font-size: 17px;
+				line-height: 21px;
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
+			
+			#ulClass p {
+				font-size: 14px;
+				color: #333;
+			}
+			
+			#ulClass .mui-media-body {
+				vertical-align: middle;
+			}
+			
+			.y-red {
+				padding-top: 10px;
+			}
+			
+			.y-green {
+				padding-top: 10px;
+			}
+			
+			.mui-col-sm-3 .mui-media-body {
+				padding-bottom: 25px;
+			}
+			
+			.wexin-login {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 999;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.wexin-login-bg {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 998;
+				width: 100%;
+				height: 100%;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.wexin-content {
+				position: fixed;
+				z-index: 999;
+				width: 80%;
+				left: 50%;
+				margin-left: -40%;
+				height: 100%;
+			}
+			
+			.wexin-content div:first-child {
+				width: 60%;
+				margin: 0 auto;
+				margin-top: 40%;
+				position: relative;
+			}
+			
+			.wexin-content div:last-child {
+				width: 50%;
+				position: relative;
+				margin: 100px auto;
+			}
+			
+			.wexin-content div:last-child button {
+				background-color: #64ab23;
+				border: none;
+				color: white;
+				width: 100%;
+				font-size: 16px;
+			}
+			
+			.broad {
+				background: rgba(255,255,255,.3);
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 12;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.broad-content {
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.broad-content-bg {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.broad-bottom {
+				position: absolute;
+				bottom: 20px;
+				width: 80%;
+				margin: 0 auto;
+				left: 50%;
+				margin-left: -40%;
+			}
+			
+			.broad-bottom button {
+				width: 45%;
+				height: 40px;
+				padding: 0;
+			}
+			
+			.broad-bottom button:first-child {
+				float: left;
+			}
+			
+			.broad-bottom button:last-child {
+				float: right;
+			}
+			
+			.broad-inner {
+				position: absolute;
+				top: 40px;
+				bottom: 80px;
+				width: 100%;
+				padding:5px 30px;
+				overflow-y: scroll;
+				text-overflow: clip;
+				word-break: break-all;
+			}
+			
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function() {
+				require(['../jsmax/page/index/index']);
+			});
+		</script>
+
+	</head>
+
+	<body id="app">
+		<div class="wexin-login">
+			<img class="wexin-login-bg" src="../../img/wexinlogin_bg.png" />
+			<div class="wexin-content">
+				<div>
+					<img src="../../img/wexin-logo.png" style="width: 100%;" />
+				</div>
+				<div>
+					<button id="weixinBtn" data-loading-icon="" type="button" class="mui-btn mui-icon mui-icon-weixin">
+		            微信登录
+		        	</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="broad"> 
+			<img class="broad-content-bg" src="../../img/broad_bg.png" />
+			<div class="broad-content">
+				<div style="text-align: center;color:#DBB467;margin-top: 20px;">
+					天马运营公告
+					<img src="../../img/border-line.png" style="width: 100%;" />
+				</div>
+				<div class="broad-inner">
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;">亲爱的天马用户：</span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体;">天马将于</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">2016</span><span style="font-family: 宋体;">年</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">11</span><span style="font-family: 宋体;">月</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">28</span><span style="font-family: 宋体;">日结束试运营，我们运营团队将在此后对系统进行一段时间的调整，继而让天马步入正式运营的轨道。在此期间感谢所有用户对天马的支持，鼓励与理解。感谢你们风雨同舟，不离不弃的陪伴！</span></span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体;">试运营结束后，将对符合以下条件的用户的账户进行相应处理：</span></span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">1</span><span style="font-family: 宋体;">、有充值行为的用户，保留其账号上的所有马币；</span></span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">2</span><span style="font-family: 宋体;">、有竞猜行为的用户，保留其账号上的所有马币；</span></span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">3</span><span style="font-family: 宋体;">、自</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">2016</span><span style="font-family: 宋体;">年</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">7</span><span style="font-family: 宋体;">月</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">20</span><span style="font-family: 宋体;">日起，至今从未登录过天马的用户，将回收所有马币；</span></span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">4</span><span style="font-family: 宋体;">、非西促会会员且不满足第</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">1</span><span style="font-family: 宋体;">，</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">2</span><span style="font-family: 宋体;">条的天马用户，将回收所有马币。</span></span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;">&nbsp;</span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;">给您带来的不便，深表歉意！</span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体;">致谢</span></span>
+</p>
+<p>
+    <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 宋体;">天马</span><span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">APP</span><span style="font-family: 宋体;">运营团队</span></span><span style="font-family:&#39;Arial&#39;,&#39;sans-serif&#39;"> </span>
+</p>
+				</div>
+				<div class="broad-bottom">
+					<button class="mui-btn-block mui-btn-yellow" data-id="1">知道了</button>
+					<button class="mui-btn-block " data-id="2">不再提示</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="mainPage">
+			<header id="header" data-id="" class="mui-bar mui-bar-nav mui-hidden">
+			</header>
+			<nav id='nav' class="mui-bar mui-bar-tab">
+				<a class="mui-tab-item mui-active" data-id='windex'>
+					<i class="mui-icon y y-home"></i>
+					<span class="mui-tab-label">首页</span>
+				</a>
+				<a class="mui-tab-item mui-plus-visible" data-id='wfriend_list'>
+					<i class="mui-icon y y-friend"></i>
+					<span class="mui-tab-label">好友</span>
+				</a>
+				<a class="mui-tab-item mui-plus-visible" data-id='wdynamic_list'>
+					<i class="mui-icon y y-westernhorse"></i>
+					<span class="mui-tab-label">马圈</span>
+				</a>
+				<a class="mui-tab-item mui-plus-visible" data-id='wclub_list' data-href="../equestrian/about.html">
+					<i class="mui-icon y y-club"></i>
+					<span class="mui-tab-label">西促会</span>
+				</a>
+				<a class="mui-tab-item" data-id='wme_me' data-href="../me/me.html">
+					<i class="mui-icon y y-me"></i>
+					<span class="mui-tab-label">我的</span>
+				</a>
+			</nav>
+			<!--mui-hidden-->
+			<div id="pr" class="mui-content mui-scroll-wrapper mui-hidden">
+				<div class="mui-scroll">
+
+					<div id="slider" class="mui-slider nav" style="position: relative;">
+						<div class="mui-slider-group mui-slider-loop">
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="javascript:void(0);">
+									<img src="../../img/default_640x320.png" data-id='{{o.Banners[o.Banners.length-1].Id}}' data-href='{{o.Banners[o.Banners.length-1].Href}}' data-data='{{o.Banners[o.Banners.length-1].Data}}' data-img="{{o.Banners[o.Banners.length-1].ImgUrl}}" />
+								</a>
+							</div>
+							<div v-for='s in o.Banners' class="mui-slider-item">
+								<a href="javascript:void(0);">
+									<img src="../../img/default_640x320.png" data-id='{{s.Id}}' data-href='{{s.Href}}' data-data='{{s.Data}}' data-img="{{s.ImgUrl}}" />
+								</a>
+							</div>
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="javascript:void(0);">
+									<img src="../../img/default_640x320.png" data-id='{{o.Banners[0].Id}}' data-href='{{o.Banners[0].Href}}' data-data='{{o.Banners[0].Data}}' data-img="{{o.Banners[0].ImgUrl}}" />
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div v-for='s in o.Banners' class="mui-indicator {{$index==0?'mui-active':''}}"></div>
+						</div>
+					</div>
+					<ul id="ulshortcutNav" class="mui-table-view mui-grid-view mui-grid-9 y-icon">
+						<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+							<a href="javascript:void(0);" data-id='wactivity_list' data-href='../activity/list.html'>
+								<i class="y y-saishihuodong"></i>
+								<div class="mui-media-body">赛事活动</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+							<a href="javascript:void(0);" data-id='wstore_list'>
+								<i class="y y-tianmashangcheng" style="color: #9285EC;"></i>
+								<div class="mui-media-body">天马商城</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+							<a href="javascript:void(0);" data-id='wgame_list' data-href='../game/list.html'>
+								<i class="y y-zhongxunsai"></i>
+								<div class="mui-media-body">中巡赛</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+							<a href="javascript:void(0);" data-id='wclass_list'>
+								<i class="y y-mashupeixun" style="color: #92CE1A;"></i>
+								<div class="mui-media-body">马术培训</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-2 mui-col-sm-3">
+							<a href="javascript:void(0);" data-id='wrider_list' data-href='../rider/index.html'>
+								<i class="y y-julebuqicheng" style="color: #4FAFEB;"></i>
+								<div class="mui-media-body">马场骑乘</div>
+							</a>
+						</li>
+					</ul>
+					<div class="y-title y-purple">会员风采
+						<a class="mui-pull-right" href="javascript:void(0);" data-id='wclub_listMem' data-href='../club/listMem.html'>more
+							<i class="mui-icon mui-icon-arrowright"></i></a>
+					</div>
+					<ul id="ulUser" class="mui-table-view mui-grid-view mui-grid-9 y-img">
+						<template v-for='s in o.NewsFirsts.MemberShow'>
+							<li v-if='$index<4' class="mui-table-view-cell mui-media mui-col-xs-4" data-id='wnews_detail' data-href='../news/detail.html' data-data='{\"id\":\"{{s.IDX}}\",\"title\":\"{{s.Name}}\",\"img\":\"{{s.ImgUrl}}\"}'>
+								<a href="#">
+									<i class="head head-user" data-img='{{s.ImgUrl|f-imgUrl 100}}'></i>
+									<div class="mui-media-body" v-text="s.Name"></div>
+								</a>
+							</li>
+						</template>
+					</ul>
+
+					<div class="y-title y-blue">天马俱乐部联盟
+						<a class="mui-pull-right" href="javascript:void(0);" data-id='wclub_listClub' data-href='../club/listClub.html'>more
+							<i class="mui-icon mui-icon-arrowright"></i></a>
+					</div>
+					<div class="mui-card" style="background-color: white;">
+						<div id="ulClub" class="mui-table" style="padding: 10px 10px;">
+							<template v-for='s in o.NewsFirsts.ClubShow'>
+								<!--data-id='{{s.IDX}}' data-title='{{s.Name}}'-->
+								<div v-if='$index<2' class="mui-table-cell mui-col-xs-6" style="background-color: white;	" data-id='wnews_detail' data-href='../news/detail.html' data-data='{\"id\":\"{{s.IDX}}\",\"title\":\"{{s.Name}}\",\"img\":\"{{s.ImgUrl}}\"}'>
+									<div>
+										<img class="mui-media-object" data-img='{{s.ImgUrl}}' src="../../img/default_640x320.png" />
+										<!--<i data-img='{{s.ImgUrl}}' class="mui-media-object mui-pull-left head-horse"></i>-->
+										<div class="mui-ellipsis" style="width: 100%;">{{s.Name}}</div>
+									</div>
+								</div>
+							</template>
+						</div>
+					</div>
+					<div class="y-title y-red">天马头条
+						<a class="mui-pull-right" href="javascript:void(0);" data-id='wnews_listNews' data-href='../news/listNews.html'>more
+							<i class="mui-icon mui-icon-arrowright"></i></a>
+					</div>
+					<div id="ulNews" class="mui-card">
+						<template v-for='s in o.NewsFirsts.TiannmaNews'>
+							<div data-id='wnews_detail' data-href='../news/detail.html' data-data='{\"id\":\"{{s.IDX}}\",\"title\":\"{{s.Title}}\",\"img\":\"{{s.ImgUrl}}\"}'>
+								<img class="mui-media-object" data-img='{{s.ImgUrl}}' src="../../img/default_640x320.png" />
+								<h5>{{s.Title}}</h5>
+							</div>
+						</template>
+					</div>
+
+					<div class="y-title y-green">马术讲堂
+						<a class="mui-pull-right" href="javascript:void(0);" data-id='wcourse_listHSCourse' data-href='../course/listHSCourse.html'>more
+							<i class="mui-icon mui-icon-arrowright"></i></a>
+					</div>
+					<div class="mui-card">
+						<ul id="ulClass" class="mui-table-view">
+							<template v-for='s in o.NewsFirsts.HorseClass'>
+								<li class="mui-table-view-cell mui-media" data-id='wnews_detail' data-href='../news/detail.html' data-data='{\"id\":\"{{s.IDX}}\",\"title\":\"{{s.Title}}\",\"img\":\"{{s.ImgUrl}}\"}'>
+									<a href="javascript:;">
+										<img class="mui-media-object mui-pull-left" data-img='{{s.ImgUrl|f-imgUrl 200}}' src="../../img/default_320x320.png" />
+										<div class="mui-media-body">
+											<p class='mui-ellipsis-2'>{{s.Title}}</p>
+										</div>
+									</a>
+								</li>
+							</template>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

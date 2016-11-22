@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function() {
+				require(['../jsmax/page/login/register']);
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">注册</h1>
+		</header>
+		<div id='app' class="mui-content">
+			<div class="mui-content-padded y-table">
+				<div class="mui-input-row">
+					<span>	<i class="y y-phone"></i></span>
+					<input v-model='par.loginName' type="number" placeholder="请输入手机号码">
+				</div>
+				<div class="mui-input-row mui-password">
+					<span><i class="y y-password"></i></span>
+					<input v-model='par.password' type="password" class="mui-input-password" placeholder="请输入6-18位密码">
+				</div>
+				<div class="mui-input-row">
+					<span><i class="y y-yanzhengma"></i></span>
+					<input v-model='tokenImgCode' type="number" placeholder="请输入图文验证码">
+					<div class="y-btn">
+						<img src="{{tokenImg}}" v-on:tap="getVerfyImg" style="width: 110px;height: 40px;border-radius: 5px;" />
+					</div>
+				</div>
+				<div class="mui-input-row">
+					<span><i class="y y-message"></i></span>
+					<input v-model='par.validCode' type="number" placeholder="请输入验证码">
+					<div class="y-btn"><button type="button" disabled="{{!validCode.isValidCode}}" v-on:tap='sendValidCode' class="mui-btn mui-btn-warning valid-code" v-text='validCodeStr'>获取验证码</button></div>
+				</div>
+				<div class="mui-input-row">
+					<div><label for="remember"><input id='remember' v-model='remember' checked="checked" type="checkbox" />我已阅读<a v-on:tap.stop='pact'>《天马用户许可协议》</a></label></div>
+				</div>
+				<button type="button" v-on:tap='register' disabled="{{!isValid}}" class="mui-btn mui-golden mui-btn-block">注册</button>
+
+			</div>
+		</div>
+	</body>
+
+</html>

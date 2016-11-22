@@ -1,0 +1,1 @@
+define(["app","mui","vue"],function(a,b,c){new c({el:"#app",data:{},computed:{},methods:{},ready:function(){b.ready(function(){a.os.mobile&&a.autoScroll()})}})});

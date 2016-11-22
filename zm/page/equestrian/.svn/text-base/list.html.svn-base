@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.mui-table-view.mui-grid-view .mui-table-view-cell p {
+				margin: 20px 10px 10px 10px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell:first-of-type p {
+				margin: 10px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell span {
+				background-color: #c0c0c0;
+				padding: 5px 8px;
+				line-height: 24px;
+				border-radius: 3px;
+				color: #fff;
+			}
+			
+			.mui-table-view.mui-grid-view {
+				padding: 0;
+				background-color: #efeff4;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell {
+				padding: 0;
+				/*border: solid 1px #f00;*/
+				margin: 10px 0 0px 0;
+				background-color: #efeff4;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell>a>div {
+				background-color: #fff;
+				padding-bottom: 10px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .footer {
+				padding: 0 10px 0 25px;
+				margin: 0;
+				color: #666;
+				font-size: 14px;
+				text-align: left;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-media-body {
+				text-align: left;
+			}
+			
+			.mui-table-view.mui-grid-view .title {
+				position: relative;
+			}
+			
+			.mui-table-view.mui-grid-view h5 {
+				text-align: left;
+				position: absolute;
+				background-color: rgba(0, 0, 0, 0.7);
+				z-index: 10;
+				bottom: 0px;
+				width: 100%;
+				color: #fff;
+				padding: 2px 20px;
+				font-size: 17px;
+				line-height: 21px;
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-object {
+				min-width: 370px;
+				max-width: 100%;
+				height: 200px;
+			}
+			 
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/equestrian/list']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="pr" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="equestrian" class="mui-table-view mui-grid-view">
+					<template v-for='s in list'>
+						<li data-id='{{s.NewsID}}' data-title='{{s.Title}}' class="mui-table-view-cell mui-media mui-col-xs-12">
+							<a href="javascript:;">
+								<p><span v-text='s.IssueDT.Format("yyyy-MM-dd hh:mm")'></span> </p>
+								<div>
+									<div class="title">
+										<i data-img='{{s.ImgUrl|f-imgUrl 100}}'   class="mui-media-object head-horse"></i>
+
+										<h5 v-text='s.Title'></h5>
+									</div>
+									<div class="mui-ellipsis-2 footer" v-text='s.ContentSpl'></div>
+
+								</div>
+							</a>
+						</li>
+					</template>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

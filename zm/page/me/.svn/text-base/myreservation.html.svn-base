@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/me/myreservation']);
+			});
+		</script>
+		<style type="text/css">
+			html,
+			body,
+			.mui-content {
+				height: 100%;
+			}
+			
+			.mui-slider,
+			.mui-slider-group {
+				height: 100%;
+			}
+			
+			#sliderSegmentedControl {
+				background: #fff;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #DBB467;
+			}
+			/*下拉刷新Begin*/
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: 20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			/*下拉刷新end*/
+			
+			.mui-card {
+				margin: 5px 0;
+			}
+			
+			.mui-card-header span {
+				color: red;
+				font-size: 14px;
+			}
+			
+			.mui-card-content-inner {
+				padding: 5px 10px;
+			}
+			
+			.item-left {
+				width: 100px;
+				height: 75px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 100px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: #333;
+				font-size: 17px;
+			}
+			
+			.item-right div:last-child {
+				color: #FFA44C;
+				font-size: 14px;
+				line-height: 50px;
+				height: 40px;
+			}
+			
+			.goods-num {
+				color: #333;
+				font-size: 15px;
+				margin-left: 20px;
+			}
+			
+			.goos-consumeinfo {
+				float: right;
+				height: 20px;
+				color: #999;
+			}
+			
+			.mui-card-footer {
+				padding: 8px;
+			}
+			
+			.mui-card-footer div {
+				width: 100%;
+			}
+			
+			.mui-card-footer div button {
+				width: 65px;
+				height: 28px;
+				padding: 0px;
+				margin: 0 3px;
+				font-size: 13px;
+				color: #666;
+				float: right;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">我的预约</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1">全部</a>
+					<a class="mui-control-item" href="#item2">待确认</a>
+					<a class="mui-control-item" href="#item3">未消费</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4">
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-card">
+									<div class="mui-card-header">青岛邓城马术俱乐部 <span>等待预约确认</span></div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<div class="item-left">
+												<img data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" src="http://chorse-sports.ufile.ucloud.com.cn/2f7d16e32aaf4c5cb1b9078f996eff71.png?iopcmd=thumbnail&type=8&width=280&height=210" />
+											</div>
+											<div class="item-right">
+												<div class="mui-ellipsis-2">我是标题我是我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题标题</div>
+												<div>1154马币<span class="goods-num">x2</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<div>
+											<button type="button" class="mui-btn-outlined mui-btn-grey">变更预约</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="mui-card">
+									<div class="mui-card-header">青岛邓城马术俱乐部 <span>预约已确认</span></div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<div class="item-left">
+												<img data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" src="http://chorse-sports.ufile.ucloud.com.cn/2f7d16e32aaf4c5cb1b9078f996eff71.png?iopcmd=thumbnail&type=8&width=280&height=210" />
+											</div>
+											<div class="item-right">
+												<div class="mui-ellipsis-2">我是标题我是我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题标题</div>
+												<div>1154马币<span class="goods-num"> x2</span><span class="goos-consumeinfo">消费3次剩余2次</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<div>
+											<button type="button" class="mui-btn-outlined mui-btn-grey">确认消费</button>
+											<button type="button" class="mui-btn-outlined mui-btn-grey">变更预约</button>
+											<button type="button" class="mui-btn-outlined mui-btn-grey">取消预约</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="mui-card">
+									<div class="mui-card-header">青岛邓城马术俱乐部 <span>退款成功</span></div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<div class="item-left">
+												<img data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" src="http://chorse-sports.ufile.ucloud.com.cn/2f7d16e32aaf4c5cb1b9078f996eff71.png?iopcmd=thumbnail&type=8&width=280&height=210" />
+											</div>
+											<div class="item-right">
+												<div class="mui-ellipsis-2">我是标题我是我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题标题</div>
+												<div>1154马币<span class="goods-num">x2</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<div>
+											<button type="button" class="mui-btn-outlined mui-btn-grey">删除约单</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item2" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+							</div>
+						</div>
+					</div>
+					<div id="item3" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		</div>
+	</body>
+
+</html>

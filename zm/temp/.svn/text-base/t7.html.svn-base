@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../css/mui.css" />
+		<link rel="stylesheet" href="../css/app.css" />
+		<style type="text/css">
+			img {
+				max-width: 100%;
+				-webkit-animation-name: fadeIn ;
+				/*动画名称*/
+				-webkit-animation-duration: 1s;
+				/*动画持续时间*/
+				-webkit-animation-iteration-count: 1;
+				/*动画次数*/
+				-webkit-animation-delay: 0s;
+				/*延迟时间*/
+			}
+			
+			@-webkit-keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+			
+			.fadeIn {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">标题</h1>
+		</header>
+		<div class="mui-content">
+			<img src="../img/99.jpg" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		//		document.querySelector('img').classList.add('fadeIn');
+	</script>
+
+</html>

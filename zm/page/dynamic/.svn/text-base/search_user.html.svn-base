@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			input[type=search] {
+				background-color: #fff;
+				color: #333!important;
+			}
+			
+			.y-attention {
+				height: 24px;
+				font-size: 13px;
+				padding-top: 2px;
+			}
+			
+			.header-search {
+				background-color: inherit;
+				height: 44px;
+				position: fixed;
+				width: 100%;
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+			
+			.header-search input {}
+			
+			.mui-active:before {
+				color: #333;
+			}
+			
+			input::-webkit-input-placeholder,
+			input:-moz-placeholder,
+			input::-moz-placeholder,
+			input:-ms-input-placeholder,
+			.mui-active input::-webkit-input-placeholder {
+				color: #999 !important;
+			}
+			/*
+			.mui-input-row.mui-search {
+				padding-right: 12px;
+			}
+			
+			#btnCancel {
+				display: inline-block;
+				line-height: 45px;
+				padding: 0px 10px;
+				margin: 0px -10px; 
+			}
+			
+			.mui-placeholder * {
+				color: #999 !important;
+				font-size: 14px;
+			}
+			
+			*/
+			
+			.mui-table-view .mui-media-object {
+				max-width: 100px;
+			}
+			
+			.mui-table-view .mui-media-object button {
+				margin: 4px auto;
+			}
+			
+			.mui-table-view .mui-media-object.mui-pull-left {
+				border-radius: 21px;
+			}
+			
+			.mui-searchc {
+				position: relative
+			}
+			
+			.mui-searchc input[type=search] {
+				padding-left: 30px
+			}
+			
+			.mui-searchc .mui-placeholder {
+				font-size: 16px;
+				line-height: 34px;
+				position: absolute;
+				z-index: 1;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				display: inline-block;
+				height: 34px;
+				text-align: center;
+				color: #999;
+				border: 0;
+				border-radius: 6px;
+				background: 0 0
+			}
+			
+			.mui-searchc .mui-placeholder .mui-icon {
+				font-size: 20px;
+				color: #333
+			}
+			
+			.mui-searchc:before {
+				font-family: Muiicons;
+				font-size: 20px;
+				font-weight: 400;
+				position: absolute;
+				top: 50%;
+				right: 50%;
+				display: none;
+				margin-top: -12px;
+				margin-right: 31px;
+				content: '\e466'
+			}
+			
+			.mui-searchc.mui-active:before {
+				font-size: 20px;
+				right: auto;
+				left: 5px;
+				display: block;
+				margin-right: 0
+			}
+			
+			.mui-searchc.mui-active input[type=search] {
+				text-align: left
+			}
+			
+			.mui-searchc.mui-active .mui-placeholder {
+				display: none
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/dynamic/search_user']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="header-search">
+				<form id='frmSearch'>
+					<div class="mui-input-row mui-searchc mui-active">
+						<input v-model='par.search' type="search" placeholder="请输入姓名或昵称" />
+
+						<span class="mui-placeholder">
+						
+						<span></span>
+						</span>
+					</div>
+				</form>
+			</div>
+		</header>
+
+		<div id="pr" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<template v-for='s in list'>
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left" src="../../img/head.png" data-img='{{s.Img|f-imgUrl 100}}' />
+								<div class="mui-media-object mui-pull-right"><button type="button" data-userid='{{s.UserID}}' data-isattention={{s.IsFouce.toString()}} v-text='s.IsFouce?"取消关注":"+ 关注"' class="mui-btn mui-btn-green mui-btn-outlined y-attention">+ 关注</button></div>
+								<div class="mui-media-body">
+									{{s.Name}}
+									<p class='mui-ellipsis' v-text='s.PersonSign'></p>
+								</div>
+							</a>
+						</li>
+					</template>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

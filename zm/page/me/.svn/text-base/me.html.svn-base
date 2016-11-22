@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>我的</title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/banner.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/equestrian.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/me-clubuser-aixin.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/me-passport-using.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/me-certification-bg.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/me-certification-title.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/me-passport-btnpay.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/me-passport-title-bg.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/pub-close.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/pub-star.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/me-head-bg.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/animation.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function() {
+				require(['../jsmax/page/me/me']);
+			});
+		</script>
+		<style type="text/css">
+			#meNav img {
+				width: 100%;
+				z-index: 0;
+				position: relative;
+			}
+			
+			.me-edit {
+				position: absolute;
+				color: white;
+				top: 20px;
+				right: 15px;
+				z-index: 1;
+				font-size: 24px;
+			}
+			
+			.me-edit:active {
+				color: #333;
+			}
+			
+			.me-head {
+				margin-top: -220px;
+				width: 100%;
+				height: 170px;
+			}
+			
+			.me-head img {
+				position: absolute;
+				left: 50%;
+				margin-left: -56px;
+				z-index: 2;
+			}
+			
+			.me-head #headPhoto {
+				position: absolute;
+				z-index: 1;
+				left: 50%;
+				margin-left: -50px;
+				width: 100px;
+				height: 100px;
+				border-radius: 50px;
+				margin-top: 7px;
+				background: url(../../img/head_bg.png);
+				background-size: 100px;
+			}
+			
+			.me-head p {
+				position: relative;
+				color: white;
+				font-size: 18px;
+				padding: 2px;
+				margin: 5px auto;
+				width: 120px;
+				border-radius: 10px;
+				text-align: center;
+				min-height: 25px;
+				background: rgba(0, 0, 0, .3);
+			}
+			
+			nav {
+				position: relative;
+				z-index: 1;
+				font-size: 14px;
+				background-color: rgba(0, 0, 0, .6);
+			}
+			
+			nav.mui-bar-tab .mui-tab-item:after {
+				border-right: #666 1px solid;
+				content: '';
+				height: 40px;
+				display: block;
+				margin-top: -42px;
+			}
+			
+			nav.mui-bar-tab .mui-tab-item:last-child:after {
+				border-right: none;
+			}
+			/*nav.mui-bar-tab .mui-tab-item {
+				border-right: #666 1px solid;
+			}
+			nav.mui-bar-tab .mui-tab-item:last-child {
+				border-right: none;
+			}*/
+			/*控制tab默认字体颜色*/
+			
+			nav.mui-bar-tab .mui-tab-item {
+				color: white;
+			}
+			/*控制tab选中状态字体*/
+			
+			nav.mui-bar-tab .mui-tab-item.mui-active {
+				color: white;
+			}
+			
+			.p-sign {
+				background-color: #fff;
+				width: 100%;
+				display: block;
+				position: relative;
+			}
+			
+			.p-sign div {
+				font-size: 20px;
+				width: 100px;
+				max-width: 100px;
+				line-height: 60px;
+				text-align: center;
+				color: #f00;
+				text-shadow: 1px 1px 1px #999;
+			}
+			
+			.p-sign p {
+				margin: -55px 30px 10px 100px;
+				color: #333333;
+				font-size: 14px;
+				padding: 5px;
+			}
+			
+			.p-sign-single {
+				line-height: 42px;
+			}
+			
+			.p-sign a {
+				color: #008000;
+				/*position: absolute;
+				right: 0;*/
+				float: right;
+				padding-right: 5px;
+				margin-top: -35px;
+				font-size: 14px;
+			}
+			
+			.me-ellipsis {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				background-color: white;
+			}
+			
+			#menuItem i {
+				font-size: 35px;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 0;
+			}
+			#bind{
+				/*line-height: 40px;*/
+				margin-top: 10px;
+			}
+			#myphoto {
+				line-height: 40px;
+			}
+			
+			#myphoto div {
+				display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app" class="mui-content">
+			<button type="button" style="background: rgba(0,0,0,0.3);border: 0px solid  #000; border-radius: 60px;padding:2px 7px;" v-on:tap="meInfo" class="me-edit"><i class="y y-edit"></i></button>
+			<div id="meNav">
+				<img id="userPhoto1" src="../../img/me-head-bg.png" data-img="{{user.ImgUrls&&user.ImgUrls.length>1?user.ImgUrls[1].ImgUrl:''}}" />
+				<div class="me-head">
+					<img src="../../img/head_outline_silvery.png" style="width: 112px;" />
+					<i id="headPhoto" data-img='{{user.ImgUrl|f-imgUrl 100}}'></i>
+					<!--v-text='user.NickName'-->
+					<p v-text='user.showName' v-on:tap="meNick"></p>
+				</div>
+				<nav class="mui-bar-tab">
+					<a class="mui-tab-item" href="javascript:;">
+						<span>粉丝</span>
+						<div v-text='user.FNums.length <= 0 ? "0" : user.FNums'> </div>
+					</a>
+					<a class="mui-tab-item" href="javascript:;">
+						<span>积分</span>
+						<div v-text='user.Points.length <= 0 ? "0" : user.Points'></div>
+					</a>
+					<a class="mui-tab-item" href="javascript:;">
+						<span>经验</span>
+						<div v-text='user.Exp.length <= 0 ? "0" : user.Exp'></div>
+					</a>
+					<a class="mui-tab-item" href="javascript:;">
+						<span>马币</span>
+						<div v-text='user.MB.length <= 0 ? "0" : user.MB'></div>
+					</a>
+				</nav>
+			</div>
+			<div class="p-sign">
+				<!--v-text='user.PersonSign'-->
+				<div v-on:tap="mePersonSign">个性签名 </div>
+				<p id="personSign" class="me-ellipsis " data-status='down' v-text='user.PersonSign&&user.PersonSign.length>0?user.PersonSign:"楼主啥也没写..."'>
+				</p>
+				<a id="showMore"></a>
+			</div>
+			<ul id="menuItem" class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="javascript:;" data-id='1'>
+						<i class="y y-chongzhi"></i>
+						<div class="mui-media-body">充值</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="javascript:;" data-id='2'>
+						<i class="y y-qrcode"></i>
+						<div class="mui-media-body">二维码</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="javascript:;" data-id='3'>
+						<i class="y y-passporto"></i>
+						<div class="mui-media-body">牛仔护照</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="javascript:;" data-id='4'>
+						<i class="y y-classification"></i>
+						<div class="mui-media-body">我的分会</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="javascript:;" data-id='5'>
+						<i class="y y-kabao"></i>
+						<div class="mui-media-body">卡包</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="javascript:;" data-id='6'>
+						<i class="y y-dingdan"></i>
+						<div class="mui-media-body">我的订单</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="javascript:;" data-id='7'>
+						<i class="y y-yuyue"></i>
+						<div class="mui-media-body">我的预约</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="javascript:;" data-id='8'>
+						<i class="y y-setup"></i>
+						<div class="mui-media-body">设置</div>
+					</a>
+				</li>
+
+			</ul>
+			<ul id="bind" class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" >
+						绑定天马账号 <i class="mui-pull-right"  style="margin-right: 25px;font-size: 15px;color: #999;" v-text='showMobile'></i></a>
+				</li>
+			</ul>
+			<ul id="myphoto" class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="mui-navigate-right">
+						<span style="padding-right: 12px;">我的相册</span>
+						<img v-for="m in photo" data-img="{{m|f-imgUrl 80 80 }}" style="width: 40px; margin: 3px;" />
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

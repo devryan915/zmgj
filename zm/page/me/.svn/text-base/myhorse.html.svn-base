@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/me/myhorse']);
+			});
+		</script>
+		<style type="text/css">
+			.left-img {
+				position: relative;
+				height: 70px;
+				width: 70px;
+				margin-right: 10px;
+				z-index: 10;
+			}
+			
+			.y-sai {
+				position: relative;
+				color: #6568fe;
+				bottom: -10px;
+				margin-left: -20px;
+				z-index: 15;
+			}
+			
+			.right-content {
+				display: inline-block;
+				margin-top: 5px;
+				color: #666666;
+				background-color: white;
+			}
+			
+			.y-add {
+				color: #CCCCCC;
+				font-size: 70px;
+			}
+			/*定义刷新Start*/
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: 200px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 999;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			/*定义刷新End*/
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">我的马匹</h1>
+		</header>
+		<div id="app" class="mui-content mui-scroll-wrapper">
+			<div id="prHorses" class="mui-scroll">
+				<ul id="myhorses" class="mui-table-view">
+					<!--<li class="mui-table-view-cell mui-media">
+					<i class="y y-sai"></i>
+					<img class="mui-pull-left left-img" src="../../img/me/me_userhead.jpg">
+					<div class="right-content">
+						<span class='mui-ellipsis'>马名：的卢</span>
+						<span class='mui-ellipsis'>性别：雌性</span>
+						<span class='mui-ellipsis'>血统：夸特</span>
+					</div>
+				</li>-->
+					<template v-for='s in serverData.Items'>
+						<li class="mui-table-view-cell mui-media" data-id="{{s.HID}}">
+							<i class="y y-sai" v-if="s.HState==1"></i>
+							<img class="mui-pull-left left-img" src="../../img/horse.png" data-img="{{s.ImgUrl|f-imgUrl}}">
+							<div class="right-content">
+								<span class='mui-ellipsis' v-text="'马名：'+s.Name"></span>
+								<span class='mui-ellipsis' v-text="'性别：'+(s.Sex==0?'雄':'雌')"></span>
+								<span class='mui-ellipsis' v-text="'血统：'+s.Blood"></span>
+							</div>
+						</li>
+					</template>
+					<!--<li class="mui-table-view-cell mui-media" v-on:tap="add">
+						<i class="y y-add"></i>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

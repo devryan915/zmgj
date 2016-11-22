@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/mycowboypassport']);
+				require(['../jsmax/page/me/mycowboypassport']);
+			});
+		</script>
+		<style type="text/css">
+			.bg {
+				vertical-align: top;
+				height: 600px;
+				width: 100%;
+			}
+			
+			.td-left {
+				width: 110px;
+				line-height: 20px;
+				padding-left: 15px;
+				text-align: left;
+			}
+			
+			.td-right {
+				height: 40px;
+				line-height: 40px;
+				border-bottom: groove;
+				border-bottom-width: 1px;
+			}
+			
+			body {
+				background-color: #CFBC9A;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的牛仔护照</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group" style="background-color: rgba(0,0,0,0);">
+					<div class="mui-slider-item">
+						<a href="#">
+							<!--http://chorse-sports.ufile.ucloud.com.cn/sys/me-passport-bg.png-->
+							<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-passport-bg.png" class="bg">
+							<div style="position:absolute;top: 0px;width: 100%;text-align: center;">
+								<div style="width:60%;margin-left: auto;margin-right: auto;margin-top: 10px;">
+									<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-passport-title-bg.png" />
+									<label style="color: black;font-size: 18px;bottom: 20px;position: relative;">牛仔护照</label>
+								</div>
+								<div style="width:60px;margin-left: auto;margin-right: auto;margin-top: 10px;margin-bottom: 10px;">
+									<img src="../../img/head.png" data-img="{{user.ImgUrls[0].ImgUrl|f-imgUrl 60 60}}" />
+								</div>
+								<div style="width: 100%;height: 100%;display: block;color:black;font-size: 15px;">
+									<table width="80%" align="center">
+										<tr height="45px">
+											<td class="td-left">会员号<br/>ID Number</td>
+											<td class="td-right" v-text='user.MemberNo'>
+												<!--<div class="td-right" v-text='user.MemberNo'></div>-->
+											</td>
+										</tr>
+										<tr height="45px">
+											<td class="td-left">姓名<br/>Name</td>
+											<td class="td-right" v-text='user.RealName'>
+												<!--<div class="td-right" v-text='user.RealName'></div>-->
+											</td>
+										</tr>
+										<tr height="45px">
+											<td class="td-left">昵称<br/>Net ID</td>
+											<td class="td-right" v-text='user.NickName'>
+												<!--<div class="td-right" v-text='user.NickName'></div>-->
+											</td>
+										</tr>
+										<tr height="45px">
+											<td class="td-left">性别<br/>M/F</td>
+											<td class="td-right" v-text='Sex'>
+												<!--v-text='user.Sex==1?"男":"女"'-->
+												<!--<div class="td-right" v-text='Sex'></div>-->
+											</td>
+										</tr>
+										<tr height="45px">
+											<td class="td-left">出生年月<br/>Birthday</td>
+											<td class="td-right" v-text='BirthDT'>
+												<!--v-text='user.BirthDT'-->
+												<!--<div class="td-right" v-text='BirthDT'></div>-->
+											</td>
+										</tr>
+										<tr height="45px">
+											<td class="td-left">所属分会<br/>Branch</td>
+											<td class="td-right" v-text='user.ChapterName'>
+												<!--v-text='chapterName'-->
+												<!--<div class="td-right" id="chapterName">
+												</div>-->
+											</td>
+										</tr>
+										<tr height="45px">
+											<td class="td-left">签发日期<br/>Issue Date</td>
+											<td class="td-right" v-text='user.MemberCreateDT'>
+												<!--<div class="td-right" v-text='user.MemberCreateDT'></div>-->
+											</td>
+										</tr>
+										<tr height="45px">
+											<td class="td-left">有效期至<br/>Validity To</td>
+											<td class="td-right" v-text='user.ExpireDT'>
+												<!--<div class="td-right" v-text='user.ExpireDT'></div>-->
+											</td>
+										</tr>
+										<!--<tr height="45px">
+											<td colspan="2" align="center">
+												<div style="width: 200px;margin-top: 40px;">
+													<a href="javascript:;" v-on:tap='pay'>
+														<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-passport-btnpay.png" />
+														<span style="color: #CCAD74;position: relative; top: -30px;font-size: 20px;">去续费</span>
+													</a>
+												</div>
+											</td>
+										</tr>-->
+									</table>
+								</div>
+							</div>
+						</a>
+					</div>
+					<!--<div class="mui-slider-item ">
+						<a href="#">
+						</a>
+					</div>
+					<div class="mui-slider-item ">
+						<a href="#">
+						</a>
+					</div>
+					<div class="mui-slider-item ">
+						<a href="#">
+						</a>
+					</div>
+				</div>-->
+					<!--<div class="mui-slider-indicator" style="position: relative;margin-top: -170px;">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>-->
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

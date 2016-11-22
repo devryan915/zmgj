@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../css/mui.css" />
+		<link rel="stylesheet" href="../css/app.css" />
+		<style type="text/css">
+			.mui-table-view-cell span {
+				margin-left: 20px;
+				font-size: 14px;
+				color: #666;
+			}
+			
+			.y-2x:before {
+				font-size: 20px;
+			}
+			
+			.y-3x:before {
+				font-size: 22px;
+			}
+			
+			.y-4x:before {
+				font-size: 24px;
+			}
+			
+			.y-5x:before {
+				font-size: 26px;
+			}
+			
+			.y-6x:before {
+				font-size: 28px;
+			}
+			
+			.y-7x:before {
+				font-size: 30px;
+			}
+			
+			.y-8x:before {
+				font-size: 32px;
+			}
+			.mui-table-view-cell:first-child{
+				font-size: 19px;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<!--<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['page/*/*']);
+			});
+		</script>-->
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">模板页</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" >
+					<i class="y y-thumbs-o-up"></i> <i class="y y-dot-circle"></i> 1x <span>多列列表图标</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<i class="y y-thumbs-o-up y-2x"></i> <i class="y y-dot-circle y-2x"></i> 2x <span>底部图标</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<i class="y y-thumbs-o-up y-3x"></i> <i class="y y-dot-circle y-3x"></i> 3x <span></span>
+				</li>
+				<li class="mui-table-view-cell">
+					<i class="y y-thumbs-o-up y-4x"></i> <i class="y y-dot-circle y-4x"></i> 4x <span>列表图标</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<i class="y y-thumbs-o-up y-5x"></i> <i class="y y-dot-circle y-5x"></i> 5x <span>单行大图标</span>
+				</li>
+					<li class="mui-table-view-cell">
+					<i class="y y-thumbs-o-up y-6x"></i> <i class="y y-dot-circle y-6x"></i> 5x <span>单行大图标</span>
+				</li>
+					<li class="mui-table-view-cell">
+					<i class="y y-thumbs-o-up y-7x"></i> <i class="y y-dot-circle y-7x"></i> 5x <span>单行大图标</span>
+				</li>
+					<li class="mui-table-view-cell">
+					<i class="y y-thumbs-o-up y-8x"></i> <i class="y y-dot-circle y-8x"></i> 5x <span>单行大图标</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

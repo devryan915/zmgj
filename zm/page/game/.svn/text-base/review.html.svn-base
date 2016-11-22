@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.y-review .mui-media-body>p {
+				color: #333;
+				font-size: 15px;
+			}
+			
+			.y-review .mui-table-view-cell>a:not(.mui-btn) {
+				white-space: normal;
+			}
+			
+			.mui-bar-nav~.mui-content {
+				padding-bottom: 50px;
+			}
+			/*   底部样式   */
+			
+			#h {
+				background: #fff;
+				border: solid 1px #ddd;
+				padding: 10px !important;
+				font-size: 16px !important;
+				font-family: verdana !important;
+				line-height: 18px !important;
+				overflow: visible;
+				position: absolute;
+				left: -1000px;
+				right: 0px;
+				word-break: break-all;
+				word-wrap: break-word;
+				top: -1000px;
+			}
+			
+			footer {
+				position: fixed;
+				width: 100%;
+				height: 50px;
+				min-height: 50px;
+				border-top: solid 1px #bbb;
+				left: 0px;
+				bottom: 0px;
+				overflow: hidden;
+				padding: 0px 50px 0px 15px;
+				background-color: #fafafa;
+				z-index: 10;
+			}
+			
+			.footer-right {
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				right: 0px;
+				bottom: 0px;
+				text-align: center;
+				vertical-align: middle;
+				padding: 8px 5px;
+				display: inline-block;
+				line-height: 25px;
+				color: #53be1c;
+				border: none;
+				font-weight: 500;
+			}
+			
+			.footer-center {
+				height: 100%;
+				padding: 5px 0px;
+			}
+			
+			.footer-center [class*=input] {
+				width: 100%;
+				height: 100%;
+				border-radius: 5px;
+			}
+			
+			.footer-center .input-text {
+				background: #fff;
+				border: solid 1px #ddd;
+				padding: 10px !important;
+				font-size: 16px !important;
+				line-height: 18px !important;
+				font-family: verdana !important;
+				overflow: hidden;
+			}
+			
+			.footer-right button,
+			.footer-right button:disabled {
+				padding: 6px;
+				background-color: #53be1c;
+				color: #fff;
+			}
+			
+			.footer-center .input-sound {
+				background-color: #eee;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/game/review']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<pre id='h'></pre>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">评论</h1>
+		</header>
+		<div id="pr" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view y-review">
+					<template v-for='s in list'>
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:;">
+								<i v-bind:style='s.ImgUrl|f-img 42' class="mui-media-object mui-pull-left head head-user"></i>
+								<div class="mui-media-body">
+									<span v-text='s.Name'></span>
+									<h6 class="mui-pull-right" v-text='s.Date|f-time'></h6>
+									<p v-text='s.Content'></p>
+								</div>
+							</a>
+						</li>
+					</template>
+				</ul>
+			</div>
+
+		</div>
+		<footer id="footer">
+			<div class="footer-center">
+				<textarea id='txtAsk' v-model='parReview.content' type="text" placeholder="发表评论" class='input-text' maxlength="120"></textarea>
+			</div>
+			<div class="footer-right">
+				<button id="btnSave" v-on:tap='review' disabled="{{!isValid}}" type="button" class="mui-btn">发表</button>
+			</div>
+
+		</footer>
+	</body>
+
+</html>

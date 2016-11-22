@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/banner.png" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/mychapter']);
+				require(['../jsmax/page/match/teaminfo']);
+			});
+		</script>
+		<style type="text/css">
+			/*.team-title {
+				position: relative;
+				margin-left: 120px;
+				margin-top: -45px;
+				width: calc(100% - 120px);
+				height: 70px;
+			}
+			
+			.team-title span {
+				margin-left: 5px;
+				color: #333333;
+			}
+			
+			.team-title .mui-ellipsis-2 {
+				width: calc(100% - 100px) !important;
+				width: 150px;
+				margin-left: 5px;
+				font-size: 15px;
+				color: #999999;
+			}
+			
+			.title-right {
+				display: inline-block;
+				position: absolute;
+				right: 0;
+				width: 80px;
+				top: 0;
+			}
+			
+			.title-right img {
+				width: 60px;
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			
+			.title-right span {
+				font-size: 12px;
+				color: white;
+				position: relative;
+				left: 40px;
+				top: -50px;
+			}*/
+			/*#pr {
+				position: absolute;
+				width: 100%;
+				top: 360px;
+				bottom: 0px;
+				left: 0px;
+			}*/
+			
+			.team-head img {
+				width: 100%;
+			}
+			
+			.team-flag {
+				width: 120px;
+				margin: 0 auto;
+				margin-top: -165px;
+			}
+			
+			.team-flag span {
+				color: white;
+			}
+			
+			.team-desc {
+				width: 100%;
+				margin-top: 40px;
+				padding: 10px;
+				color: #999;
+				word-break: break-all;
+				word-wrap: break-word;
+				min-height: 100px;
+				height: auto;
+				font-size: 15px;
+			}
+			
+			.team-name {
+				width: 100%;
+				color: white;
+				text-align: center;
+			}
+			
+			#members ul {
+				display: block;
+				background-color: inherit;
+				width: 100%;
+				height: 100%;
+				position: relative;
+				padding-left: 15px;
+				padding-right: 15px;
+				border-width: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" v-text="TitleName"></h1>
+		</header> 
+		<div class="mui-content mui-scroll-wrapper mui-hidden" style="height: 100%;">
+			<div id="pr" class="mui-scroll">
+				<!--../../img/default_640x320.png-->
+				<div class="team-head">
+					<img id="banner" src="http://chorse-sports.ufile.ucloud.com.cn/sys/banner.png" data-img="{{pageData.ImgUrl+'?iopcmd=thumbnail&type=8&width=640&height=320'}}" />
+					<div class="team-flag">
+						<img id="corpsflag" src="../../img/head.png" data-img="{{pageData.FlagUrl}}" />
+					</div>
+					<div class="team-name" v-text="pageData.ClubName"></div>
+					<!--v-text="pageData.ClubName"-->
+				</div>
+				<!--v-text="pageData.CDes"-->
+				<div class="team-desc" v-text="pageData.CDes">
+				</div>
+				<!--<div class="team-title">
+					<!--v-text="pageData.ClubName"-->
+				<!--<span v-text="pageData.ClubName"></span>
+					<!--v-text="pageData.CDes"-->
+				<!--<div class="mui-ellipsis-2" v-text="pageData.CDes">
+					</div>
+					<!--<div class="title-right">
+						<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-clubuser-aixin.png" />
+						<!--v-text="pageData.PNum"-->
+				<!--<span v-text="pageData.PNum"></span>
+				</div>
+			</div>-->
+				<ul class="mui-table-view" style="position: relative;width: 100%;">
+					<li class="mui-table-view-cell" style="height: 40px;">
+						<a href="#" v-on:tap='showPage'>
+							<span style="color: #000000;" v-text="'战队成员('+pageData.Memcount+')'"></span>
+						</a>
+					</li>
+				</ul>
+				<div id="members">
+					<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<!--<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="padding: 0 5px 0 5px ;border-width: 0;">
+							<a href="javascript:;" v-on:tap="detail(s.UserID)">
+								<img src="../../img/head.png" data-img="{{s.ImgUrl|f-imgUrl}}" style="width: 100%;" class="mui-icon mui-icon-home" />
+								<div class="mui-media-body" v-text='s.Name'></div>
+							</a>
+						</li>-->
+						<template v-for='s in pageData.Members'>
+							<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="padding: 0 5px 0 5px ;border-width: 0;">
+								<a href="javascript:;" v-on:tap="detail(s.UserID)">
+									<img src="../../img/head.png" data-img="{{s.ImgUrl+'?iopcmd=thumbnail&type=8&width=150&height=150'}}" style="width: 100%;" class="mui-icon mui-icon-home" />
+									<div class="mui-media-body" v-text='s.Name'></div>
+								</a>
+							</li>
+						</template>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

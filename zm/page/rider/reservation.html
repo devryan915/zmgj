@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/rider/reservation']);
+			});
+		</script>
+		<style type="text/css">
+			.mem-item {
+				position: relative;
+				margin: 1px 0;
+				background-color: white;
+				font-size: 0;
+				height: 90px;
+				padding: 5px;
+				padding-left: 12px;
+			}
+			
+			.item-left {
+				width: 75px;
+				height: 75px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 75px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: #333;
+				font-size: 17px;
+				height: 20px;
+			}
+			
+			.item-right p {
+				padding-top: 2px;
+				color: #666;
+				height: 30px;
+				font-size: 13px;
+			}
+			
+			.item-right div:last-child {
+				color: #FFA44C;
+				font-size: 14px;
+			}
+			
+			.buyinfo {
+				background: #fff;
+				height: 50px;
+				line-height: 50px;
+			}
+			
+			.buyinfo div:first-child {
+				font-size: 17px;
+				color: #333;
+				text-align: center;
+				width: 100px;
+				float: left;
+			}
+			
+			.buyop {
+				width: calc(100% - 100px);
+				float: right;
+				height: 50px;
+			}
+			
+			.footer {
+				position: fixed;
+				bottom: 0;
+				height: 50px;
+				width: 100%;
+				line-height: 50px;
+				z-index: 5;
+			}
+			
+			.reservation {
+				margin: 10px 20px;
+			}
+			
+			.mui-input-row {
+				margin: 5px;
+			}
+			
+			.mui-grid-view.mui-grid-9 {}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 0;
+				background: #fff;
+			}
+			
+			.reservation-date {
+				margin: 5px 0 20px 0;
+			}
+			
+			.reservation-date div {
+				/*padding: 5px 0;*/
+			}
+			
+			.seldate {
+				background: #FFA44C !important;
+				color: #fff !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">填写预约</h1>
+		</header>
+		<div id="app" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="mem-item">
+					<div class="item-left">
+						<!--src="../../img/default_640x480.png"-->
+						<img data-img="{{data.NImgUrl+'?iopcmd=thumbnail&type=8&width=210&height=210'}}" src="../../img/default_320x320.png" />
+					</div>
+					<div class="item-right">
+						<div class="mui-ellipsis" v-text="data.ShopName"></div>
+						<p v-text="data.ClubName">
+						</p>
+						<div>{{data.Prc}}马币
+							<span style="color: #999;font-size: 15px;margin-left: 20px;">x2</span>
+						</div>
+					</div>
+				</div>
+				<div class="buyinfo">
+					<div>预约数量</div>
+					<div class="buyop">
+						<div class="buy-add" style="background: #e8e8e8;width: 30px;height: 30px;text-align: center;line-height: 30px;font-size: 20px;color: #999;float: right;margin: 10px;">
+							＋
+						</div>
+						<div class="buynum" style="float: right;" v-text="par.resnum"></div>
+						<div class="buy-minus" style="background: #e8e8e8;width: 30px;height: 30px;text-align: center;line-height: 30px;font-size: 20px;color: #999;float: right;margin: 10px;">
+							－
+						</div>
+					</div>
+				</div>
+				<div class="reservation">
+					<span>预约人</span>
+					<div class="mui-input-row">
+						<input type="text" placeholder="填写真实姓名">
+					</div>
+					<span>预约电话</span>
+					<div class="mui-input-row">
+						<input type="tel" placeholder="填写联系电话">
+					</div>
+					<span>预约日期</span>
+					<div class="reservation-date">
+						<ul class="mui-table-view mui-grid-view mui-grid-9">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4 " data-id="1">
+								<a href="javascript:;">
+									<span>2016-10-11</span>
+									<div class="mui-media-body">星期五</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-id="2">
+								<a href="javascript:;">
+									<span>2016-10-12</span>
+									<div class="mui-media-body">星期六</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-id="3">
+								<a href="javascript:;">
+									<span>2016-10-13</span>
+									<div class="mui-media-body">星期日</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" data-id="4">
+								<a href="javascript:;">
+									<span>2016-10-13</span>
+									<div class="mui-media-body">星期日</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<span>预约时间</span>
+					<div class="mui-input-row">
+						<select class="mui-btn mui-btn-block" style="width: 100%;">
+							<option value="item-1">全天</option>
+							<option value="item-2">上午</option>
+							<option value="item-3">下午</option>
+						</select>
+					</div>
+					<div style="font-size: 12px;color: red;">
+						Tips:请确保联系方式真实有效！若预约时间有变，方便俱乐部工作人员及时与您沟通！
+					</div>
+				</div>
+				<div style="height: 50px;"></div>
+			</div>
+			<div class="footer">
+				<button type="button" class="mui-btn-block mui-btn-yellow " style="height: 100%;border-radius: 0;">提交预约</button>
+			</div>
+
+		</div>
+	</body>
+
+</html>

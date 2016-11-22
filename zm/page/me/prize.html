@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/me/prize']);
+			});
+		</script>
+		<style type="text/css">
+			.mui-content {
+				background-color: #fff;
+			}
+			
+			.y-table-list .mui-table-view-cell .mui-table-cell {
+				vertical-align: middle;
+			}
+			
+			.y-table-list .mui-table-view-cell:not(:first-child) .mui-table .mui-table-cell:first-child {
+				font-size: 28px;
+				color: #333;
+			}
+			
+			.y-table-list .mui-table-view-cell:first-child {
+				background-color: #efeff4;
+			}
+			
+			.y-table-list .mui-table-view-cell h5 {
+				font-size: 17px;
+				color: #333;
+			}
+			
+			.y-no-1,
+			.y-no-2,
+			.y-no-3 {
+				background-repeat: no-repeat;
+				background-size: contain;
+				color: transparent !important;
+			}
+			
+			.y-no-1 {
+				background-image: url(../../img/ma1.png);
+			}
+			
+			.y-no-2 {
+				background-image: url(../../img/ma2.png);
+			}
+			
+			.y-no-3 {
+				background-image: url(../../img/ma3.png);
+			}
+			
+			.rank-filter {
+				/*filter: alpha(opacity=20, finishopacity=100, style=1, startx=0, starty=0, finishx=140, finishy=270);*/
+				/*font-size: 38pt;*/
+			}
+			
+			@media screen and (-webkit-min-device-pixel-ratio:0) {
+				.rank-filter {
+					background: -webkit-gradient(linear, left top, left bottom, from(#DBB467), to(#FFFF00));
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+			}
+			
+			.mui-table-cell {}
+			
+			.mui-table-cell h5 {
+				display: inline;
+			}
+			
+			.draw-mb {
+				color: #F38238;
+			}
+			
+			.draw-btn {
+				height: 25px;
+				font-size: 12px;
+				padding: 2px 5px 2px 5px;
+			}
+			
+			.reward-status {
+				position: absolute;
+				top: -8px;
+				right: -28px;
+				font-size: 15px;
+			}
+			
+			.reward-status-g {
+				color: green;
+			}
+			
+			.reward-status-r {
+				color: red;
+			}
+		</style>
+
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" v-text="pageData.isZ?'支持奖励':'领取奖金'"></h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view y-table-list">
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-2">名次</div>
+						<div class="mui-table-cell ">骑手名称</div>
+						<div class="mui-table-cell mui-col-xs-2 mui-text-right" v-if="pageData.isPoint" v-text="pageData.pointStr"></div>
+						<div class="mui-table-cell mui-col-xs-3 mui-text-right">成绩</div>
+					</div>
+				</li>
+
+				<!--<li class="mui-table-view-cell">
+					<div class="mui-table">-->
+				<!--<div class="mui-table-cell mui-col-xs-2 mui-text-center {{((s.Rank==1||s.Rank==2||s.Rank==3||'')&&'y-no-'+s.Rank)+' '+((!pageData.isZ&&$index==0&&s.isQ)?'rank-filter':'')}}" style="font-size: {{($index==0&&s.isQ)?35:20}}px;" v-text='s.Rank'></div>-->
+				<!--<div class="mui-table-cell mui-col-xs-2 mui-text-center y-no-1 rank-filter" style="font-size: 35px;">0</div>
+						<div class="mui-table-cell">
+							<h5>骑手名称</h5>
+							<button class="mui-badge-red draw-btn">点击领奖</button>
+							<span class="draw-mb"><i class="y y-gift "></i>x2</span>
+							<p class="mui-ellipsis" style="height: 20px;">俱乐部名字</p>
+						</div>
+						<div class="mui-table-cell mui-col-xs-2 mui-text-right">
+							<span class="mui-ellipsis reward-status reward-status-r">转出成功</span>{{pageData.isPoint?s.Point:0}}
+						</div>
+						<div class="mui-table-cell mui-col-xs-3 mui-text-right">100</div>
+					</div>
+				</li>-->
+				<template v-for='s in pageData.serverData.MyRewards' v-if="!pageData.isZ">
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<!--<div class="mui-table-cell mui-col-xs-2 mui-text-center {{((s.Rank==1||s.Rank==2||s.Rank==3||'')&&'y-no-'+s.Rank)+' '+((!pageData.isZ&&$index==0&&s.isQ)?'rank-filter':'')}}" style="font-size: {{($index==0&&s.isQ)?35:20}}px;" v-text='s.Rank'></div>-->
+							<div class="mui-table-cell mui-col-xs-2 mui-text-center {{((s.Rank==1||s.Rank==2||s.Rank==3||'')&&'y-no-'+s.Rank)+' '}} rank-filter" style="font-size: 35px;" v-text='s.Rank'></div>
+							<div class="mui-table-cell">
+								<h5 v-text='s.Name'></h5>
+								<button class="mui-badge-red draw-btn" v-on:tap="apply(s.RID,s.RewardNum,s.TotalRewardNum)" v-if="!pageData.isZ&&s.RewardState==0">点击领奖</button>
+								<span class="draw-mb" v-if="pageData.isZ&&s.RewardState==0" v-on:tap.stop="applyMB(s.RID,s.RewardNum,s.TotalRewardNum)"><i class="y y-gift "></i>x{{s.RewardNum}}</span>
+								<p class="mui-ellipsis" style="height: 20px;" v-text='s.ClubName'></p>
+							</div>
+							<div class="mui-table-cell mui-col-xs-2 mui-text-right">
+								<span class="mui-ellipsis reward-status {{s.RewardState==1?'reward-status-g':(s.RewardState==2?'reward-status-r':'')}}" v-text="s.RewardState==1?'转出进行中':(s.RewardState==2?'转出成功':'')"></span> {{pageData.isPoint?s.Point:0}}
+							</div>
+							<div class="mui-table-cell mui-col-xs-3 mui-text-right" v-text='s.Score'></div>
+						</div>
+					</li>
+				</template>
+				<template v-for='s in pageData.serverData.Ranks'>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<!--<div class="mui-table-cell mui-col-xs-2 mui-text-center {{((s.Rank==1||s.Rank==2||s.Rank==3||'')&&'y-no-'+s.Rank)+' '+((!pageData.isZ&&$index==0&&s.isQ)?'rank-filter':'')}}" style="font-size: {{($index==0&&s.isQ)?35:20}}px;" v-text='s.Rank'></div>-->
+							<div class="mui-table-cell mui-col-xs-2 mui-text-center {{((s.Rank==1||s.Rank==2||s.Rank==3||'')&&'y-no-'+s.Rank)+' '}}" style="font-size: 20px;" v-text='s.Rank'></div>
+							<div class="mui-table-cell">
+								<h5 v-text='s.Name'></h5>
+								<!--<button class="mui-badge-red draw-btn" v-on:tap="apply(s.RID,s.RewardNum,s.TotalRewardNum)" v-if="!pageData.isZ&&s.RewardState==0">点击领奖</button>-->
+								<span class="draw-mb" v-if="pageData.isZ&&s.RewardState==0" v-on:tap.stop="applyMB(s.RID,s.RewardNum,s.TotalRewardNum)"><i class="y y-gift "></i>x{{s.RewardNum}}</span>
+								<p class="mui-ellipsis" style="height: 20px;" v-text='s.ClubName'></p>
+							</div>
+							<div class="mui-table-cell mui-col-xs-2 mui-text-right">
+								<span v-if="pageData.isZ" class="mui-ellipsis reward-status {{s.RewardState==1?'reward-status-g':(s.RewardState==2?'reward-status-r':'')}}" v-text="s.RewardState==1?'转出进行中':(s.RewardState==2?'转出成功':'')"></span> {{pageData.isPoint?s.Point:0}}
+							</div>
+							<div class="mui-table-cell mui-col-xs-3 mui-text-right" v-text='s.Score'></div>
+						</div>
+					</li>
+				</template>
+			</ul>
+		</div>
+	</body>
+
+</html>

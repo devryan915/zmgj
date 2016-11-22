@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.mui-content img {
+				height: 120px;
+				width: 100%;
+			}
+			
+			.mui-control-content {
+				background-color: #fff;
+			}
+			
+			.mui-slider {
+				position: absolute;
+				height: calc(100% - 120px);
+				z-index: 10;
+				top: 120px;
+				/*bottom: 70px;*/
+			}
+			
+			.mui-slider .mui-slider-group {
+				height: calc(100% - 88px);
+			}
+			
+			.mui-scroll-wrapper {
+				background-color: #efeff4;
+			}
+			
+			.y-table-title {
+				background-color: #efeff4;
+				padding: 3px 15px;
+			}
+			
+			.y-list-1 li span {
+				margin-left: 10px;
+				width: 100px;
+			}
+			
+			.y-list-1 li {
+				/*line-height: 12px;*/
+				padding-left: 50px;
+			}
+			
+			.y-list-1 li i {
+				position: absolute;
+				left: 15px;
+				top: 6px;
+			}
+			
+			.y-footer .mui-badge {
+				position: absolute;
+				top: -8px;
+				left: 12px;
+				padding: 1px 4px;
+			}
+			
+			.y-footer i {
+				position: relative;
+			}
+			
+			.y-pre {
+				margin: 0;
+				padding: 5px 15px;
+			}
+			
+			.y-pre p {
+				max-width: 100% !important;
+			}
+			
+			.y-list-img .y-content>div {
+				padding: 5px 0;
+				background-color: #fff;
+			}
+			
+			.y-list-img .y-content .mui-table {
+				background-color: #fff;
+			}
+			
+			.y-list-img .mui-table-view-cell .y-content {
+				text-align: center;
+				color: #666;
+				border-left: solid 1px #d3d3d3;
+			}
+			
+			.y-list-img .mui-table-view-cell:last-child .y-content {
+				border-left: none;
+			}
+			
+			.y-tag {
+				padding: 2px 3px;
+				color: #fff;
+				font-size: 12px;
+				border-radius: 3px;
+				text-align: center;
+				line-height: 11px;
+			}
+			
+			.y-list-img.mui-table-view {
+				background-color: #efeff4;
+			}
+			
+			.y-tag.y-green {
+				background-color: #53be1c;
+			}
+			
+			.y-list-img .mui-table-view-cell:after {
+				height: 0;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/game/detail']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-transparent">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title"></h1>
+		</header>
+
+		<div id="app" class="mui-content mui-hidden">
+			<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/horse.png?iopcmd=thumbnail&type=8&width=400&height=120" :src="o.Banner|f-imgUrl 400 120" />
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a id="item1" class="mui-control-item" href="#item1">
+				比赛行程
+			    </a>
+					<a class="mui-control-item" href="#item2">
+				比赛项目
+			     </a>
+					<a class="mui-control-item" href="#item3">
+				赛事执行
+			    </a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+				<div class="mui-slider-group">
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<template v-for='s in o.TripInfo'>
+									<div class="y-table-title" v-text='"Day"+($index+1)+"  "+s.Date'></div>
+									<ul class="mui-table-view y-list-1">
+										<li v-for='s1 in s.Trips' class="mui-table-view-cell">
+											<i class="y y-richeng y-5x y-yellow"></i> {{s1.Time}} <span>{{s1.Name}}</span>
+										</li>
+									</ul>
+								</template>
+							</div>
+						</div>
+					</div>
+					<div id="item2" class="mui-slider-item mui-control-content ">
+						<div id="prContestants" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view y-list-img">
+									<li v-for='s in o.Projects' class="mui-table-view-cell">
+										<div>
+											<i class="y y-dot-circle y-3x {{s.SDate|f-status s.EDate}}"></i> {{s.SDate|f-time 'yyyy年MM月dd日 hh:mm'}} <span class="y-tag y-green" v-if='s.PType'>积</span>
+											<p class="mui-pull-right y-orange">总奖金：{{s.TotalFee}}</p>
+										</div>
+										<div class="y-content">
+											<p>{{s.Name}}</p>
+											<div>
+												<div class="mui-table">
+													<div class="mui-table-cell mui-col-xs-4 y-contestants" data-id='{{s.PID}}'>参数名单</div>
+													<div class="mui-table-cell mui-col-xs-4 y-score" data-id='{{s.PID}}'>公布成绩</div>
+													<div class="mui-table-cell mui-col-xs-4 y-rule" data-id='{{s.PID}}'>规则</div>
+												</div>
+											</div>
+										</div>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+
+					</div>
+					<div id="item3" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<pre class="y-pre" v-html='o.DesInfo.Content'></pre>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="y-footer">
+					<div class="mui-table-cell mui-table y-left">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-text-center"><i class="y y-thumbs-o-up y-4x y-red"> <span class="mui-badge mui-badge-danger" v-text='o.PNum'>0</span></i></div>
+							<div class="mui-table-cell mui-text-center"><i class="y y-comment-o y-4x"></i></div>
+						</div>
+					</div>
+					<a class="mui-table-cell mui-col-xs-4 y-right">
+						<button type="button" class="mui-btn mui-btn-warning">立即订票</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

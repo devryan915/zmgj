@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.y-list-3 .mui-table .mui-table-cell {
+				vertical-align: middle;
+			}
+			
+			.y-list-3 .y-left {
+				width: 40px;
+				padding-left: 0;
+				font-size: 22px;
+				color: #DBB668;
+			}
+			
+			.y-list-3 .y-center {
+				width: 70px;
+			}
+			
+			.y-list-3 .mui-text-center i {
+				width: 60px;
+				height: 60px;
+				max-width: 60px;
+			}
+			
+			.y-h4 {
+				font-size: 17px;
+			}
+			
+			.mui-table-view-cell.y-title {
+				background-color: #EFEFF4;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/game/rank_detail']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">战绩</h1>
+		</header>
+		<div id="pr" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view y-list-3">
+					<li class="mui-table-view-cell y-title"><span class="mui-pull-right" v-text='"战队当前排名："+o.SelfRank'></span></li>
+					<template v-for='s in list'>
+						<li class="mui-table-view-cell">
+							<div class="mui-table">
+								<div class="mui-table-cell mui-text-center y-left">{{$index+1}}</div>
+								<div class="mui-table-cell mui-text-center y-center">
+									<i v-bind:style='s.ImgUrl|f-img 80' class="mui-media-object mui-pull-left head-horse"></i>
+								</div>
+								<div class="mui-table-cell">
+									<div class='mui-ellipsis y-h4'>{{s.Name}}</div>
+									<p class='mui-ellipsis-2'>{{s.CDes}}</p>
+									<h5>累计积分：{{s.Point}}</h5>
+								</div>
+							</div>
+						</li>
+					</template>
+				</ul>
+			</div>
+		</div>
+		<div id="app_LOADING" class="mui-backdrop mui-backdrop-2">
+			<div class="con">
+				<div><i class="mui-spinner"></i></div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/me/myhorse']);
+			});
+		</script>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="app_Error" class="mui-backdrop-error">
+			<div style="width: 300px;margin:100px auto;text-align: center;">
+				<img src="../../img/net_error.png" style="width: 60%;" />
+				<div style="margin-top: 25px;">网络不稳，请检查网络并刷新重试</div>
+				<button type="button" class="mui-button-row mui-btn-yellow" style="margin-top: 50px;width: 100px;">重新加载</button>
+			</div>
+		</div>
+	</body>
+
+</html>

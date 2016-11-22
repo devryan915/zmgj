@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/rider/creservation']);
+			});
+		</script>
+		<style type="text/css">
+			.mem-item {
+				position: relative;
+				margin: 1px 0;
+				background-color: white;
+				font-size: 0;
+				height: 90px;
+				padding: 5px;
+				padding-left: 12px;
+			}
+			
+			.item-left {
+				width: 100px;
+				height: 75px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 100px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: #333;
+				font-size: 17px;
+			}
+			
+			.item-right div:last-child {
+				color: #FFA44C;
+				font-size: 14px;
+				line-height: 50px;
+			}
+			
+			.buyinfo {
+				background: #fff;
+				height: 50px;
+				line-height: 50px;
+				margin: 1px 0;
+				padding-left: 12px;
+			}
+			
+			.footer {
+				position: fixed;
+				bottom: 0;
+				height: 50px;
+				width: 100%;
+				line-height: 50px;
+				z-index: 5;
+			}
+			
+			.mui-backdrop {
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .3)
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">预约信息</h1>
+		</header>
+		<div id="app" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="mem-item">
+					<div class="item-left">
+						<!--src="../../img/default_640x480.png"-->
+						<img data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" src="http://chorse-sports.ufile.ucloud.com.cn/2f7d16e32aaf4c5cb1b9078f996eff71.png?iopcmd=thumbnail&type=8&width=280&height=210" />
+					</div>
+					<div class="item-right">
+						<div class="mui-ellipsis-2">我是标题我是我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题标题</div>
+						<div>1154马币<span style="color: #999;font-size: 15px;margin-left: 20px;">x2</span>
+						</div>
+					</div>
+				</div>
+				<div class="buyinfo">
+					预约数量：
+					<span>2</span>
+				</div>
+				<div class="buyinfo">
+					预约人：
+					<span>爾雅</span>
+				</div>
+				<div class="buyinfo">
+					预约电话：
+					<span>13254865422</span>
+				</div>
+				<div class="buyinfo">
+					预约日期：
+					<span>2016-10-10 周一</span>
+				</div>
+				<div class="buyinfo">
+					预约时间：
+					<span>全天</span>
+				</div>
+				<div style="height: 50px;"></div>
+			</div>
+			<div class="footer">
+				<button type="button" class="mui-btn-block mui-btn-yellow " style="height: 100%;border-radius: 0;">确认预约</button>
+			</div>
+			<div class="mui-backdrop mui-hidden">
+				<div style="margin: 100px auto;padding: 20px; background: #fff;width: 80%;height: auto;border-radius: 5px;text-align: center;">
+					<i class="y y-tijiao" style="color: #03be57;font-size: 100px;"></i>
+					<div style="font-size: 17px;padding-top: 20px;">预约提交成功</div>
+					<div style="font-size: 13px;color: #666; padding-top: 5px;">俱乐部将在24小时内进行确认，请耐心等待！</div>
+					<button data-type='0' type="button" class="mui-btn-block mui-btn-yellow" style="margin: 20px 0 10px 0;">继续逛逛</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

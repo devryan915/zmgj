@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/pub/appupgrade']);
+			});
+		</script>
+		<style type="text/css">
+			body,
+			.mui-content {
+				background: #fff;
+			}
+			
+			.app-logo {
+				width: 100px;
+				margin: 50px auto;
+			}
+			
+			.app-logo img {
+				width: 100%;
+			}
+			
+			.upinfo {
+				margin-top: 80px;
+				text-align: center;
+			}
+			
+			.uptitle {
+				font-size: 20px;
+				color: #3A3A3A;
+				width: 200px;
+				margin: 0 auto;
+				/*text-decoration: underline;*/
+			}
+			
+			.uptitle:after {
+				position: absolute;
+				left: 50%;
+				margin-left: -65px;
+				width: 130px;
+				margin-top: 25px;
+				content: '';
+				background: #757575;
+				height: 1px;
+			}
+			
+			.upcontent {
+				font-size: 18px;
+				color: #868686;
+				width: 250px;
+				margin: 20px auto;
+				text-align: left;
+				height: 100px;
+				overflow-y: overlay;
+			}
+			
+			.down-btn {
+				position: absolute;
+				bottom: 50px;
+				left: 50%;
+				font-size: 18px;
+				margin-left: -60px;
+				border-radius: 20px;
+				width: 120px;
+				border-color: #EAB668;
+				color: #EAB668;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app" class="mui-content">
+			<div class="app-logo">
+				<img src="../../img/aboutus-logo.png" />
+			</div>
+			<div class="upinfo">
+				<div class="uptitle">天马升级提示</div>
+				<div class="upcontent" v-text="content">
+
+				</div>
+				<button type="button" class="mui-btn-outlined down-btn">下载更新</button>
+			</div>
+		</div>
+	</body>
+
+</html>

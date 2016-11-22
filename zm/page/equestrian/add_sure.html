@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<style type="text/css">
+			.mui-table-view .mui-table-view-cell span {
+				float: right;
+				font-size: 14px;
+				margin-right: 20px;
+			}
+			
+			.header {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/banner.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				text-align: center;
+				padding-top: 30px !important;
+				padding-bottom: 10px !important;
+			}
+			
+			.header img {
+				height: 80px;
+				/*margin-top: 10px;*/
+			}
+			
+			.header div {
+				color: #fff;
+			}
+			
+			.mui-action-back {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				color: #fff;
+			}
+			
+			.mui-action-back:active {
+				color: #fff;
+			}
+			
+			.y-step {
+				font-size: 12px;
+				margin: 10px 0px;
+				background-color: #fff;
+				color: #fff;
+			}
+			
+			.y-step .mui-table-cell {
+				padding: 5px 3px;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position-x: right;
+			}
+			
+			.y-step .mui-table-cell {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/arrow4.png);
+				background-color: #DBB668;
+			}
+			
+			.y-step .mui-table-cell:last-child {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/arrow5.png);
+			}
+			
+			.y-step .mui-table-cell span {
+				background-color: #fff;
+				color: #DBB668;
+			}
+			
+			button {
+				margin: 10px 0px;
+			}
+			
+			.y-select {
+				padding: 10px 0;
+				background-color: #fff;
+				color: #fff;
+			}
+			
+			.y-select input {
+				display: none;
+			}
+			
+			.y-select .mui-table-cell {
+				text-align: center;
+			}
+			
+			.y-select label {
+				background-color: #bfbfbf;
+				padding: 5px 15px;
+				border-radius: 3px;
+			}
+			
+			.y-select input:checked+label {
+				background-color: #DBB668;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/equestrian/add_sure']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id='app' class="mui-content">
+			<div class="header">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+
+				<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/equestrian.png" />
+				<div>中国西部马术促进会</div>
+			</div>
+
+			<div class="mui-content-padded">
+				<div class="mui-table y-step">
+					<div class="mui-table-cell mui-col-xs-3"><span class="mui-badge">1</span> 基本信息</div>
+					<div class="mui-table-cell mui-col-xs-3"><span class="mui-badge">2</span> 选择分会</div>
+					<div class="mui-table-cell mui-col-xs-3"><span class="mui-badge">3</span> 牛仔约定</div>
+				</div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<!--v-on:tap.stop ='selectEquestrian'-->
+						<a id="aSelectEquestrian" class="mui-navigate-right">
+							<span v-text='equestrianName'></span>我的分会
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<span v-text='totalMoney'></span>会费
+					</li>
+
+				</ul>
+				<div class="mui-table y-select ">
+					<div class="mui-table-cell">
+						<input type="radio" id="y_1" value="1" v-model="par.ynum">
+						<label for="y_1">1年</label>
+					</div>
+					<div class="mui-table-cell"><input type="radio" id="y_2" value="2" v-model="par.ynum">
+						<label for="y_2">2年</label></div>
+					<div class="mui-table-cell"> <input type="radio" id="y_3" value="3" v-model="par.ynum">
+						<label for="y_3">3年</label></div>
+					<div class="mui-table-cell "> <input type="radio" id="y_5" value="5" v-model="par.ynum">
+						<label for="y_5">5年</label></div>
+				</div>
+				<div class="mui-content-padded y-table">
+					<div class="mui-input-row">
+						<div><label for="remember"><input id='remember' v-model='remember' checked="checked" type="checkbox" />我已阅读<a href="javascript:;" v-on:tap.stop='pact'>《牛仔约定》</a></label></div>
+					</div>
+					<button type="button" id="btnAddOrder"   disabled="{{!isValid}}" class="mui-btn mui-btn-warning mui-btn-block">缴纳会费</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

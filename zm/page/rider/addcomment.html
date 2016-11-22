@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.previewimage.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/rider/addcomment']);
+			});
+		</script>
+		<style type="text/css">
+			.mem-item {
+				position: relative;
+				background-color: white;
+				font-size: 0;
+				height: 90px;
+				padding: 10px 5px 0 15px;
+			}
+			
+			.item-left {
+				width: 75px;
+				height: 75px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 140px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: #333;
+				font-size: 17px;
+				height: 20px;
+			}
+			
+			.item-right p {
+				padding-top: 2px;
+				color: #666;
+				height: 30px;
+				font-size: 13px;
+			}
+			
+			.item-right div:last-child {
+				color: #FFA44C;
+				font-size: 14px;
+			}
+			
+			.footer {
+				position: fixed;
+				bottom: 0;
+				height: 50px;
+				background: #fff;
+				width: 100%;
+				line-height: 50px;
+			}
+			
+			.mui-table-view {
+				padding: 15px;
+			}
+			
+			.mui-table-view textarea {
+				padding: 10px;
+				border-radius: 0;
+			}
+			
+			.mui-table-view:before,
+			.mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.y-img-list-select i {
+				display: inline-block;
+				width: 64px;
+				height: 64px;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				/*background-color: #EFEFF4;*/
+			}
+			
+			.mui-active.mui-no-active {
+				background-color: transparent;
+			}
+			
+			.y-img-list-select i:last-child {
+				background-image: url(../../img/me_addhead.png);
+			}
+			
+			ul:after {
+				position: absolute;
+				height: 1px;
+				left: 15px !important;
+			}
+			
+			img {
+				vertical-align: bottom;
+			}
+			
+			.mui-table-view-cell {
+				padding: 0;
+			}
+			
+			.goods-appraise {
+				background: #fff;
+				padding: 15px;
+			}
+			
+			.goods-appraise-item {
+				padding: 5px 0;
+				height: 30px;
+				line-height: 20px;
+				clear: both;
+				color: #666;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">发表评价</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div class="mem-item">
+				<div class="item-left">
+					<!--src="../../img/default_640x480.png"-->
+					<img data-img="{{data.NImgUrl+'?iopcmd=thumbnail&type=8&width=210&height=210'}}" src="../../img/default_320x320.png" />
+				</div>
+				<div class="item-right">
+					<div class="mui-ellipsis" v-text="data.ShopName"></div>
+					<p v-text="data.ClubName">
+					</p>
+					<div v-text="data.Prc+'马币'">
+					</div>
+				</div>
+				<div style="width: 40px;float: right;color: #FFA44C;font-size: 20px;text-align: center;" v-text="'x'+data.Qty">
+				</div>
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-no-active">
+					<textarea placeholder="亲，来说说你的评价吧（限300字）" rows="5"></textarea>
+				</li>
+				<li class="mui-table-view-cell mui-no-active">
+					<div class="y-img-list-select">
+						<template v-for='s in imgList'>
+							<i v-bind:style="s.img|f-img" data-preview-src="{{s.img}}" data-preview-group="1"></i>
+						</template>
+						<i v-if='imgList.length<9' id="btnSelectImg"></i>
+					</div>
+				</li>
+			</ul>
+			<div class="goods-appraise">
+				<div class="goods-appraise-item">
+					<div class="mui-pull-left">环境评分</div>
+					<div class="mui-pull-right">
+						<span class="data-star">
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="1"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="2"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="3"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="4"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="5"></i>
+					</span>
+					</div>
+				</div>
+				<div class="goods-appraise-item">
+					<div class="mui-pull-left">服务态度</div>
+					<div class="mui-pull-right">
+						<span class="data-star">
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="1"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="2"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="3"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="4"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="5"></i>
+					</span></div>
+				</div>
+				<div class="goods-appraise-item">
+					<div class="mui-pull-left">周边娱乐</div>
+					<div class="mui-pull-right"><span class="data-star">
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="1"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="2"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="3"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="4"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="5"></i>
+					</span></div>
+				</div>
+				<div class="goods-appraise-item">
+					<div class="mui-pull-left">交通便捷</div>
+					<div class="mui-pull-right"><span class="data-star">
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="1"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="2"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="3"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="4"></i>
+							<i class="y y-wujiaoxing y-star-n y-star-h" data-index="5"></i>
+					</span></div>
+				</div>
+			</div>
+			<div class="footer">
+				<button type="button" class="mui-btn-block mui-btn-yellow " style="height: 100%;border-radius: 0;">发表评价</button>
+			</div>
+		</div>
+	</body>
+
+</html>

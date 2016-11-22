@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/me/mycard']);
+			});
+		</script>
+		<style type="text/css">
+			.mui-card {
+				margin: 5px 0;
+			}
+			
+			.mui-card-content-inner {
+				padding: 5px 10px;
+			}
+			
+			.item-left {
+				width: 140px;
+				height: 105px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 140px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: #FFA44C;
+				font-size: 20px;
+			}
+			
+			.mui-card-footer {
+				padding: 8px;
+			}
+			
+			.mui-card-footer div {
+				width: 100%;
+			}
+			
+			.mui-card-footer div button {
+				width: 65px;
+				height: 28px;
+				padding: 0px;
+				margin: 0 3px;
+				font-size: 13px;
+				color: #666;
+				float: right;
+			}
+			
+			.club-name {
+				color: #666;
+				font-size: 17px;
+				padding-top: 5px;
+			}
+			
+			.card-num {
+				color: #999;
+				font-size: 14px;
+				margin: 0;
+				padding-top: 5px;
+			}
+			
+			.card-validdate {
+				color: #999;
+				margin: 0;
+				padding: 14px 0 0px 0;
+				height: 38px;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">我的卡包</h1>
+		</header>
+		<div id="app" class="mui-content  mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<img src="../../img/me-card-banner.png" style="width: 100%;" />
+				<div class="mui-card">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner">
+							<div class="item-left">
+								<img data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" src="http://chorse-sports.ufile.ucloud.com.cn/2f7d16e32aaf4c5cb1b9078f996eff71.png?iopcmd=thumbnail&type=8&width=280&height=210" />
+							</div>
+							<div class="item-right">
+								<div class="mui-ellipsis">我是标题我是我题<span style="float: right;font-size: 16px;"> x15</span></div>
+								<div class="club-name">俱乐部名称</div>
+								<p class="card-num">次数：1/15</p>
+								<p class="card-validdate">有效期：2018-10-10</p>
+							</div>
+						</div>
+					</div>
+					<div class="mui-card-footer">
+						<div>
+							<button type="button" class="mui-btn-outlined mui-btn-grey" data-id='1'>预约产品</button>
+							<button type="button" class="mui-btn-outlined mui-btn-grey" data-id='2'>付款码</button>
+						</div>
+					</div>
+				</div>
+				<div class="mui-card">
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner">
+							<div class="item-left">
+								<img src="../../img/me-limitp.png" style="position: absolute; width: 50px;" />
+								<img data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" src="http://chorse-sports.ufile.ucloud.com.cn/2f7d16e32aaf4c5cb1b9078f996eff71.png?iopcmd=thumbnail&type=8&width=280&height=210" />
+							</div>
+							<div class="item-right">
+								<div class="mui-ellipsis">我是标题我是我题<span style="float: right;font-size: 16px;"> x15</span></div>
+								<div class="club-name">俱乐部名称</div>
+								<p class="card-num">次数：1/15</p>
+								<p class="card-validdate">有效期：2018-10-10</p>
+							</div>
+						</div>
+					</div>
+					<div class="mui-card-footer">
+						<div>
+							<button type="button" class="mui-btn-outlined mui-btn-grey">预约产品</button>
+							<button type="button" class="mui-btn-outlined mui-btn-grey">付款码</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

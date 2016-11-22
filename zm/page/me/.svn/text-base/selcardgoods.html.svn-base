@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.previewimage.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/me/selcardgoods']);
+			});
+		</script>
+		<style type="text/css">
+			.rider-selitem {
+				position: relative;
+				background: #fff;
+				margin: 1px 0;
+			}
+			
+			.rider-selitem.mui-active {
+				background: #eee !important;
+			}
+			
+			.mem-item {
+				width: calc(100% - 30px);
+				margin-left: 30px;
+				position: relative;
+				height: 110px;
+				padding: 5px;
+				padding-left: 12px;
+			}
+			
+			.item-left {
+				width: 100px;
+				height: 100px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 110px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.goods-name {
+				color: #333;
+				font-size: 20px;
+				height: 20px;
+			}
+			
+			.club-name {
+				margin: 5px 0;
+				color: #666;
+				height: 20px;
+				font-size: 17px;
+			}
+			
+			.goods-distance {
+				color: #999;
+				font-size: 15px;
+						margin: 5px 0;
+			}
+			
+			.goods-price {
+				color: #FFA44C;
+				font-size: 20px;	margin-top: 8px;
+			}
+			
+			.goods-comments {
+				color: #999;
+				float: right;
+				font-size: 15px;
+			}
+			/***自定义radio Start****/
+			
+			.club-radio {
+				position:absolute;width: 45px;top: 20px;
+				left: 5px;
+			}
+			
+			.club-radio input[type=radio] {
+				position: absolute; 
+				top: 4px;
+				right: 20px;
+				display: inline-block;
+				width: 20px;
+				height: 26px;
+				border: 0;
+				outline: 0!important;
+				background-color: transparent;
+				-webkit-appearance: none
+			}
+			
+			.club-radio input[type=radio]:before {
+				/*font-family: Muiicons;*/
+				font: normal normal normal 14px/1 iconfont;
+				font-size: 20px;
+				font-weight: 400;
+				line-height: 1;
+				text-decoration: none;
+				color: #aaa;
+				border-radius: 0;
+				background: 0 0;
+				-webkit-font-smoothing: antialiased
+			}
+			
+			.club-radio input[type=radio]:before {
+				content: '\e627';
+			}
+			
+			.club-radio input[type=radio]:checked:before {
+				color: #2AC845;
+				content: '\e629'
+			}
+			
+			/****自定义radio End***/
+			
+			.footer {
+				position: fixed;
+				bottom: 0;
+				height: 50px;
+				width: 100%;
+				line-height: 50px;
+				z-index: 5;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title" style="font-size: 17px;">选择产品
+		</h1>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="rider-selitem" data-id='goodsid_1'>
+					<div class="club-radio" >
+						<input name="dradioclub" type="radio" value="1" v-model='pagePar.dClubID'>
+					</div>
+					<div class="mem-item">
+						<div class="item-left">
+							<img data-img="{{data.NImgUrl+'?iopcmd=thumbnail&type=8&width=210&height=210'}}" src="../../img/default_320x320.png" />
+						</div>
+						<div class="item-right">
+							<div class="mui-ellipsis goods-name">水电费是否水电水电费是否水电费是否收到水电费是否水电费是否收到水电费是否水电费是否收到水电费是否水电费是否收到费是否收到 s</div>
+							<p class="mui-ellipsis club-name">fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费
+							</p>
+							<div class="goods-distance">
+								徐汇|1200m
+							</div>
+							<div class="goods-price">100马币
+								<span class="goods-comments">200评价</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="rider-selitem">
+					<div class="club-radio" >
+						<input name="dradioclub" type="radio" value="2" v-model='pagePar.dClubID'>
+					</div>
+					<div class="mem-item">
+						<div class="item-left">
+							<img data-img="{{data.NImgUrl+'?iopcmd=thumbnail&type=8&width=210&height=210'}}" src="../../img/default_320x320.png" />
+						</div>
+						<div class="item-right">
+							<div class="mui-ellipsis goods-name">水电费是否水电水电费是否水电费是否收到水电费是否水电费是否收到水电费是否水电费是否收到水电费是否水电费是否收到费是否收到 s</div>
+							<p class="mui-ellipsis club-name">fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费fdsfsdf对方水电费
+							</p>
+							<div class="goods-distance">
+								徐汇|1200m
+							</div>
+							<div class="goods-price">100马币
+								<span class="goods-comments">liangbairen 评价</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="height: 50px;"></div>
+			</div>
+			<div class="footer">
+				<button type="button" class="mui-btn-block mui-btn-yellow " style="height: 100%;border-radius: 0;">确认预约</button>
+			</div>
+		</div>
+	</body>
+
+</html>

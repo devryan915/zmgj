@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/riderinfo']);
+				require(['../jsmax/page/match/horseinfo']);
+			});
+		</script>
+		<style type="text/css">
+			.riderinfo-content {
+				margin: 50px 40px auto 40px;
+				box-shadow: 5px 5px 50px #ADADAD;
+				width: 300px;
+				background-color: white;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.rider-title {
+				position: relative;
+				margin-left: 120px;
+				margin-top: -45px;
+				width: 150px;
+				height: 40px;
+			}
+			
+			.rider-title span.mui-ellipsis {
+				margin-left: 0px;
+				font-size: 15px;
+				width: 210px;
+				color: #666666;
+			}
+			
+			.rider-title .mui-ellipsis {
+				margin-left: 5px;
+				font-size: 15px;
+				color: #999999;
+			}
+			
+			table {
+				width: 80%;
+				margin-top: 5px;
+				font-size: 15px;
+				/*background-color: #00FFFF;*/
+			}
+			
+			table tr {
+				height: 40px;
+			}
+			
+			.td-left {
+				color: #7081FC;
+				line-height: 15px;
+			}
+			
+			.td-right {
+				width: 150px;
+				padding-right: 25px;
+				text-align: center;
+				border-bottom: groove rgba(0, 0, 0, 0.05);
+				border-bottom-width: 1px;
+				color: #999999;
+			}
+			
+			.y-sai {
+				position: relative;
+				color: #6568fe;
+				bottom: -5px;
+				margin-left: -30px;
+				z-index: 15;
+			}
+			
+			.y-edit {
+				position: absolute;
+				right: -20px;
+				top: 10px;
+				color: #48CBF2;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">马匹信息</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab mui-hidden">
+			<a class="mui-tab-item mui-active" href="#">
+				<span class="mui-icon y y-sale"></span>
+				<span class="mui-tab-label">挂牌</span>
+			</a>
+			<a class="mui-tab-item" href="#">
+				<span class="mui-icon y y-shouliu">
+					<!--<span class="mui-badge">9</span>-->
+				</span>
+				<span class="mui-tab-label">收留</span>
+			</a>
+			<a class="mui-tab-item" href="#">
+				<span class="mui-icon y y-jiaoliang">
+				</span>
+				<span class="mui-tab-label">缴粮</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider" v-on:drag="drag($event)">
+				<div class="mui-slider-group  mui-slider-loop ">
+					<div class="mui-slider-item  mui-slider-item-duplicate">
+						<div class="riderinfo-content">
+							<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata3.ImgUrl|f-imgUrl}}" style="height: 200px;width: 100%;" />
+							<img src="../../img/horse.png" data-img="{{pageData.itemdata3.ImgUrl|f-imgUrl 45 45}}" style="width: 80px;margin-left: 30px;margin-top: -40px;" />
+							<i class="y y-sai" v-if="pageData.itemdata3.HState==1"></i>
+							<div class="rider-title">
+								<span class="mui-ellipsis" v-text="pageData.itemdata3.Name+' '+(pageData.itemdata3.Sex==0?'公马':'母马')+' '+pageData.itemdata3.Age+'岁'"></span>
+								<div class="mui-ellipsis" v-if="pageData.pageType==2" v-text="pageData.itemdata3.ClubName">
+								</div>
+								<i class="y y-edit" v-if="pageData.pageType==2" v-on:tap="edit(pageData.itemdata3)"></i>
+							</div>
+							<table align="center">
+								<tr>
+									<td class="td-left">护照<br/>Passport</td>
+									<td class="td-right" v-text="pageData.itemdata3.MemberNo"></td>
+								</tr>
+								<tr>
+									<td class="td-left">血统<br/>Lineage</td>
+									<td class="td-right" v-text="pageData.itemdata3.Blood"></td>
+								</tr>
+								<tr>
+									<td class="td-left">生涯奖金<br/>Career Prize</td>
+									<td class="td-right" v-text="pageData.itemdata3.CRNum"></td>
+								</tr>
+								<tr>
+									<td class="td-left">描述<br/>Description</td>
+									<td class="td-right mui-ellipsis-2" style="height: 45px;" v-text="pageData.itemdata3.HDes"></td>
+								</tr>
+							</table>
+							<div style="width: 300px;height: 25px;margin-top: 10px;">
+								<a href="#" style="position: relative;left: 270px;color: #999999;font-size: 12px;">举报</a>
+							</div>
+						</div>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<div class="riderinfo-content">
+							<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata1.ImgUrl|f-imgUrl}}" style="height: 200px;width: 100%;" />
+							<img src="../../img/horse.png" data-img="{{pageData.itemdata1.ImgUrl|f-imgUrl 45 45}}" style="width: 80px;margin-left: 30px;margin-top: -40px;" />
+							<i class="y y-sai" v-if="pageData.itemdata1.HState==1"></i>
+							<div class="rider-title">
+								<span class="mui-ellipsis" v-text="pageData.itemdata1.Name+' '+(pageData.itemdata1.Sex==0?'公马':'母马')+' '+pageData.itemdata1.Age+'岁'"></span>
+								<div class="mui-ellipsis" v-if="pageData.pageType==2" v-text="pageData.itemdata1.ClubName">
+								</div>
+								<i class="y y-edit" v-if="pageData.pageType==2" v-on:tap="edit(pageData.itemdata1)"></i>
+							</div>
+							<table align="center">
+								<tr v-if="pageData.pageType==2">
+									<td class="td-left">护照<br/>Passport</td>
+									<td class="td-right" v-text="pageData.itemdata1.MemberNo"></td>
+								</tr>
+								<tr>
+									<td class="td-left">血统<br/>Lineage</td>
+									<td class="td-right" v-text="pageData.itemdata1.Blood"></td>
+								</tr>
+								<tr>
+									<td class="td-left">生涯奖金<br/>Career Prize</td>
+									<td class="td-right" v-text="pageData.itemdata1.CRNum"></td>
+								</tr>
+								<tr>
+									<td class="td-left">描述<br/>Description</td>
+									<td class="td-right mui-ellipsis-2" style="height: 45px;" v-text="pageData.itemdata1.HDes"></td>
+								</tr>
+							</table>
+							<div style="width: 300px;height: 25px;margin-top: 10px;">
+								<a href="#" style="position: relative;left: 270px;color: #999999;font-size: 12px;">举报</a>
+							</div>
+						</div>
+					</div>
+					<div class="mui-slider-item">
+						<div class="riderinfo-content">
+							<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata2.ImgUrl|f-imgUrl}}" style="height: 200px;width: 100%;" />
+							<img src="../../img/horse.png" data-img="{{pageData.itemdata2.ImgUrl|f-imgUrl 45 45}}" style="width: 80px;margin-left: 30px;margin-top: -40px;" />
+							<i class="y y-sai" v-if="pageData.itemdata2.HState==1"></i>
+							<div class="rider-title">
+								<span class="mui-ellipsis" v-text="pageData.itemdata2.Name+' '+(pageData.itemdata2.Sex==0?'公马':'母马')+' '+pageData.itemdata2.Age+'岁'"></span>
+								<div class="mui-ellipsis" v-if="pageData.pageType==2" v-text="pageData.itemdata2.ClubName">
+								</div>
+								<i class="y y-edit" v-if="pageData.pageType==2" v-on:tap="edit(pageData.itemdata2)"></i>
+							</div>
+							<table align="center">
+								<tr v-if="pageData.pageType==2">
+									<td class="td-left">护照<br/>Passport</td>
+									<td class="td-right" v-text="pageData.itemdata2.MemberNo"></td>
+								</tr>
+								<tr>
+									<td class="td-left">血统<br/>Lineage</td>
+									<td class="td-right" v-text="pageData.itemdata2.Blood"></td>
+								</tr>
+								<tr>
+									<td class="td-left">生涯奖金<br/>Career Prize</td>
+									<td class="td-right" v-text="pageData.itemdata2.CRNum"></td>
+								</tr>
+								<tr>
+									<td class="td-left">描述<br/>Description</td>
+									<td class="td-right mui-ellipsis-2" style="height: 45px;" v-text="pageData.itemdata2.HDes"></td>
+								</tr>
+							</table>
+							<div style="width: 300px;height: 25px;margin-top: 10px;">
+								<a href="#" style="position: relative;left: 270px;color: #999999;font-size: 12px;">举报</a>
+							</div>
+						</div>
+					</div>
+					<div class="mui-slider-item">
+						<div class="riderinfo-content">
+							<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata3.ImgUrl|f-imgUrl}}" style="height: 200px;width: 100%;" />
+							<img src="../../img/horse.png" data-img="{{pageData.itemdata3.ImgUrl|f-imgUrl 45 45}}" style="width: 80px;margin-left: 30px;margin-top: -40px;" />
+							<i class="y y-sai" v-if="pageData.itemdata3.HState==1"></i>
+							<div class="rider-title">
+								<span class="mui-ellipsis" v-text="pageData.itemdata3.Name+' '+(pageData.itemdata3.Sex==0?'公马':'母马')+' '+pageData.itemdata3.Age+'岁'"></span>
+								<div class="mui-ellipsis" v-if="pageData.pageType==2" v-text="pageData.itemdata3.ClubName">
+								</div>
+								<i class="y y-edit" v-if="pageData.pageType==2" v-on:tap="edit(pageData.itemdata3)"></i>
+							</div>
+							<table align="center">
+								<tr v-if="pageData.pageType==2">
+									<td class="td-left">护照<br/>Passport</td>
+									<td class="td-right" v-text="pageData.itemdata3.MemberNo"></td>
+								</tr>
+								<tr>
+									<td class="td-left">血统<br/>Lineage</td>
+									<td class="td-right" v-text="pageData.itemdata3.Blood"></td>
+								</tr>
+								<tr>
+									<td class="td-left">生涯奖金<br/>Career Prize</td>
+									<td class="td-right" v-text="pageData.itemdata3.CRNum"></td>
+								</tr>
+								<tr>
+									<td class="td-left">描述<br/>Description</td>
+									<td class="td-right mui-ellipsis-2" style="height: 45px;" v-text="pageData.itemdata3.HDes"></td>
+								</tr>
+							</table>
+							<div style="width: 300px;height: 25px;margin-top: 10px;">
+								<a href="#" style="position: relative;left: 270px;color: #999999;font-size: 12px;">举报</a>
+							</div>
+						</div>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<div class="riderinfo-content">
+							<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata1.ImgUrl|f-imgUrl}}" style="height: 200px;width: 100%;" />
+							<img src="../../img/horse.png" data-img="{{pageData.itemdata1.ImgUrl|f-imgUrl 45 45}}" style="width: 80px;margin-left: 30px;margin-top: -40px;" />
+							<i class="y y-sai" v-if="pageData.itemdata1.HState==1"></i>
+							<div class="rider-title">
+								<span class="mui-ellipsis" v-text="pageData.itemdata1.Name+' '+(pageData.itemdata1.Sex==0?'公马':'母马')+' '+pageData.itemdata1.Age+'岁'"></span>
+								<div class="mui-ellipsis" v-if="pageData.pageType==2" v-text="pageData.itemdata1.ClubName">
+								</div>
+								<i class="y y-edit" v-if="pageData.pageType==2" v-on:tap="edit(pageData.itemdata1)"></i>
+							</div>
+							<table align="center">
+								<tr v-if="pageData.pageType==2">
+									<td class="td-left">护照<br/>Passport</td>
+									<td class="td-right" v-text="pageData.itemdata1.MemberNo"></td>
+								</tr>
+								<tr>
+									<td class="td-left">血统<br/>Lineage</td>
+									<td class="td-right" v-text="pageData.itemdata1.Blood"></td>
+								</tr>
+								<tr>
+									<td class="td-left">生涯奖金<br/>Career Prize</td>
+									<td class="td-right" v-text="pageData.itemdata1.CRNum"></td>
+								</tr>
+								<tr>
+									<td class="td-left">描述<br/>Description</td>
+									<td class="td-right mui-ellipsis-2" style="height: 45px;" v-text="pageData.itemdata1.HDes"></td>
+								</tr>
+							</table>
+							<div style="width: 300px;height: 25px;margin-top: 10px;">
+								<a href="#" style="position: relative;left: 270px;color: #999999;font-size: 12px;">举报</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

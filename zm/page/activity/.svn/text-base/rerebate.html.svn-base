@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/gou.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/rrb_mb.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/rrb_kulian.png" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/activity/selclub']);
+				require(['../jsmax/page/activity/rerebate']);
+			});
+		</script>
+		<style type="text/css">
+			html body .mui-content {
+				background-color: #0e1632;
+			}
+			
+			.activity_rules {
+				color: white;
+				padding: 10px 20px 10px 20px;
+			}
+			
+			.activity_rules span {
+				font-size: 20px;
+			}
+			
+			.activity_rules p {
+				color: white;
+				padding-top: 8px;
+				font-size: 16px;
+				line-height: 25px;
+			}
+			
+			.activity_content {
+				width: 90%;
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.activity_timetitle {
+				font-weight: bold;
+				display: inline-block;
+			}
+			
+			.activity_timetitle span {
+				color: white;
+				font-size: 20px;
+			}
+			
+			.activity_timetitle div {
+				margin-top: 10px;
+			}
+			
+			.activity_timetitle label[class='mui-btn'] {
+				background-color: yellow;
+				color: black;
+				padding: 0;
+				font-size: 20px;
+				font-weight: bold;
+			}
+			
+			.activity_timetitle label {
+				color: white;
+				height: 35px;
+				width: 35px;
+				font-size: 20px;
+				line-height: 35px;
+				font-weight: bold;
+			}
+			
+			.activity_rebate {
+				padding-top: 20px;
+				width: 80%;
+				color: white;
+				font-weight: bold;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.activity_rebate img {
+				width: 100%;
+				z-index: 0;
+			}
+			
+			@-webkit-keyframes activity_rotaten {
+				from {
+					-webkit-transform: rotate(0);
+					transform: rotate(0)
+				}
+				to {
+					-webkit-transform: rotate(60deg);
+					transform: rotate(60deg)
+				}
+			}
+			
+			@keyframes activity_rotaten {
+				from {
+					-webkit-transform: rotate(0);
+					transform: rotate(0)
+				}
+				to {
+					-webkit-transform: rotate(60deg);
+					transform: rotate(60deg)
+				}
+			}
+			
+			.activity-rebate_rotate {
+				/*animation: activity_rotaten 5s;
+				-webkit-animation: activity_rotaten 5s;*/
+				transition: 2s;
+				-moz-transition: -moz-transform 2s;
+				/* Firefox 4 */
+				-webkit-transition: -webkit-transform 2s;
+				/* Safari and Chrome */
+				-o-transition: -o-transform 2s;
+				/* Opera */
+			}
+			/*.activity_rebate #rebateLevel {
+				z-index: 999;
+			}*/
+			
+			.mui-backdrop {
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .88)
+			}
+			
+			.receive-bg {
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 40%;
+			}
+			/*
+			.receive-up {
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+				width: 100%;
+				height: 60%;
+				background-color: #9FBBFE;
+			}*/
+			
+			.receive-down {
+				color: white;
+				font-weight: bold;
+				text-align: center;
+				padding: 15px 20px 20px 20px;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">充值返利活动</h1>
+		</header>
+		<div class="mui-backdrop" style="display: none;">
+			<div class="receive-bg">
+				<div style="width: 50%;margin-left: auto;margin-right: auto;padding-top: 20px;">
+					<img src="" style="width: 100%;" />
+				</div>
+			</div>
+			<div class="receive-down">
+
+			</div>
+			<div style="position:relative;width: 12%;margin-left: auto;margin-right: auto;padding: 0;" v-on:tap="close">
+				<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/gou.png" style="width: 100%;" />
+			</div>
+		</div>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/rrb_title.png" width="100%" />
+				<div class="activity_content">
+					<div class="activity_timetitle">
+						<span v-text="pageData.timeTitle"></span>
+						<div>
+							<label class="mui-btn" v-text="time.h">23</label>
+							<label>:</label>
+							<label class="mui-btn" v-text="time.m">23</label>
+							<label>:</label>
+							<label class="mui-btn" v-text="time.s">23</label>
+						</div>
+					</div>
+					<div class="activity_rebate">
+						<img id="rebateBg" />
+						<div id="rebateLevel" data-id='' style="position:relative;padding-top: 999999px;z-index: 1;">
+							<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/rrb_1.png" />
+						</div>
+						<div id="rebateLevelLine" class="activity-rebate_rotate" style="position:relative;z-index: 2;">
+							<img src="../../img/rrb_line.png" />
+						</div>
+						<div id="rebateLevelContent" style="height: 200px;">
+							<span style="font-size: 16px;line-height: 30px;height: 25%;">{{pageData.curGoal}}</span>
+							<div style="font-size: 18px;height: 12%;" v-text="pageData.nGoalText"></div>
+							<div style="font-size: 18px;height: 13%;" v-text="pageData.nGoal"></div>
+							<button v-on:tap="receive" type="button" disabled="{{!canReceive}}" class="mui-btn" style="background-color: #46D71E;font-weight: bold;border-radius: 15px;padding-top: 2px;padding-bottom: 2px;z-index: 3;">立即领取</button>
+						</div>
+					</div>
+				</div>
+				<div class="activity_rules">
+					<!--{{pageData.sBTime}}—{{pageData.sETime}}-->
+					<h4 style="padding-bottom: 10px;">活动时间：2016.7.15—2016.7.24</h4>
+					<span>活动规则：</span>
+					<p>
+						1.充值到达每个阶段的目标金额时，所有在线注册用户均可领取奖励一次；
+						<br/>2.活动期间注册的用户，之前阶段的奖励不能补领；<br/> 3.活动奖励领取后立即到达用户的账户；
+						<br/> 4.活动最终解释权归天马所有。
+					</p>
+					<span>活动奖励：共六轮</span>
+					<p>
+						1.全服累计充值达到10万，领取8马币；
+						<br/>2.全服累计充值达到20万，领取18马币；<br/>3.全服累计充值达到50万，领取28马币；
+						<br/> 4.全服累计充值达到100万，领取58马币；<br/> 5.全服累计充值达到200万，领取88马币；
+						<br/>6.全服累计充值达到500万，领取128马币。
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

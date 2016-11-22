@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.previewimage.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/animation.css" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/maquanbanner.png" />
+		<style type="text/css">
+			html,
+			body,
+			.mui-content {
+				height: 100%;
+			}
+			
+			.mui-slider,
+			.mui-slider-group {
+				height: 100%;
+			}
+			
+			.mui-media-body {
+				padding-left: 12px;
+			}
+			
+			.mui-slider-group {
+				height: calc(100% - 36px);
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted {
+				background-color: rgba(0, 0, 0, 0);
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+				color: #fff;
+				margin: 11px 0px;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				background-color: #fff;
+				color: #333;
+				border-radius: 19px;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				display: inline-block;
+				width: 60px;
+				line-height: 26px;
+				margin: 15px;
+			}
+			
+			.mui-segmented-control {
+				display: block;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				-webkit-transform: none;
+				transition: none;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control.mui-segmented-control-inverted {
+				height: 44px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control.mui-segmented-control-inverted>.y {
+				/*
+				clear: right;*/
+				padding: 12px 10px 12px 20px;
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				z-index: 11;
+				color: #fff;
+			}
+			
+			#topPopover {
+				position: fixed;
+				top: 16px;
+				right: 6px;
+				background-color: #3f454f;
+			}
+			
+			#topPopover .mui-table-view {
+				background-color: #3f454f;
+				color: #fff;
+			}
+			
+			.y-card-list .mui-card {
+				margin: 0 0 5px 0;
+				box-shadow: none;
+			}
+			
+			#topPopover .mui-popover-arrow {
+				left: auto;
+				right: 6px;
+			}
+			
+			.mui-popover a.mui-active {
+				background-color: #333!important;
+			}
+			
+			.mui-popover .mui-popover-arrow:after,
+			.mui-popover .mui-table-view-cell a.mui-active {
+				background-color: #3f454f;
+			}
+			
+			.mui-popover {
+				width: 120px;
+			}
+			/*.mui-preview-header {
+				top: 64px;
+			}*/
+			/*分页样式*/
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-card-footer {
+				margin-top: 3px;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: 20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.y-card-list>.mui-card>.mui-card-content {
+				margin-top: 3px;
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.y-attention {
+				height: 24px;
+				font-size: 13px;
+				padding-top: 2px;
+			}
+			
+			.y-revoke {
+				height: 24px;
+				font-size: 13px;
+				padding-top: 2px;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.top-dis-bannner {
+				top: -4px;
+				margin-bottom: 10px;
+			}
+			
+			.mui-control-item {
+				background: transparent;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/dynamic/list']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="app" class="mui-content">
+			<div id="slider" class="mui-slider">
+				<!--mui-bar mui-bar-transparent   style="position: absolute;background-color: rgba(0,0,0,0);"-->
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted " style="background-color: rgba(40,40,40,1);">
+					<a class="mui-control-item" href="#item1">
+						关注
+					</a>
+					<a class="mui-control-item " href="#item2">
+						发现
+					</a>
+					<a class="mui-control-item" href="#item3">
+						热点
+					</a>
+					<a class="y y-2x y-bars mui-pull-right" data-id="wdynamic_add" data-href="../dynamic/add.html" href="#topPopover"></a>
+				</div>
+				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>-->
+				<div id="sliderGroup" class="mui-slider-group" style="opacity: 0;">
+					<div id="item1" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper" style="margin-top: -1px;">
+							<div id="scroll1" class="mui-scroll y-card-list">
+								<img src="../../img/default_640x320.png" data-img="http://chorse-sports.ufile.ucloud.com.cn/maquanbanner.png" class="top-dis-bannner" style="width: 100%;" />
+								<template v-for='(index, s) in parList[0].list'>
+									<div class="mui-card  animated fadeInUp" data-id='{{s.PostId}}'>
+										<div class="mui-card-header mui-card-media">
+											<img src="../../img/head.png" class='userHead' data-userid='{{s.UserID}}' data-img='{{s.ImgUrl|f-imgUrl 100}}' />
+											<div class="mui-media-body">
+												<button type="button" data-userid='{{s.UserID}}' data-isattention={{s.IsFollow.toString()}} class=" mui-btn mui-btn-green mui-pull-right mui-btn-outlined y-attention" v-text='s.IsFollow?"取消关注":"+ 关注"'></button> {{s.Name}}
+												<p v-text='s.IssDT|f-time "MM-dd hh:mm"'></p>
+											</div>
+										</div>
+										<div class="mui-card-content y-ellipsis y-ellipsis-flag" v-text='s.Content' data-id='{{s.PostId}}' data-list-index='0' data-index='{{index}}'></div>
+										<div v-if='s.Imgs.length>0' class="mui-card-content " data-id='{{s.PostId}}' data-list-index='0' data-index='{{index}}'>
+											<div class="mui-row">
+												<template v-for='s1 in s.Imgs'>
+													<div v-if='s.Imgs.length==1'> <img src="../../img/default_640x320.png" data-img='{{s1}}' style="width: 210px;" data-preview-src="{{s1}}" data-preview-group="{{index}}" /> </div>
+													<div v-else class="mui-col-xs-4"> <img src="../../img/default_320x320.png" data-img='{{s1|f-imgUrl 210}}' data-preview-src="{{s1}}" data-preview-group="{{index}}" /> </div>
+												</template>
+											</div>
+										</div>
+										<div class="mui-card-footer" data-id='{{s.PostId}}' data-list-index='0' data-index='{{index}}'>
+											<a class="mui-card-link mui-col-xs-4" data-type='{{s.IsCollect?5:1}}'><i class="y y-2x {{s.IsCollect?'y-collect y-yellow':'y-collect-o'}}"></i> {{s.CNums||'收藏'}}</a>
+											<a class="mui-card-link mui-col-xs-4" data-type='101'><i class="y y-2x y-comment-o"></i> {{s.DNums||'评论'}}</a>
+											<a class="mui-card-link mui-col-xs-4" data-type='{{s.IsPoint?9:2}}'><i class="y y-2x {{s.IsPoint?'y-heart y-red':'y-heart-o'}}"></i> {{s.PNums||'点赞'}}</a>
+											<!--<a class="mui-card-link mui-col-xs-3" data-type='100'><i class="y y-2x y-share"></i> 分享</a>-->
+										</div>
+									</div>
+								</template>
+							</div>
+						</div>
+					</div>
+					<div id="item2" class="mui-slider-item mui-control-content ">
+						<div class="mui-scroll-wrapper" style="top: -1px;">
+							<div id="scroll2" class="mui-scroll y-card-list">
+								<img src="../../img/default_640x320.png" data-img="http://chorse-sports.ufile.ucloud.com.cn/maquanbanner.png" class="top-dis-bannner" style="width: 100%;" />
+								<template v-for='(index, s) in parList[1].list'>
+									<div class="mui-card animated fadeInUp" data-id='{{s.PostId}}'>
+										<div class="mui-card-header mui-card-media">
+											<img src="../../img/head.png" class='userHead' data-userid='{{s.UserID}}' data-img='{{s.ImgUrl|f-imgUrl 80}}' />
+											<div class="mui-media-body">
+												<button v-if="s.UserID!=user.UserID" type="button" data-userid='{{s.UserID}}' data-isattention={{s.IsFollow.toString()}} class="mui-btn mui-btn-green mui-pull-right mui-btn-outlined y-attention" v-text='s.IsFollow?"取消关注":"+ 关注"'></button> {{s.Name}}
+												<button type="button" data-userid='{{s.UserID}}' data-pid='{{s.PostId}}' class="mui-btn mui-btn-green mui-pull-right mui-btn-outlined y-revoke {{s.CantRevoke}}">撤回 </button>
+												<p v-text='s.IssDT|f-time "MM-dd hh:mm"'></p>
+											</div>
+										</div>
+										<div class="mui-card-content y-ellipsis y-ellipsis-flag " data-id='{{s.PostId}}' data-list-index='1' data-index='{{index}}' v-text='s.Content'>
+										</div>
+										<div v-if='s.Imgs.length>0' class="mui-card-content " data-id='{{s.PostId}}' data-list-index='1' data-index='{{index}}'>
+											<div class="mui-row ">
+												<template v-for='s1 in s.Imgs'>
+													<div v-if='s.Imgs.length==1'> <img src="../../img/default_640x320.png " data-img='{{s1 }}' style="width: 210px; " data-preview-src="{{s1}} " data-preview-group="{{10000+index}} " /> </div>
+													<div v-else class="mui-col-xs-4 "> <img src="../../img/default_320x320.png " data-img='{{s1|f-imgUrl 210}}' data-preview-src="{{s1}} " data-preview-group="{{10000+index}} " /> </div>
+												</template>
+											</div>
+										</div>
+										<div class="mui-card-footer " data-id='{{s.PostId}}' data-list-index='1' data-index='{{index}}'>
+											<a class="mui-card-link mui-col-xs-4 " data-type='{{s.IsCollect?5:1}}'><i class="y y-2x {{s.IsCollect? 'y-collect y-yellow': 'y-collect-o'}} "></i> {{s.CNums||'收藏'}}</a>
+											<a class="mui-card-link mui-col-xs-4 " data-type='101'><i class="y y-2x y-comment-o "></i> {{s.DNums||'评论'}}</a>
+											<a class="mui-card-link mui-col-xs-4 " data-type='{{s.IsPoint?9:2}}'><i class="y y-2x {{s.IsPoint? 'y-heart y-red': 'y-heart-o'}} "></i> {{s.PNums||'点赞'}}</a>
+											<!--<a class="mui-card-link mui-col-xs-3 " data-type='100'><i class="y y-2x y-share "></i> 分享</a>-->
+										</div>
+									</div>
+								</template>
+							</div>
+						</div>
+					</div>
+					<div id="item3" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper" style="top: -1px;">
+							<div id="scroll3" class="mui-scroll y-card-list">
+								<img src="../../img/default_640x320.png" data-img="http://chorse-sports.ufile.ucloud.com.cn/maquanbanner.png" class="top-dis-bannner" style="width: 100%;" />
+								<template v-for='(index, s) in parList[2].list'>
+									<div class="mui-card animated fadeInUp " data-id='{{s.PostId}}'>
+										<div class="mui-card-header mui-card-media">
+											<img src="../../img/head.png " class='userHead' data-userid='{{s.UserID}}' data-img='{{s.ImgUrl|f-imgUrl 100}}' />
+											<div class="mui-media-body ">
+												<button v-if="s.UserID!=user.UserID " type="button " data-userid='{{s.UserID}}' data-isattention={{s.IsFollow.toString()}} class="mui-btn mui-btn-green mui-pull-right mui-btn-outlined y-attention " v-text='s.IsFollow?"取消关注 ":"+ 关注 "'></button> {{s.Name}}
+												<button type="button " data-userid='{{s.UserID}}' data-pid='{{s.PostId}}' class="mui-btn mui-btn-green mui-pull-right mui-btn-outlined y-revoke {{s.CantRevoke}}">撤回</button>
+												<p v-text='s.IssDT|f-time "MM-dd hh:mm"'></p>
+											</div>
+										</div>
+										<div class="mui-card-content y-ellipsis y-ellipsis-flag " v-text='s.Content' data-id='{{s.PostId}}' data-list-index='2' data-index='{{index}}'>
+										</div>
+										<div v-if='s.Imgs.length>0' class="mui-card-content " data-id='{{s.PostId}}' data-list-index='2' data-index='{{index}}'>
+											<div class="mui-row ">
+												<template v-for='s1 in s.Imgs'>
+													<div v-if='s.Imgs.length==1'> <img src="../../img/default_640x320.png " data-img='{{s1}}' style="width: 210px; " data-preview-src="{{s1}} " data-preview-group="{{20000+index}} " /> </div>
+													<div v-else class="mui-col-xs-4 "> <img src="../../img/default_320x320.png " data-img='{{s1|f-imgUrl 210}}' data-preview-src="{{s1}} " data-preview-group="{{20000+index}} " /> </div>
+												</template>
+											</div>
+										</div>
+										<div class="mui-card-footer " data-id='{{s.PostId}}' data-list-index='2' data-index='{{index}}'>
+											<a class="mui-card-link mui-col-xs-4 " data-type='{{s.IsCollect?5:1}}'><i class="y y-2x {{s.IsCollect? 'y-collect y-yellow': 'y-collect-o'}} "></i> {{s.CNums||'收藏'}}</a>
+											<a class="mui-card-link mui-col-xs-4 " data-type='101'><i class="y y-2x y-comment-o "></i> {{s.DNums||'评论'}}</a>
+											<a class="mui-card-link mui-col-xs-4 " data-type='{{s.IsPoint?9:2}}'><i class="y y-2x {{s.IsPoint? 'y-heart y-red': 'y-heart-o'}} "></i> {{s.PNums||'点赞'}}</a>
+											<!--<a class="mui-card-link mui-col-xs-3 " data-type='100'><i class="y y-2x y-share "></i> 分享</a>-->
+										</div>
+									</div>
+								</template>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="topPopover" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a data-id="wdynamic_add" data-href="../dynamic/add.html" href="# "><i class="y y-plus"></i> 发表</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a data-id="wdynamic_search_user" data-href="../dynamic/search_user.html" href="#"><i class="y y-user-plus"></i> 找朋友</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a data-id="wdynamic_my_collection" data-href="../dynamic/my_collection.html" href="#"><i class="y y-collect"></i> 我的收藏</a>
+				</li>
+			</ul>
+		</div>
+
+	</body>
+
+</html>

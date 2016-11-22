@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/rider/comments']);
+			});
+		</script>
+		<style type="text/css">
+			.comments-title {
+				color: #333;
+				line-height: 42px;
+				font-size: 17px;
+				padding-left: 40px;
+			}
+			
+			.comments-title span:last-child {
+				float: right;
+				color: #999;
+				font-size: 13px;
+			}
+			
+			.y-card-list>.mui-card>.mui-card-content {
+				margin-top: 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<h1 class="mui-title">产品评价(200154)</h1>
+		</header>
+		<div id="app" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll y-card-list">
+				<div class="mui-card  animated fadeInUp" data-id='{{s.PostId}}'>
+					<div class="mui-card-header mui-card-media">
+						<img src="../../img/head.png" data-img='{{s.ImgUrl|f-imgUrl 100}}' />
+						<div class="comments-title">
+							<span>我是昵称</span>
+							<span>2015-9-9</span>
+						</div>
+					</div>
+					<div class="mui-card-content y-ellipsis y-ellipsis-flag">啥地方放水电费水电费水电费水电费水电费水电费水电费水电费水电费是的发送到发送到水电费水电费</div>
+					<div class="mui-card-content">
+						<div class="mui-row">
+							<!--v-if='s.Imgs.length==1'-->
+							<!--<div > <img src="../../img/default_640x320.png" data-img='{{s1}}' style="width: 210px;" data-preview-src="{{s1}}" data-preview-group="{{index}}" /> </div>-->
+							<div class="mui-col-xs-4">
+								<img src="../../img/default_320x320.png" data-img='{{s1|f-imgUrl 210}}' data-preview-src="{{s1}}" data-preview-group="{{index}}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>
+
+</html>

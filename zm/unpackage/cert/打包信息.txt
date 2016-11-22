@@ -1,0 +1,11 @@
+Android打包信息
+Android：com.zmgj.tm
+证书别名：tm.keystore
+私钥密码：tm2016
+证书文件：***\tm.keystore
+
+iOS打包信息
+AppID：com.zmgj.tm
+私钥密码：tm2016
+profile文件：***\tm.dev.mobileprovision
+私钥证书：***\tm.p12

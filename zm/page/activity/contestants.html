@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.mui-bar.mui-bar-transparent h1 {
+				color: #fff;
+			}
+			
+			.mui-bar.mui-bar-transparent .y {
+				color: #fff;
+			}
+			
+			.y-header {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/background1.png);
+				background-size: cover;
+				height: 240px;
+				width: 100%;
+				vertical-align: middle;
+				color: #fff;
+				padding: 44px 0 10px 0;
+				background-color: #0b0c0d;
+			}
+			/*http://chorse-sports.ufile.ucloud.com.cn/sys/package.png*/
+			
+			.y-header div:first-child {
+				padding: 0 15px;
+				font-size: 12px;
+			}
+			
+			.y-foot {
+				text-align: center;
+				width: 100%;
+				position: relative;
+			}
+			
+			.y-foot>div {
+				height: 160px;
+				position: relative;
+				margin: 0px 0 10px 0;
+			}
+			
+			.y-foot>div span {
+				position: absolute;
+				width: 200px;
+				left: 22%;
+				left: calc(50% - 100px);
+				font-weight: bold;
+				font-size: 12px;
+				z-index: 111;
+			}
+			
+			.y-foot>div>span:first-of-type {
+				bottom: 15px;
+				color: #666;
+				font-size: 16px;
+			}
+			
+			.y-foot>div>span:last-of-type {
+				bottom: -15px;
+				z-index: 111;
+				color: #fff;
+			}
+			
+			.y-foot .head-user {
+				/*background-image: url(../../img/defaul_bg_16_9.png);*/
+				position: absolute;
+				height: 92px;
+				width: 92px;
+				/*margin: 26px auto 0 -8px;*/
+				border-radius: 46px;
+				background-color: transparent;
+				left: 111px;
+				left: calc(50% - 50px);
+				top: 23px;
+			}
+			
+			.y-foot>img {
+				position: absolute;
+				left: 37%;
+				top: 90px;
+				height: 12px;
+				z-index: 12;
+			}
+			
+			.y-foot>div>img {
+				height: 160px;
+				position: absolute;
+				z-index: 10;
+				left: 12%;
+				left: calc(50% - 137px);
+				left: -moz-calc(50% - 137px);
+				left: -webkit-calc(50% - 137px);
+			}
+			
+			.mui-scroll-wrapper {
+				background: -webkit-linear-gradient(#4aaad9, #c62537);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(#4aaad9, #c62537);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(#4aaad9, #c62537);
+				/* Firefox 3.6 - 15 */
+				background: linear-gradient(#4aaad9, #c62537);
+				/* 标准的语法（必须放在最后） */
+				margin-top: 240px;
+			}
+			
+			.mui-scroll-wrapper .head {
+				border-radius: 29px;
+				height: 58px;
+				width: 58px;
+				background-color: transparent;
+				vertical-align: middle;
+				background-color: #fff;
+			}
+			
+			.mui-table-view {
+				background-color: transparent;
+			}
+			
+			.mui-table-view:before,
+			.mui-table-view:after,
+			.mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.mui-table-view-cell {
+				margin: 10px 0;
+				padding: 0 0px;
+				background-color: transparent;
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background-color: transparent;
+			}
+			
+			.mui-table-view-cell .mui-table .mui-table-cell {
+				vertical-align: middle;
+				padding: 5px 0;
+				background-color: rgba(255, 255, 255, 0.2);
+			}
+			
+			.mui-table-view-cell .mui-table .mui-table-cell p,
+			.mui-table-view-cell .mui-table .mui-table-cell h5 {
+				color: #fff;
+			}
+			
+			.mui-table-view-cell .mui-table .mui-table-cell h5 {
+				font-size: 14px;
+				line-height: 36px;
+				height: 26px;
+			}
+			
+			.y-cell-1 {
+				background-color: rgba(255, 255, 255, 0.2);
+				padding-left: 5px !important;
+				position: relative;
+				width: 62px;
+			}
+			
+			.y-cell-1 img {
+				height: 12px;
+				position: absolute;
+				left: 15px;
+				top: 5px;
+				z-index: 10;
+			}
+			
+			.y-cell-5 img {
+				height: 12px;
+				position: absolute;
+				right: 15px;
+				top: 5px;
+				z-index: 10;
+			}
+			
+			.y-cell-2 {
+				padding-left: 2px !important;
+			}
+			
+			.y-cell-4 {
+				padding-right: 2px !important;
+			}
+			
+			.y-cell-3 {
+				width: 80px;
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/line.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-color: transparent !important;
+				padding: 0 !important;
+			}
+			
+			.y-cell-3 div {
+				text-align: right;
+				/*margin-right: 25px;*/
+				padding: 3px 28px 6px 0;
+				font-size: 24px;
+				color: #ffcc63;
+				font-weight: bold;
+				font-style: italic;
+				/*padding: 6px 0;*/
+				height: 34px;
+			}
+			
+			.y-cell-3 div:last-child {
+				text-align: left;
+				padding: 10px 0 0px 24px;
+			}
+			
+			.y-cell-3 div img {
+				margin: 0px 0px;
+			}
+			
+			.y-cell-3 div:last-child>img {
+				/*margin: 4px 0 0 28px;*/
+			}
+			
+			.y-cell-3 img {
+				height: 22px;
+			}
+			
+			.y-cell-4 {
+				text-align: right;
+			}
+			
+			.y-cell-5 {
+				text-align: right;
+				padding-right: 5px !important;
+				width: 62px;
+			}
+			
+			.y-img1 {
+				animation: bounce-in 3s;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			
+			@keyframes bounce-in {
+				0% {
+					transform: scale(1);
+				}
+				50% {
+					transform: scale(2.5);
+				}
+				100% {
+					transform: scale(1);
+				}
+			}
+			
+			.y-img2 {
+				animation: bounce-in2 3s;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+			
+			@keyframes bounce-in2 {
+				0% {
+					transform: scale(1);
+				}
+				50% {
+					transform: scale(2.5);
+				}
+				100% {
+					transform: scale(1);
+				}
+			}
+			
+			.y-header>div:first-child {
+				height: 18px;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/activity/contestants']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-transparent">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" v-text='o.title+"("+num+")"'></h1>
+			<a id="btnShare" class="mui-icon y y-share y-3x mui-pull-right"></a>
+		</header>
+		<div class="mui-content ">
+			<div class="y-header">
+				<div><span v-text='time'></span><span class="mui-pull-right"><span v-text='o.first.SNum'></span> <i class="y y-thumbs-o-up"></i></span>
+				</div>
+				<div class="y-foot">
+					<div data-id='{{o.first.RID}}' data-sum="{{o.first.SNum}}" v-on:tap='detail'>
+						<!--<div></div>-->
+						<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/head2.png" />
+						<div class="head head-user" v-bind:style='o.first.RImgUrl|f-img 100'></div>
+						<span v-text='o.first.RName'></span>
+						<span v-text='o.first.CName'></span>
+					</div>
+					<template v-if='o.first.SelfReward'>
+						<img class="y-img2" src="http://chorse-sports.ufile.ucloud.com.cn/sys/package.png?iopcmd=thumbnail&type=8&width=74&height=50" />
+					</template>
+				</div>
+			</div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view">
+						<template v-for='s in o.list'>
+							<li class="mui-table-view-cell">
+								<div class="mui-table">
+									<div class="mui-table-cell y-cell-1" data-id='{{s.o1.RID}}' data-sum="{{s.o1.SNum}}" data-name="{{s.o1.RName}}" v-on:tap='detail'>
+										<i class="head head-user" v-bind:style='s.o1.RImgUrl|f-img 58'></i>
+										<img v-if='s.o1.SelfReward' class="y-img1" src="http://chorse-sports.ufile.ucloud.com.cn/sys/package.png?iopcmd=thumbnail&type=8&width=74&height=50" />
+									</div>
+									<div class="mui-table-cell y-cell-2" data-id='{{s.o1.RID}}' data-name="{{s.o1.RName}}" data-sum="{{s.o1.SNum}}" v-on:tap='detail'>
+										<p>{{s.o1.SNum}} <i class="y y-thumbs-o-up"></i></p>
+										<h5 class="mui-ellipsis">{{s.o1.RName}}</h5>
+									</div>
+									<div class="mui-table-cell y-cell-3">
+										<div>
+											<template v-if='$index>=4'>{{s.o1.index+1}}</template>
+											<img v-if='$index<4' :src='"http://chorse-sports.ufile.ucloud.com.cn/sys/n"+(s.o1.index+1)+".png"' />
+										</div>
+										<div>
+											<template v-if='$index>=4&&s.o2.RID'>{{s.o2.index+1}}</template>
+											<img v-if='$index<4&&s.o2.RID' :src='"http://chorse-sports.ufile.ucloud.com.cn/sys/n"+(s.o2.index+1)+".png"' />
+										</div>
+									</div>
+									<div class="mui-table-cell y-cell-4" data-id='{{s.o2.RID}}' data-name="{{s.o2.RName}}" data-sum="{{s.o2.SNum}}" v-on:tap='detail'>
+										<p v-if='s.o2.RID'>{{s.o2.SNum}} <i class="y y-thumbs-o-up"></i></p>
+										<h5 class="mui-ellipsis">{{s.o2.RName}}</h5>
+									</div>
+									<div class="mui-table-cell y-cell-5" data-id='{{s.o2.RID}}' data-name="{{s.o2.RName}}" data-sum="{{s.o2.SNum}}" v-on:tap='detail'>
+										<i v-if='s.o2.RID' class="head head-user" v-bind:style='s.o2.RImgUrl|f-img 58'></i>
+										<img v-if='s.o2.RID && s.o2.SelfReward' class="y-img1" src="http://chorse-sports.ufile.ucloud.com.cn/sys/package.png?iopcmd=thumbnail&type=8&width=74&height=50" />
+									</div>
+								</div>
+							</li>
+						</template>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+
+</html>

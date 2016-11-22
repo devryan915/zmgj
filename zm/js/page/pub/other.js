@@ -1,0 +1,1 @@
+define(["app","mui"],function(a,c){var b=a.Cache.getString(a.Cache.key.cpageUrl.toKeyName());document.querySelector("header.mui-bar.mui-bar-nav\x3e.mui-title").innerText=a.Cache.getString(a.Cache.key.cpageTitle.toKeyName());c.init({subpages:[{url:b,id:b,styles:{top:"44px",bottom:"0px"}}]})});

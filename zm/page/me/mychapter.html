@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/mychapter']);
+				require(['../jsmax/page/me/mychapter']);
+			});
+		</script>
+		<style type="text/css">
+			body {
+				background-color: white;
+			}
+			
+			.mui-media-body {
+				text-align: center;
+				height: 20px;
+				padding-bottom: 20px;
+			}
+			
+			.mui-backdrop {
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .8)
+			}
+			
+			.star_bg {
+				width: 150px;
+				height: 25px;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.star {
+				height: 100px;
+				width: 24px;
+				position: absolute;
+				z-index: 3;
+				background: url(http://chorse-sports.ufile.ucloud.com.cn/sys/pub-star.png) repeat-x 0 -2px;
+			}
+			
+			.star_1 {
+				left: 0;
+			}
+			
+			.star_2 {
+				left: 24px;
+			}
+			
+			.star_3 {
+				left: 48px;
+			}
+			
+			.star_4 {
+				left: 72px;
+			}
+			
+			.star_5 {
+				left: 96px;
+			}
+			
+			.logo-content {
+				width: 90px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: -175px;
+			}
+			
+			.logo-content img {
+				width: 100%;
+			}
+			
+			.chapter-name {
+				width: 100%;
+				text-align: center;
+				color: white;
+				font-size: 18px;
+				margin-top: 0px;
+				margin-bottom: 10px;
+				height: 20px;
+			}
+			
+			.main-content {
+				height: 100%;
+				position: fixed;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的分会</h1>
+		</header>
+		<div id="app" class="mui-content" style="height: 100%;">
+			<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/banner.png" data-img="{{chapter.ImgUrl|f-imgUrl}}" style="width: 100%;height: 200px;" />
+			<div v-on:tap="goxch" class="logo-content">
+				<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/equestrian.png" />
+			</div>
+			<div class="chapter-name" v-text="'中国西部马术促进会'+user.ChapterName">
+
+			</div>
+			<div id="mainPage" class="main-content" style="background-color: white;overflow-y: hidden;">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" style="height: 40px;">
+						<a href="#" v-on:tap='showPage'>
+							<span style="color: #000000;" v-text="'分会成员('+chapter.memberCount+')'"></span>
+							<span class="mui-pull-right mui-hidden" style="color: #999999;">会长权限</span>
+						</a>
+					</li>
+					<li id="memberList" class="mui-table-view-cell" style="width: 100%;padding: 0;margin-top: 8px;">
+						<div id="pr" class="mui-scroll-wrapper" style="height: 9000px;margin-top: -10px;">
+							<div id="members" class="mui-scroll" style="width: 100%;">
+								<ul class="mui-table-view mui-grid-view mui-grid-9" style="display: block; background-color:inherit;width: 100%;height:100%;position:relative;padding-left: 15px;padding-right: 15px;border-width: 0;">
+									<template v-for='s in list'>
+										<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" style="padding: 0 5px 0 5px ;border-width: 0;">
+											<a href="#" v-on:tap="detail(s.UserID)">
+												<img src="../../img/head.png" data-img="{{s.ImgUrl|f-imgUrl 300 300}}" style="width: 100%;" class="mui-icon mui-icon-home" />
+												<div class="mui-media-body" v-text='s.NickName'></div>
+												<!--<div class="{{s.IsRed?'mui-show':'mui-hidden'}}" style="width: 10px;height: 10px;margin-top:;background-color: green;border-radius: 10px;"></div>-->
+												<!--v-bind:class='{"mui-show":user.Sex==1}'-->
+											</a>
+										</li>
+									</template>
+								</ul>
+							</div>
+							<div id="fins" style="display:none;" class="mui-scroll" style="width: 100%;">
+								<div style="position:relative;background: inherit;border-width: 0;width: 100%;">
+									<ul style="list-style: none;">
+										<li style="width: 100%; text-align: center;height: 50px;padding-top: 15px;color: #333333;">
+											总经理经费:￥{{chapter.totalFin}}
+										</li>
+									</ul>
+									<!--<table style="width: 100%;">-->
+									<ul class="mui-table-view" style="width: 100%;">
+										<template v-for='s in finlist'>
+											<li class="mui-table-view-cell" style="padding-top: 10px;padding-bottom: 10px;">
+												<!--<a href="">-->
+												<div class="mui-pull-left" style="color: #52575D;" v-text="s.CreateDT"></div>
+												<div class="mui-media-body" style="line-height: 15px;height: 35px;color: #333333">
+													{{s.Nums}}
+													<p class='mui-ellipsis' v-text="s.Remark" style="color: #52575D;"></p>
+												</div>
+												<!--</a>-->
+											</li>
+											<!--<tr style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+												<td style="text-align: center;width:40%;color: #52575D;">{{s.CreateDT}}</td>
+												<td style="color: #333333;padding-top: 5px;padding-bottom: 5px;">
+													{{s.Nums}}
+													<div class="mui-ellipsis" style="color: #52575D;" v-text="s.Remark"></div>
+												</td>
+											</tr>-->
+										</template>
+									</ul>
+									<!--</table>-->
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<table width="100%">
+					<tr>
+						<td align="center">
+							<div>
+								<button id="buttonUse" type="button" v-on:tap='changeClub' class="mui-btn mui-btn-yellow mui-btn-block" style="color:white;width:200px;padding:5px 0 5px 0 ;position: relative;display: none;margin-top: 10px;">
+					我要转会
+				</button>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="memeinfo" class="mui-backdrop" style="display: none;">
+				<img v-on:tap="onclickClose" src="http://chorse-sports.ufile.ucloud.com.cn/sys/pub-close.png" style="position:absolute;width: 30px;right: 15px;top: 90px;z-index: 100;" />
+				<div id="slider" class="mui-slider" v-on:drag="drag($event)">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate" style="padding: 120px 40px 100px 40px;">
+							<!--data-img="{{pageData.itemdata3.ImgUrl|f-imgUrl}}"-->
+							<div id="slider0" class="mui-slider" style="z-index: -1;">
+								<div class="mui-slider-group mui-slider-loop">
+									<div v-if="pageData.itemdata3.Imgs&&pageData.itemdata3.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata3.Imgs[pageData.itemdata3.Imgs.length-1]}}" width="100%" />
+										</a>
+									</div>
+									<div v-for="item in pageData.itemdata3.Imgs" class="mui-slider-item">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{item}}" width="100%" />
+										</a>
+									</div>
+									<div v-if="pageData.itemdata3.Imgs&&pageData.itemdata3.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata3.Imgs[0]}}" width="100%" /></a>
+									</div>
+								</div>
+							</div>
+
+							<div style="background-color: white;margin-top: -28px;height: 200px;">
+								<table width="90%" style="margin-left: auto;margin-right: auto;">
+									<tr height="40px">
+										<td width="30%">
+											<div style="width: 100px;position: relative;">
+												<a href="javascript:;" v-on:tap="addAT">
+													<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-clubuser-aixin.png" style="margin-left:20px;margin-top:10px;width:60px;" />
+													<span style="color: white;position: relative;top: -29px;left: -28px;" v-text="pageData.itemdata3.Point"></span>
+												</a>
+											</div>
+										</td>
+										<td style="color: #424242;font-size: 16px;">{{pageData.itemdata3.NickName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pageData.itemdata3.Sex==1?'男':'女'}}<br/><span v-text="pageData.itemdata3.clubName"></span></td>
+									</tr>
+									<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;font-size: 18px;">
+											个性签名
+										</td>
+										<td style="color: #424242;padding-top: 5px;padding-bottom: 5px;font-size: 15px;" v-text="!pageData.itemdata3.PersonSign?'这家伙很懒':pageData.itemdata3.PersonSign"></td>
+									</tr>
+									<!--<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;">活跃度</td>
+										<td align="left">
+											<div class="star_bg" style="float:left;margin-left: 0px;">
+												<span class="star star_1 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>0?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_2 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>1?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_3 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>2?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_4 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>3?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_5 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>4?'mui-show':'mui-hidden'}}"></span>
+											</div>
+										</td>
+									</tr>-->
+								</table>
+							</div>
+						</div>
+						<!-- 第一张 -->
+						<div class="mui-slider-item" style="padding: 120px 40px 100px 40px;">
+							<div id="slider1" class="mui-slider" style="z-index: -1;">
+								<div class="mui-slider-group mui-slider-loop">
+									<div v-if="pageData.itemdata1.Imgs&&pageData.itemdata1.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata1.Imgs[pageData.itemdata1.Imgs.length-1]}}" width="100%" />
+										</a>
+									</div>
+									<div v-for="item in pageData.itemdata1.Imgs" class="mui-slider-item">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{item}}" width="100%" />
+										</a>
+									</div>
+									<div v-if="pageData.itemdata1.Imgs&&pageData.itemdata1.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata1.Imgs[0]}}" width="100%" /></a>
+									</div>
+								</div>
+							</div>
+
+							<div style="background-color: white;margin-top: -28px;height: 200px;">
+								<table width="90%" style="margin-left: auto;margin-right: auto;">
+									<tr height="40px">
+										<td width="30%">
+											<div style="width: 100px;position: relative;">
+												<a href="javascript:;" v-on:tap="addAT">
+													<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-clubuser-aixin.png" style="margin-left:20px;margin-top:10px;width:60px;" />
+													<span style="color: white;position: relative;top: -29px;left: -28px;" v-text="pageData.itemdata1.Point"></span>
+												</a>
+											</div>
+										</td>
+										<td style="color: #424242;font-size: 16px;">{{pageData.itemdata1.NickName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pageData.itemdata1.Sex==1?'男':'女'}}<br/><span v-text="pageData.itemdata1.clubName"></span></td>
+									</tr>
+									<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;font-size: 18px;">
+											个性签名
+										</td>
+										<td style="color: #424242;padding-top: 5px;padding-bottom: 5px;font-size: 15px;" v-text="!pageData.itemdata1.PersonSign?'这家伙很懒':pageData.itemdata1.PersonSign"></td>
+									</tr>
+									<!--<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;">活跃度</td>
+										<td align="left">
+											<div class="star_bg" style="float:left;margin-left: 0px;">
+												<span class="star star_1 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>0?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_2 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>1?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_3 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>2?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_4 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>3?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_5 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>4?'mui-show':'mui-hidden'}}"></span>
+											</div>
+										</td>
+									</tr>-->
+								</table>
+							</div>
+						</div>
+						<div class="mui-slider-item" style="padding: 120px 40px 100px 40px;">
+							<div id="slider2" class="mui-slider" style="z-index: -1;">
+								<div class="mui-slider-group mui-slider-loop">
+									<div v-if="pageData.itemdata2.Imgs&&pageData.itemdata2.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata2.Imgs[pageData.itemdata2.Imgs.length-1]}}" width="100%" />
+										</a>
+									</div>
+									<div v-for="item in pageData.itemdata2.Imgs" class="mui-slider-item">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{item}}" width="100%" />
+										</a>
+									</div>
+									<div v-if="pageData.itemdata2.Imgs&&pageData.itemdata2.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata2.Imgs[0]}}" width="100%" /></a>
+									</div>
+								</div>
+							</div>
+
+							<div style="background-color: white;margin-top: -28px;height: 200px;">
+								<table width="90%" style="margin-left: auto;margin-right: auto;">
+									<tr height="40px">
+										<td width="30%">
+											<div style="width: 100px;position: relative;">
+												<a href="javascript:;" v-on:tap="addAT">
+													<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-clubuser-aixin.png" style="margin-left:20px;margin-top:10px;width:60px;" />
+													<span style="color: white;position: relative;top: -29px;left: -28px;" v-text="pageData.itemdata2.Point"></span>
+												</a>
+											</div>
+										</td>
+										<td style="color: #424242;font-size: 16px;">{{pageData.itemdata2.NickName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pageData.itemdata2.Sex==1?'男':'女'}}<br/><span v-text="pageData.itemdata2.clubName"></span></td>
+									</tr>
+									<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;font-size: 18px;">
+											个性签名
+										</td>
+										<td style="color: #424242;padding-top: 5px;padding-bottom: 5px;font-size: 15px;" v-text="!pageData.itemdata2.PersonSign?'这家伙很懒':pageData.itemdata2.PersonSign"></td>
+									</tr>
+									<!--<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;">活跃度</td>
+										<td align="left">
+											<div class="star_bg" style="float:left;margin-left: 0px;">
+												<span class="star star_1 {{pageData.itemdata2.Liveness&&pageData.itemdata2.Liveness>0?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_2 {{pageData.itemdata2.Liveness&&pageData.itemdata2.Liveness>1?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_3 {{pageData.itemdata2.Liveness&&pageData.itemdata2.Liveness>2?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_4 {{pageData.itemdata2.Liveness&&pageData.itemdata2.Liveness>3?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_5 {{pageData.itemdata2.Liveness&&pageData.itemdata2.Liveness>4?'mui-show':'mui-hidden'}}"></span>
+											</div>
+										</td>
+									</tr>-->
+								</table>
+							</div>
+						</div>
+						<div class="mui-slider-item" style="padding: 120px 40px 100px 40px;">
+							<div id="slider3" class="mui-slider" style="z-index: -1;">
+								<div class="mui-slider-group mui-slider-loop">
+									<div v-if="pageData.itemdata3.Imgs&&pageData.itemdata3.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata3.Imgs[pageData.itemdata3.Imgs.length-1]}}" width="100%" />
+										</a>
+									</div>
+									<div v-for="item in pageData.itemdata3.Imgs" class="mui-slider-item">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{item}}" width="100%" />
+										</a>
+									</div>
+									<div v-if="pageData.itemdata3.Imgs&&pageData.itemdata3.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata3.Imgs[0]}}" width="100%" /></a>
+									</div>
+								</div>
+							</div>
+
+							<div style="background-color: white;margin-top: -28px;height: 200px;">
+								<table width="90%" style="margin-left: auto;margin-right: auto;">
+									<tr height="40px">
+										<td width="30%">
+											<div style="width: 100px;position: relative;">
+												<a href="javascript:;" v-on:tap="addAT">
+													<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-clubuser-aixin.png" style="margin-left:20px;margin-top:10px;width:60px;" />
+													<span style="color: white;position: relative;top: -29px;left: -28px;" v-text="pageData.itemdata3.Point"></span>
+												</a>
+											</div>
+										</td>
+										<td style="color: #424242;font-size: 16px;">{{pageData.itemdata3.NickName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pageData.itemdata3.Sex==1?'男':'女'}}<br/><span v-text="pageData.itemdata3.clubName"></span></td>
+									</tr>
+									<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;font-size: 18px;">
+											个性签名
+										</td>
+										<td style="color: #424242;padding-top: 5px;padding-bottom: 5px;font-size: 15px;" v-text="!pageData.itemdata3.PersonSign?'这家伙很懒':pageData.itemdata3.PersonSign"></td>
+									</tr>
+									<!--<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;">活跃度</td>
+										<td align="left">
+											<div class="star_bg" style="float:left;margin-left: 0px;">
+												<span class="star star_1 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>0?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_2 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>1?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_3 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>2?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_4 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>3?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_5 {{pageData.itemdata3.Liveness&&pageData.itemdata3.Liveness>4?'mui-show':'mui-hidden'}}"></span>
+											</div>
+										</td>
+									</tr>-->
+								</table>
+							</div>
+						</div>
+						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate" style="padding: 120px 40px 100px 40px;">
+							<div id="slider4" class="mui-slider" style="z-index: -1;">
+								<div class="mui-slider-group mui-slider-loop">
+									<div v-if="pageData.itemdata1.Imgs&&pageData.itemdata1.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata1.Imgs[pageData.itemdata1.Imgs.length-1]}}" width="100%" />
+										</a>
+									</div>
+									<div v-for="item in pageData.itemdata1.Imgs" class="mui-slider-item">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{item}}" width="100%" />
+										</a>
+									</div>
+									<div v-if="pageData.itemdata1.Imgs&&pageData.itemdata1.Imgs.length>1" class="mui-slider-item mui-slider-item-duplicate">
+										<a href="#">
+											<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" data-img="{{pageData.itemdata1.Imgs[0]}}" width="100%" /></a>
+									</div>
+								</div>
+							</div>
+
+							<div style="background-color: white;margin-top: -28px;height: 200px;">
+								<table width="90%" style="margin-left: auto;margin-right: auto;">
+									<tr height="40px">
+										<td width="30%">
+											<div style="width: 100px;position: relative;">
+												<a href="javascript:;" v-on:tap="addAT">
+													<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/me-clubuser-aixin.png" style="margin-left:20px;margin-top:10px;width:60px;" />
+													<span style="color: white;position: relative;top: -29px;left: -28px;" v-text="pageData.itemdata1.Point"></span>
+												</a>
+											</div>
+										</td>
+										<td style="color: #424242;font-size: 16px;">{{pageData.itemdata1.NickName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pageData.itemdata1.Sex==1?'男':'女'}}<br/><span v-text="pageData.itemdata1.clubName"></span></td>
+									</tr>
+									<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;font-size: 18px;">
+											个性签名
+										</td>
+										<td style="color: #424242;padding-top: 5px;padding-bottom: 5px;font-size: 15px;" v-text="!pageData.itemdata1.PersonSign?'这家伙很懒':pageData.itemdata1.PersonSign"></td>
+									</tr>
+									<!--<tr height="40px" style="border-top: solid;border-width: 1px;border-color: #E4E3E6;">
+										<td width="30%" style="text-align: left;padding-left: 2%;color: #6CADFD;">活跃度</td>
+										<td align="left">
+											<div class="star_bg" style="float:left;margin-left: 0px;">
+												<span class="star star_1 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>0?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_2 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>1?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_3 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>2?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_4 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>3?'mui-show':'mui-hidden'}}"></span>
+												<span class="star star_5 {{pageData.itemdata1.Liveness&&pageData.itemdata1.Liveness>4?'mui-show':'mui-hidden'}}"></span>
+											</div>
+										</td>
+									</tr>-->
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

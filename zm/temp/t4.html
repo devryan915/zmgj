@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img {
+				max-width: 100%;
+			}
+			
+			.photo a.aa:hover img {
+				filter: alpha(opacity=10);
+				-moz-opacity: 0.1;
+				-khtml-opacity: 0.1;
+				opacity: 0.1;
+			}
+			/*.photo a img{width:137px; height:142px; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);-moz-opacity: 0.5;}*/
+			
+			.photo a.bb:hover img {
+				-webkit-filter: grayscale(100%);
+				-moz-filter: grayscale(100%);
+				-ms-filter: grayscale(100%);
+				-o-filter: grayscale(100%);
+				filter: grayscale(100%);
+				filter: gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="photo">
+
+			<a class="aa" href="#">
+				<img src="../img_cloud/aboutus-logo.png" />
+			</a>
+			<a class="bb" href="#">
+				<img src="../img_cloud/aboutus-logo.png" />
+			</a>
+		</div>
+	</body>
+
+</html>

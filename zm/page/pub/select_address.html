@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.mui-radio input[type=radio] {
+				width: 24px;
+				height: 24px;
+			}
+			
+			.mui-radio input[type=radio]:before {
+				content: '';
+			}
+			
+			.mui-radio input[type=radio]:checked:before {
+				font-family: iconfont;
+				content: '\e654';
+				color: #53be1c;
+				font-size: 24px;
+			}
+			
+			.mui-radio:first-child {
+				color: #0062CC;
+			}
+			
+			.mui-radio:first-child input[type=radio]:checked:before {
+				content: '';
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/pub/select_address']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">所在位置</h1>
+		</header>
+		<div id="pr" class="mui-content  mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="ulAddr" class="mui-table-view">
+					<li class="mui-table-view-cell mui-radio">
+						不显示位置
+						<input type="radio" value="" v-model='ref.addr' />
+					</li>
+					<template v-for='s in list'>
+						<li class="mui-table-view-cell mui-radio">
+							{{s.txt}}
+							<input type="radio" value="{{s.txt}}" v-model='ref.addr' />
+						</li>
+					</template>
+
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

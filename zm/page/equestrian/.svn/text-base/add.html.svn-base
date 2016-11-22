@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			.mui-table-view .mui-table-view-cell span {
+				float: right;
+				font-size: 14px;
+				margin-right: 20px;
+			}
+			
+			.header {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/banner.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				text-align: center;
+				padding-top: 30px !important;
+				padding-bottom: 10px !important;
+			}
+			
+			.header img {
+				height: 80px;
+				/*margin-top: 10px;*/
+			}
+			
+			.header div {
+				color: #fff;
+			}
+			
+			.mui-action-back {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				color: #fff;
+			}
+			
+			.mui-action-back:active {
+				color: #fff;
+			}
+			
+			.y-step {
+				font-size: 12px;
+				margin: 10px 0px;
+				background-color: #fff;
+				color: #fff;
+			}
+			
+			.y-step .mui-table-cell {
+				padding: 5px 3px;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position-x: right;
+			}
+			
+			.y-step .mui-table-cell {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/arrow2.png);
+				background-color: #bfbfbf;
+			}
+			
+			.y-step .mui-table-cell:first-child {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/arrow1.png);
+				background-color: #DBB668;
+			}
+			
+			.y-step .mui-table-cell:last-child {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/arrow3.png);
+				background-color: #bfbfbf;
+			}
+			
+			.y-step .mui-table-cell span {
+				background-color: #fff;
+				color: #DBB668;
+			}
+			
+			button {
+				margin: 10px 0px;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/equestrian/add']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+
+		</header>-->
+		<div id='app' class="mui-content">
+			<div class="header">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+
+				<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/equestrian.png" />
+				<div>中国西部马术促进会</div>
+			</div>
+
+			<div class="mui-content-padded">
+				<div class="mui-table y-step">
+					<div class="mui-table-cell mui-col-xs-3"><span class="mui-badge">1</span> 基本信息</div>
+					<div class="mui-table-cell mui-col-xs-3"><span class="mui-badge">2</span> 选择分会</div>
+					<div class="mui-table-cell mui-col-xs-3"><span class="mui-badge">3</span> 牛仔约定</div>
+				</div>
+				<ul id="ulUserInfo" class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" data-href='pageRealName'>
+							<span v-text='user.RealName'></span>真实姓名
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						性别
+						<div class="mui-switch y-sex" v-on:toggle='editSex' v-bind:class='{"mui-active":user.Sex==0}'>
+							<div class="mui-switch-handle"></div>
+						</div>
+
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" data-href='pageIDCard' v-on:tap='editUserInfo'>
+							<span v-text='user.IDCard'></span>身份证号
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" data-href='pageMobileNum' v-on:tap='editUserInfo'>
+							<span v-text='user.MobileNum'></span>联系方式
+						</a>
+					</li>
+
+				</ul>
+				<button type="button" v-on:tap='selectAddr' disabled="{{!isValid}}" class="mui-btn mui-btn-warning mui-btn-block">下一步</button>
+			</div>
+		</div>
+	</body>
+
+</html>

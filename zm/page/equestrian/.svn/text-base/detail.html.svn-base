@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			body {
+				background-color: #fff;
+			}
+			
+			.mui-content {
+				padding: 15px;
+				margin-top: 10px;
+				background-color: #fff;
+			}
+			
+			.mui-content h3 {
+				font-weight: 400;
+				color: #333;
+				line-height: 33px;
+				font-size: 20px;
+			}
+			
+			.mui-content> pre {
+				border-top: dashed 1px #c8c7cc;
+				margin-top: 15px;
+				padding-top: 15px;
+				padding-bottom: 15px;
+				white-space: pre-wrap;
+				color: #333; 
+			}
+			
+			.mui-content> pre * {
+				max-width: 100% !important;
+				white-space: pre-wrap !important;
+			}
+			
+			.mui-content pre p {
+				font-size: 15px;
+				color: #333;
+				margin: 8px 0px;
+			}
+			
+			.mui-content pre img {
+				max-width: 100%;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/equestrian/detail']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" v-text='o.IssUnit'></h1>
+		</header>
+		<div class="mui-content">
+			<h3 v-text='o.Title'></h3>
+			<h5 v-text='o.IssUser+"  "+o.IssueDT.Format("yyyy-MM-dd hh:mm")'></h5>
+			<pre v-html='o.Content'></pre>
+		</div>
+	</body>
+
+</html>

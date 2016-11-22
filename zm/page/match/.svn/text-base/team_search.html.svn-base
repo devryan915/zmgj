@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/match/team/team_search']);
+				require(['../jsmax/page/match/team_search']);
+			});
+		</script>
+		<style type="text/css">
+			/*头部定义*/
+			
+			.mui-bar.mui-bar-nav.ts-header {
+				background-color: white;
+				color: black;
+			}
+			
+			.header-search {
+				background-color: inherit;
+				height: 44px;
+				position: absolute;
+				width: 100%;
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+			/*team 定义Start*/
+			
+			#teams .mui-media-object.mui-pull-left {
+				height: 80px;
+				max-width: 80px;
+			}
+			
+			#teams .mui-media-body {
+				height: 65px;
+			}
+			
+			#teams .footer .mui-pull-left {
+				color: black;
+			}
+			
+			#teams .footer .mui-pull-right {
+				color: #DD524D;
+			}
+			/*team 定义End*/
+			/*rider 定义Start*/
+			
+			#riders .mui-media-body {
+				position: relative;
+				text-align: center;
+				padding-bottom: 20px;
+				top: -10px;
+			}
+			
+			#riders .rider-img {
+				width: 80px;
+				height: 80px;
+				margin-bottom: 0;
+				z-index: 10;
+			}
+			
+			#riders .rider-icon {
+				position: absolute;
+				right: 2px;
+				top: 11px;
+				z-index: 20;
+			}
+			
+			#riders .y-huiyuan {
+				color: #D7B765;
+			}
+			
+			#riders .y-zhuanjia {
+				color: #6887F0;
+			}
+			/*rider 定义End*/
+			/*horses 定义Start*/
+			
+			#horses .mui-media-body {
+				position: relative;
+				text-align: center;
+				padding-bottom: 20px;
+				top: -10px;
+			}
+			
+			#horses .horse-img {
+				width: 80px;
+				height: 80px;
+				margin-bottom: 0;
+				z-index: 10;
+			}
+			/*horses 定义End*/
+			/*定义刷新Start*/
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: 200px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 999;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			/*定义刷新End*/
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav ts-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left " style="color: #E3CC9B;"></a>
+			<div class="header-search">
+				<div class="mui-input-row mui-search">
+					<input v-on:keyup.enter="search($event)" style="color: black;" type="search" class="mui-input-clear" placeholder="{{pageData.holder}}">
+				</div>
+			</div>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div id="prMatch" class="mui-scroll">
+				<ul id="teams" class="mui-table-view" v-if="pageData.isTeam">
+					<template v-for='s in serverData.Items'>
+						<li class="mui-table-view-cell mui-media" data-id="{{s.CorpsId}}">
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left" src="../../img/head.png" data-img="{{s.ImgUrl|f-imgUrl}}">
+								<div class="mui-media-body">
+									<span v-text="s.Name"></span>
+									<p class='mui-ellipsis-2' v-text="s.CDes"></p>
+								</div>
+								<div class="footer">
+									<p class='mui-ellipsis mui-pull-left' v-text="s.ClubName"></p>
+									<p class="mui-pull-right"> <i class="y y-aixin"></i>{{s.PNum}}</p>
+								</div>
+							</a>
+						</li>
+					</template>
+				</ul>
+				<ul id="riders" class="mui-table-view  mui-grid-view mui-grid-9" v-if="pageData.isRider">
+					<template v-for='s in serverData.Items'>
+						<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-id="{{s.UserID}}" style="padding: 0 ;border-width: 0;">
+							<a href="#">
+								<i class="y {{s.RiderLevel==1?'y-zhuanjia':(s.RiderLevel==2?'y-huiyuan':'')}} rider-icon"></i>
+								<img src="../../img/head.png" data-img="{{s.ImgUrl|f-imgUrl}}" class="mui-icon mui-icon-home rider-img" />
+								<div class="mui-media-body" v-text="s.NickName"></div>
+							</a>
+						</li>
+					</template>
+				</ul>
+				<ul id="horses" class="mui-table-view  mui-grid-view mui-grid-9" v-if="pageData.isHorse">
+					<template v-for='s in serverData.Items'>
+						<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" data-id="{{s.HID}}" style="padding: 0 ;border-width: 0;">
+							<a href="#">
+								<img src="../../img/horse.png" data-img="{{s.ImgUrl|f-imgUrl}}" class="mui-icon mui-icon-home horse-img" />
+								<div class="mui-media-body" v-text="s.Name"></div>
+							</a>
+						</li>
+					</template>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

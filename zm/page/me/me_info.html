@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style>
+			html,
+			body {
+				background-color: #282828;
+			}
+			
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			
+			.mui-pages {
+				top: 46px;
+				height: auto;
+			}
+			
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				height: 44px;
+				background-color: #282828;
+			}
+			
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: rgba(0, 0, 0, 1);
+				text-align: center;
+			}
+			
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+			
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				width: auto;
+			}
+			
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+			
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			
+			.mui-page {
+				display: none;
+			}
+			
+			.mui-pages .mui-page {
+				display: block;
+			}
+			
+			.mui-page .mui-table-view:first-child {
+				margin-top: 15px;
+			}
+			
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+			
+			.mui-table-view {
+				margin-top: 60px;
+			}
+			
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+			
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+			
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+			
+			.update {
+				font-style: normal;
+				color: #999999;
+				margin-right: -25px;
+				font-size: 15px
+			}
+			
+			.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-ios .mui-navbar .mui-bar .mui-title {
+				position: static;
+			}
+			
+			.mui-scroll form:first-of-type {
+				margin-top: 15px;
+			}
+			
+			.ly-table-one-way span {
+				font-size: 15px;
+				color: #999999;
+				float: right;
+				margin-right: 25px;
+			}
+			/*.update {
+				font-style: normal;
+				color: #999999;
+				margin-right: -25px;
+				font-size: 15px
+			}*/
+			
+			.mui-btn.mui-btn-link.mui-pull-right.save:active {
+				color: #fff;
+			}
+			
+			.about-footer {
+				position: absolute;
+				left: 50%;
+				margin-left: -150px;
+				width: 300px;
+				text-align: center;
+				bottom: 40px;
+				font-size: 15px;
+				color: #706e6e;
+			}
+			
+			.about-footer a {
+				color: #706e6e;
+			}
+			
+			.mui-page {
+				margin-top: -2px;
+			}
+			
+			.meinfo-personsign {
+				padding-top: 10px;
+				height: auto;
+				color: #666666;
+			}
+			
+			#meNav img {
+				width: 100%;
+				z-index: 0;
+				position: relative;
+			}
+			
+			.me-head {
+				margin-top: -220px;
+				width: 100%;
+				height: 170px;
+			}
+			
+			.me-head img {
+				position: absolute;
+				left: 50%;
+				margin-left: -56px;
+				z-index: 2;
+			}
+			
+			.me-head #headPhoto {
+				position: absolute;
+				z-index: 1;
+				left: 50%;
+				margin-left: -50px;
+				width: 100px;
+				height: 100px;
+				border-radius: 50px;
+				margin-top: 7px;
+				background: url(../../img/head_bg.png);
+				background-size: 100px;
+			}
+			
+			.me-head p {
+				position: relative;
+				color: white;
+				font-size: 18px;
+				padding: 2px;
+				margin: 5px auto;
+				width: 120px;
+				border-radius: 10px;
+				text-align: center;
+				min-height: 25px;
+				background: rgba(0, 0, 0, .3);
+			}
+			
+			nav {
+				position: relative;
+				z-index: 1;
+				background-color: rgba(0, 0, 0, .6);
+			}
+			
+			nav.mui-bar-tab .mui-tab-item:after {
+				border-right: #666 1px solid;
+				content: '';
+				height: 40px;
+				display: block;
+				margin-top: -42px;
+			}
+			
+			nav.mui-bar-tab .mui-tab-item:last-child:after {
+				border-right: none;
+			}
+			/*nav.mui-bar-tab .mui-tab-item {
+				border-right: #666 1px solid;
+			}
+			nav.mui-bar-tab .mui-tab-item:last-child {
+				border-right: none;
+			}*/
+			
+			nav.mui-bar-tab .mui-tab-item {
+				color: white;
+			}
+			
+			nav.mui-bar-tab .mui-tab-item.mui-active {
+				color: white;
+			}
+			
+			.mui-bar-nav {
+				background: rgba(0, 0, 0, 1);
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/me/me_info']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<!--页面主结构开始-->
+		<div class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar " style="background: rgba(0,0,0,0);">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		<!--页面主结构结束-->
+		<!--单页面开始-->
+		<div id="setting" class="mui-page">
+			<!--页面标题栏开始-->
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">设置</h1>
+			</div>
+			<!--页面标题栏结束-->
+			<!--页面主内容区开始-->
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+
+						<ul class="mui-table-view mui-table-view-chevron " style="margin-top: 10px;position: relative; ">
+							<li class="mui-table-view-cell ">
+								<a href="#customer" class="mui-navigate-right ">
+									<i class="y y-customerservice "></i>
+									<span class="mui-media-body ">客服中心</span>
+								</a>
+							</li>
+							<!--<li class="mui-table-view-cell ">
+								<a href="# " v-on:click='exit' class="mui-navigate-right ">
+									<i class="y y-switching "></i>
+									<span class="mui-media-body ">切换账号</span>
+								</a>
+							</li>-->
+							<li class="mui-table-view-cell ">
+								<a href="javascript:void(0);" v-on:click='clearCache'>
+									<i class="y y-broom "></i>
+									<span class="mui-media-body ">清除缓存</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell ">
+								<a href="#pageAbout" class="mui-navigate-right ">
+									<i class="y y-aboutus "></i>
+									<span class="mui-media-body ">关于我们</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--页面主内容区结束-->
+		</div>
+
+		<!--我的信息 单页面开始-->
+		<div id="meInfo" class="mui-page">
+			<!--页面标题栏开始-->
+			<div class="mui-navbar-inner mui-bar mui-bar-nav" style="background: rgba(0,0,0,0);">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span style="background: rgba(0,0,0,.3);border: 0px solid  #000; padding:2px;border-radius: 20px;"  class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title"></h1>
+			</div>
+			<!--<div class="mui-bar mui-bar-transparent">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">导航栏</h1>
+			</div>-->
+			<!--页面标题栏结束-->
+			<!--页面主内容区开始-->
+			<div class="mui-page-content">
+				<!--<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">-->
+				<!--<div id="slider" class="mui-slider mui-plus-visible" style="position:relative;z-index: 1;">
+							<div class="mui-slider-group">
+							
+								<div class="mui-slider-item">
+									<a href="javascript:;">
+										<img id="userPhoto1" v-on:tap="selImg()" src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" />
+									</a>
+								</div>
+								<div class="mui-slider-item">
+									<a href="javascript:;">
+										<img id="userPhoto2" v-on:tap="selImg()" src="http://chorse-sports.ufile.ucloud.com.cn/sys/defaul_bg_16_9.png" />
+									</a>
+								</div>
+							</div>
+							<div class="mui-slider-indicator">
+								<div class="mui-indicator mui-active"></div>
+								<div class="mui-indicator "></div>
+							</div>
+						</div>
+						<div class="mui-plus-visible" style="position:relative;margin-top: -50px;z-index: 9;width: 100%;height: 50px;">
+							<img id="headPhoto" style="position: absolute;right: 0;margin-right: 20px;width: 66px;" v-on:tap="selImg()" src="../../img/head.png" />
+						</div>-->
+				<div id="meNav">
+					<div id="slider" class="mui-slider mui-plus-visible" style="margin-top: -44px;z-index: 0;">
+						<div class="mui-slider-group">
+							<div class="mui-slider-item">
+								<a href="javascript:;">
+									<img id="userPhoto1" v-on:tap="selImg('userPhoto1')" src="../../img/me-head-bg.png" data-img="{{user.ImgUrls&&user.ImgUrls.length>1?user.ImgUrls[1].ImgUrl:''}}" />
+								</a>
+							</div>
+							<div class="mui-slider-item">
+								<a href="javascript:;">
+									<img id="userPhoto2" v-on:tap="selImg('userPhoto2')" src="../../img/me-head-bg.png" data-img="{{user.ImgUrls&&user.ImgUrls.length>2?user.ImgUrls[2].ImgUrl:''}}" />
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator" style="z-index: 999;">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator "></div>
+						</div>
+					</div>
+					<div class="me-head">
+						<img src="../../img/head_outline_silvery.png" style="width: 112px;" />
+						<i id="headPhoto" data-img='{{user.ImgUrl|f-imgUrl 100}}'></i>
+						<p v-text='user.showName'></p>
+					</div>
+					<!--<nav class="mui-bar-tab">
+						<a class="mui-tab-item" href="javascript:;">
+							<span>粉丝</span>
+							<div v-text='user.FNums.length <= 0 ? "0" : user.FNums'> </div>
+						</a>
+						<a class="mui-tab-item" href="javascript:;">
+							<span>积分</span>
+							<div v-text='user.Points.length <= 0 ? "0" : user.Points'></div>
+						</a>
+						<a class="mui-tab-item" href="javascript:;">
+							<span>经验</span>
+							<div v-text='user.Exp.length <= 0 ? "0" : user.Exp'></div>
+						</a>
+						<a class="mui-tab-item" href="javascript:;">
+							<span>马币</span>
+							<div v-text='user.MB.length <= 0 ? "0" : user.MB'></div>
+						</a>
+					</nav>-->
+				</div>
+				<!--<div class="head-img">
+							<div class="head-img-left">
+								<img id="imgleft" v-on:tap="selImg()" src="../../img/head.png" data-img="{{user.ImgUrls[0].ImgUrl|f-imgUrl}}" />
+							</div>
+							<div>
+								<img id="imgRight1" v-on:tap="selImg()" class="head-img-right1" src="../../img/head.png" data-img="{{user.ImgUrls[1].ImgUrl|f-imgUrl}}" />
+								<img id="imgRight2" v-on:tap="selImg()" class="head-img-right2" src="../../img/head.png" data-img="{{user.ImgUrls[2].ImgUrl|f-imgUrl}}" />
+							</div>
+						</div>-->
+				<ul class="mui-table-view ly-table-one-way" style="clear: both;">
+					<!--<li id="head" class="mui-table-view-cell" style="line-height: 44px;height: 56px;">
+								头像<i id="head-user" v-bind:style='user.ImgUrl|f-img 42' class="head head-user mui-pull-right mui-action-preview" style=" width: 44px;height: 44px;margin-top: -5px;"></i>
+							</li>-->
+					<!--<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="#pageNick">
+							昵称<span v-text='user.NickName'></span></a>
+					</li>-->
+					<li class="mui-table-view-cell">
+						<!--<a class="{{!user.IsMember&&'mui-navigate-right'}}" href="#{{!user.ChapterID&&'pageRealName'}}">-->
+						<a class="mui-navigate-right" href="#pageRealName">
+							真实姓名<span v-text='user.RealName'></span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						性别
+						<div id="sexSwitch" class="mui-switch y-sex" v-on:toggle='editSex' v-bind:class='{"mui-active":user.Sex==1}'>
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<!--<a class="{{!user.IsMember&&'mui-navigate-right'}}" href="#{{!user.ChapterID&&'pageIDCard'}}">-->
+						<!--暂时放开限制-->
+						<a class="mui-navigate-right" href="#pageIDCard">
+							身份证号<span v-text='user.IDCard'></span></a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="#pageChapterName">
+							所属俱乐部<span v-text='user.ClubName'></span></a>
+					</li>
+					<!--<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="#pageMobileNum">
+							修改验证手机<span v-text='user.MobileNum'></span></a>
+					</li>-->
+					<!--<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="#pagePassword">
+							修改登录密码<span></span></a>
+					</li>-->
+					<!--<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" href="#pagePersonSign">
+							个性签名<span class="mui-ellipsis" style="width: 70%;"></span></a>
+						<div class="meinfo-personsign mui-ellipsis-5" v-text='user.PersonSign'></div>
+					</li>-->
+					<li class="mui-table-view-cell mui-hidden">
+						<a class="mui-navigate-right" href="#pageBind">
+							绑定天马账号<span v-text='user.MobileNum'></span></a>
+					</li>
+				</ul>
+
+			</div>
+			<!--</div>
+			</div>-->
+			<!--页面主内容区结束-->
+		</div>
+
+		<div id="pageBind" class="mui-page meInfo">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">绑定天马账号</h1>
+
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-content-padded y-table">
+
+							<div class="mui-input-row">
+								<span>	<i class="y y-phone"></i></span>
+								<input v-model='par.loginName' type="number" placeholder="请输入手机号码">
+							</div>
+							<!--<div class="mui-input-row mui-password">
+								<span><i class="y y-password"></i></span>
+								<input v-model='par.password' type="password" class="mui-input-password" placeholder="请输入登录密码">
+							</div>-->
+							<div class="mui-input-row">
+								<span><i class="y y-message"></i></span>
+								<input v-model='par.validCode' type="number" placeholder="请输入验证码">
+								<div class="y-btn"><button type="button" disabled="{{!validCode.isValidCode}}" v-on:tap='sendValidCode' class="mui-btn mui-btn-warning valid-code" v-text='validCodeStr'>获取验证码</button></div>
+							</div>
+							<button type="button" v-on:tap='bindUser' disabled="{{!isValid}}" class="mui-btn mui-golden mui-btn-block">绑定</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--  start   昵称修改   -->
+		<div id="pageNick" class="mui-page meInfo">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">昵称</h1>
+				<button type="button" class="mui-btn mui-btn-link mui-pull-right save" data-form="frmNick" data-type='2'>
+					保存
+				</button>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div id="frmNick" class="mui-input-group">
+							<div class="mui-input-row">
+								<input v-model='user1.NickName' data-name='NickName' type="text" class="mui-input-clear" placeholder="请输入昵称" maxlength="12" />
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--  start  姓名修改  -->
+
+		<div id="pageRealName" class="mui-page meInfo">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">真实姓名</h1>
+				<button type="button" class="mui-btn mui-btn-link mui-pull-right save" data-form="frmName" data-type='7'>
+					保存
+				</button>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div id="frmName" class="mui-input-group">
+							<div class="mui-input-row">
+								<input data-name='RealName' type="text" class="mui-input-clear" v-model='user1.RealName' placeholder="请输入真实姓名" maxlength="12" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="pageIDCard" class="mui-page meInfo">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">身份证号</h1>
+				<button type="button" class="mui-btn mui-btn-link mui-pull-right save" data-form="frmIDCard" data-type='4'>
+					保存
+				</button>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div id="frmIDCard" class="mui-input-group">
+							<div class="mui-input-row">
+								<!--data-reg='/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/'-->
+								<input v-model='user1.IDCard' data-name='IDCard' data-reg-error='身份证号码不正确' type="text" class="mui-input-clear" placeholder="请输入身份证号" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="pagePersonSign" class="mui-page meInfo">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">个性签名</h1>
+				<button type="button" class="mui-btn mui-btn-link mui-pull-right save" data-form="frmPersonSign" data-type='6'>
+					保存
+				</button>
+			</div>
+			<div class="mui-page-content">
+				<!--<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">-->
+				<div id="frmPersonSign">
+					<!--<div>
+								<textarea rows='5' v-model='user1.PersonSign' placeholder="请输入个性签名">
+								</textarea>
+							</div>-->
+					<div class="mui-input-row" style="margin: 5px;">
+						<textarea data-name='PersonSign' rows='5' v-model='user1.PersonSign' placeholder="请输入个性签名" maxlength="500"></textarea>
+					</div>
+				</div>
+				<!--</div>
+			</div>-->
+			</div>
+		</div>
+		<!--  手机号码 -->
+		<div id="pageMobileNum" class="mui-page meInfo">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">修改验证手机</h1>
+
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-content-padded y-table">
+							<div class="mui-input-row mui-password">
+								<span><i class="y y-password"></i></span>
+								<input v-model='par.password' type="password" class="mui-input-password" placeholder="请输入登录密码">
+							</div>
+							<div class="mui-input-row">
+								<span>	<i class="y y-phone"></i></span>
+								<input v-model='par.loginName' type="number" placeholder="请输入新手机号码">
+							</div>
+
+							<div class="mui-input-row">
+								<span><i class="y y-message"></i></span>
+								<input v-model='par.validCode' type="number" placeholder="请输入验证码">
+								<div class="y-btn"><button type="button" disabled="{{!validCode.isValidCode}}" v-on:tap='sendValidCode' class="mui-btn mui-btn-warning valid-code" v-text='validCodeStr'>获取验证码</button></div>
+							</div>
+							<button type="button" v-on:tap='editMobile' disabled="{{!isValid}}" class="mui-btn mui-golden mui-btn-block">保存</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--  修改密码 -->
+		<div id="pagePassword" class="mui-page meInfo">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">修改密码</h1>
+
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-content-padded y-table">
+							<div class="mui-input-row mui-password">
+								<span><i class="y y-password"></i></span>
+								<input v-model='editPasswordPar.passwordOld' type="password" class="mui-input-password" placeholder="请输入原密码">
+							</div>
+							<div class="mui-input-row mui-password">
+								<span><i class="y y-password"></i></span>
+								<input v-model='editPasswordPar.password' type="password" class="mui-input-password" placeholder="请输入6-18位新密码">
+							</div>
+
+							<button type="button" v-on:tap='editPassword' disabled="{{!validPassword.isPassword}}" class="mui-btn mui-golden mui-btn-block">保存</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="pageMeQRcode" class="mui-page meInfo">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">我的二维码</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper" style="background-color: #fff;top: -15px;">
+					<div class="mui-scroll">
+						<div style="text-align:center;padding-top: 20px; background-color: #fff;">
+
+							<ul class="mui-table-view" style="width: 300px; margin: 0 auto;border: solid 1px #c8c7cc;">
+								<li id="liQRcode" class="mui-table-view-cell mui-media">
+
+									<i class="mui-media-object mui-pull-left head head-user"></i>
+									<div class="mui-media-body mui-pull-left" style="display: inline-block;text-align: left;">
+										<span v-text='user.NickName'></span>
+										<!--<p   class='mui-ellipsis' >扫一扫二维码，加我</p>-->
+									</div>
+
+								</li>
+								<li class="mui-table-view-cell" style="background-color: #efeff4;">
+									<div id="qrWo"></div>
+								</li>
+
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--   end   姓名修改-->
+
+		<div id="feedback" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>我
+				</button>
+				<h1 class="mui-center mui-title">意见与建议</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="row mui-input-row" style="padding: 15px;">
+							<textarea id='question' style="min-height: 150px;" class="mui-input-clear question" placeholder="吐槽内容"></textarea>
+						</div>
+						<div class="mui-content-padded">
+							<button id='btnFeedback' type="button" class="mui-btn mui-btn-green mui-btn-block" style="margin-right: 15px;">提交</button>
+						</div>
+						<p style="display: none;">图片(选填,提供问题截图)</p>
+						<div style="display: none;" id='image-list' class="row image-list">
+						</div>
+						<p style="display: none;">QQ/邮箱</p>
+						<div style="display: none;" class="mui-input-row">
+							<input style="display: none;" id='contact' type="text" class="mui-input-clear  contact" placeholder="(选填,方便我们联系你 )" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="pageAbout" class="mui-page feedback">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left mui-btn-green">
+					<span class="mui-icon mui-icon-left-nav"></span>设置
+				</button>
+				<h1 class="mui-center mui-title">关于我们</h1>
+			</div>
+			<div class="mui-page-content" style="text-align: center; padding-top:20px;background-color:white;">
+				<div id="qrAbout" style="text-align:center; margin-top: 60px;width: 200px; margin-left: auto;margin-right: auto;">
+					<img src="../../img/aboutus-logo.png" style="width: 100px;margin-bottom: 5px;" />
+					<div v-text='ver'></div>
+				</div>
+				<div class="about-footer">
+					<div style="line-height: 50px;">
+						<a href="javascript:;" v-on:tap="agreeement" style="padding: 5px 3px 5px 3px;">用户服务协议</a>
+						<span style="color:rgba(200,200,200,.6);">|</span>
+						<a href="javascript:;" v-on:tap="disclaimer" style="padding: 5px 3px 5px 3px;">赛事免责声明</a>
+						<!--<span style="color:rgba(200,200,200,.6);">|</span>
+						<a style="padding: 5px 3px 5px 3px;">版权信息</a>-->
+					</div>
+					<div>&copy;中马国际体育发展有限公司</div>
+					<div>C-horse International Development Co,Ltd.</div>
+				</div>
+			</div>
+		</div>
+		<div id="customer" class="mui-popover mui-popover-action mui-popover-bottom">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#">QQ客服:2138542563</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="#">客服邮箱：cs@tiannma.com.cn</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#customer"><b>取消</b></a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			window.onresize = function() {
+				console.log('innerHeight:' + innerHeight + ' innerWidth:' + innerWidth 
+				+ ' clientHeight:' + document.body.clientHeight + ' clientWidth:' + document.body.clientWidth 
+				+ ' clientTop:' + document.body.clientTop+ ' clientLeft:' + document.body.clientLeft
+				+ ' scrollTop:' + document.body.scrollTop+ ' scrollLeft:' + document.body.scrollLeft
+				+ ' offsetTop:' + document.body.offsetTop+ ' offsetLeft:' + document.body.offsetLeft
+				+ ' offsetHeight:' + document.body.offsetHeight+ ' offsetWidth:' + document.body.offsetWidth
+				);
+			};
+
+			function testCanvas() {
+				var color = ["#626262", "#787878", "rgba(0,0,0,0.5)", "#DCC722", "white", "#FF4350"];
+				var canvas = document.getElementById('myCanvas');
+				var ctx = canvas.getContext('2d');
+
+				var step = 2 * Math.PI / 8;
+				var startAngle = 0; //扇形的开始弧度
+				var endAngle = 0; //扇形的终止弧度
+				//			ctx.save();
+
+				//画一个8等份扇形组成的圆形
+				for(var i = 0; i < 8; i++) {
+					startAngle = Math.PI * (i / 4 - 1 / 8);
+					endAngle = startAngle + Math.PI * (1 / 4);
+					ctx.save();
+					ctx.beginPath();
+					ctx.arc(150, 150, 100, startAngle, endAngle, false);
+					ctx.lineWidth = 120;
+					if(i % 2 == 0) {
+						ctx.strokeStyle = color[0];
+					} else {
+						ctx.strokeStyle = color[1];
+					}
+					ctx.stroke();
+					ctx.restore();
+				}
+				ctx.fillStyle = 'red';
+				ctx.translate(150, 150)
+				ctx.beginPath();
+				ctx.arc(0, 0, 100, Math.PI * (-1 / 4), Math.PI * (1 / 2), false);
+				ctx.save();
+				ctx.rotate(Math.PI * (1 / 2));
+				ctx.moveTo(100, 0);
+				ctx.lineTo(0, 0);
+				ctx.restore();
+				ctx.rotate(Math.PI * (-1 / 4));
+				ctx.lineTo(100, 0);
+				ctx.closePath();
+				ctx.restore();
+				ctx.fill();
+				var o = {}; // 创建一个新对象
+				// Example of an object property added with defineProperty with a data property descriptor
+				Object.defineProperty(o, "a", {
+					value: 37,
+					writable: true,
+					enumerable: true,
+					configurable: true
+				});
+				var userInfo = {};
+				Object.defineProperty(userInfo, "nickName", {
+					v: null,
+					get: function() {
+						console.log('get' + v);
+						return v;
+					},
+					set: function(nick) {
+						v = nick;
+						console.log('set' + nick);
+					}
+				});
+				userInfo.nickName = 'dd';
+				console.log(userInfo.nickName);
+			}
+			window.onload = function() {
+				testCanvas();
+			};
+		</script>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="300" height="300" style="background-color: black;"></canvas>
+
+	</body>
+
+</html>

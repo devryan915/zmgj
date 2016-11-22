@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/me/selclub']);
+			});
+		</script>
+		<style type="text/css">
+			.mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-backdrop {
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .3)
+			}
+			/***自定义radio Start****/
+			
+			.club-radio {
+				position: relative
+			}
+			
+			.club-radio input[type=radio] {
+				position: absolute;
+				top: 4px;
+				right: 20px;
+				display: inline-block;
+				width: 28px;
+				height: 26px;
+				border: 0;
+				outline: 0!important;
+				background-color: transparent;
+				-webkit-appearance: none
+			}
+			
+			.club-radio input[type=radio]:before {
+				/*font-family: Muiicons;*/
+				font: normal normal normal 14px/1 iconfont;
+				font-size: 28px;
+				font-weight: 400;
+				line-height: 1;
+				text-decoration: none;
+				color: #aaa;
+				border-radius: 0;
+				background: 0 0;
+				-webkit-font-smoothing: antialiased
+			}
+			
+			.club-radio input[type=radio]:before {
+				content: '\e627';
+			}
+			
+			.club-radio input[type=radio]:checked:before {
+				color: #2AC845;
+			}
+			
+			.club-radio input[type=radio]:checked:before {
+				/*content: url(../../img/pub/pub-chk-sel.png);*/
+				content: '\e629'
+			}
+			/****自定义radio End***/
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #DBB467;
+			}
+			
+			.selclub {
+				height: 100px;
+			}
+			
+			.selclub-content {
+				margin-top: 5px;
+				right: 0px;
+				left: 110px;
+				height: 60px;
+				width: calc(100% - 160px) !important;
+				width: 160px;
+				position: absolute;
+				line-height: 15px;
+				height: 45px;
+			}
+			
+			.selclub-content-name {
+				width: 150px;
+				margin-left: 5px;
+			}
+			
+			.selclub-content-radio {
+				position: absolute;
+				right: -10px;
+				top: 35px;
+			}
+			
+			.selclub-content-distance {
+				margin-top: 45px;
+				margin-left: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>
+			<h1 class="mui-title">选择俱乐部</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div id="searchDiv" class="mui-backdrop" style="display: none;">
+				<div style="background-color: rgba(255,255 ,255, 1);height: 44px;padding-top: 5px;">
+					<div class="mui-input-row mui-search">
+						<input v-on:keyup.enter="onclickSearchComplete" type="search" class="mui-input-clear" placeholder="搜索俱乐部">
+					</div>
+				</div>
+				<div style="position: relative;margin: 0;padding: 0;width: 100%;height: 100%;" v-on:click='onclickCloseBackDrop'></div>
+			</div>
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1mobile">全部</a>
+					<a class="mui-control-item" href="#item2mobile">综合实力</a>
+					<a class="mui-control-item" href="#item3mobile">人气好评</a>
+					<a class="mui-control-item" href="#item4mobile">距离最近</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3" style="background-color: #DBB400;">
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<!--<li class="mui-table-view-cell mui-media selclub">
+										<a href="#">
+											<img class="mui-pull-left" src="../../img/me/me_userhead.jpg" style="position:relative;height: 80px;width:80px;margin-right: 10px;">
+											<div style="display: inline-block;">
+												<span class='mui-ellipsis selclub-content-name'>minmingzimingzimingzimingzimingzimingzimingzimingzigzi</span>
+												<p class='mui-ellipsis-3 selclub-content'>sdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsdsdfsfsd</p>
+												<div class="club-radio selclub-content-radio">
+													<input name="radioclub" type="radio" value="1" v-model='pagePar.clubID'>
+												</div>
+											</div>
+											<div>
+												<p class='mui-ellipsis mui-pull-left selclub-content-distance'>1.2km</p>
+											</div>
+										</a>
+									</li>-->
+
+									<template v-for='s in allList'>
+										<li class="mui-table-view-cell mui-media selclub">
+											<a href="#">
+												<img class="mui-pull-left" src="../../img/head.png" data-img="{{s.ImgUrl|f-imgUrl}}"style="position:relative;height: 80px;width:80px;margin-right: 10px;">
+												<div style="display: inline-block;">
+													<span class='mui-ellipsis selclub-content-name' v-text='s.Name'></span>
+													<p class='mui-ellipsis-3 selclub-content' v-text='s.content'></p>
+													<div class="club-radio selclub-content-radio">
+														<input name="radioclub" type="radio" value="{{s.UnitID}}" v-model='pagePar.clubID'>
+													</div>
+												</div>
+												<div>
+													<p class='mui-ellipsis mui-pull-left selclub-content-distance' v-text="s.distance+'km'"></p>
+												</div>
+											</a>
+										</li>
+									</template>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<!--<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>-->
+								<ul class="mui-table-view">
+									<template v-for='s in queryList'>
+										<li class="mui-table-view-cell mui-media selclub">
+											<a href="#">
+												<img class="mui-pull-left" src="../../img/head.png" data-img="{{s.ImgUrl|f-imgUrl}}"style="position:relative;height: 80px;width:80px;margin-right: 10px;">
+												<div style="display: inline-block;">
+													<span class='mui-ellipsis selclub-content-name' v-text='s.Name'></span>
+													<p class='mui-ellipsis-3 selclub-content' v-text='s.content'></p>
+													<div class="club-radio selclub-content-radio">
+														<input name="zradioclub" type="radio" value="{{s.UnitID}}" v-model='pagePar.zClubID'>
+													</div>
+												</div>
+												<div>
+													<p class='mui-ellipsis mui-pull-left selclub-content-distance' v-text="s.distance+'km'"></p>
+												</div>
+											</a>
+										</li>
+									</template>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<!--<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>-->
+								<ul class="mui-table-view">
+									<template v-for='s in queryList'>
+										<li class="mui-table-view-cell mui-media selclub">
+											<a href="#">
+												<img class="mui-pull-left" src="../../img/head.png" data-img="{{s.ImgUrl|f-imgUrl}}" style="position:relative;height: 80px;width:80px;margin-right: 10px;">
+												<div style="display: inline-block;">
+													<span class='mui-ellipsis selclub-content-name' v-text='s.Name'></span>
+													<p class='mui-ellipsis-3 selclub-content' v-text='s.content'></p>
+													<div class="club-radio selclub-content-radio">
+														<input name="rradioclub" type="radio" value="{{s.UnitID}}" v-model='pagePar.rClubID'>
+													</div>
+												</div>
+												<div>
+													<p class='mui-ellipsis mui-pull-left selclub-content-distance' v-text="s.distance+'km'"></p>
+												</div>
+											</a>
+										</li>
+									</template>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll4" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<!--<div class="mui-loading">
+									<div class="mui-spinner">
+									</div>
+								</div>-->
+								<ul class="mui-table-view">
+									<template v-for='s in queryList'>
+										<li class="mui-table-view-cell mui-media selclub">
+											<a href="#">
+												<img class="mui-pull-left" src="../../img/head.png" data-img="{{s.ImgUrl|f-imgUrl}}" style="position:relative;height: 80px;width:80px;margin-right: 10px;">
+												<div style="display: inline-block;">
+													<span class='mui-ellipsis selclub-content-name' v-text='s.Name'></span>
+													<p class='mui-ellipsis-3 selclub-content' v-text='s.content'></p>
+													<div class="club-radio selclub-content-radio">
+														<input name="dradioclub" type="radio" value="{{s.UnitID}}" v-model='pagePar.dClubID'>
+													</div>
+												</div>
+												<div>
+													<p class='mui-ellipsis mui-pull-left selclub-content-distance' v-text="s.distance+'km'"></p>
+												</div>
+											</a>
+										</li>
+									</template>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<button id="buttonUse" type="button" v-on:tap='ok' class="mui-btn mui-btn-yellow mui-btn-block" style="color:white;width:200px;padding:5px 0 5px 0 ;position: absolute;left:50%;margin-left: -100px;bottom: 0px;">
+					确定
+				</button>
+		</div>
+		<script type="application/javascript">
+		</script>
+	</body>
+
+</html>

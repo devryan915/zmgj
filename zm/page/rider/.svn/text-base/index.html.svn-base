@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/indexlist/listhorseskill_banner.png" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/rider/index']);
+			});
+		</script>
+		<style type="text/css">
+			body img {
+				width: 100%;
+			}
+			
+			.header-search {
+				position: fixed;
+				width: 50vw;
+				left: 50vw;
+				margin-left: -25vw;
+				/*text-align: center;*/
+				background-color: rgba(0, 0, 0, .25);
+				border-radius: 10px;
+				height: 25px;
+				font-size: 14px;
+				top: 10px;
+			}
+			
+			.header-search div {
+				padding-top: 2px;
+			}
+			
+			.header-search span {
+				color: white;
+				padding-left: 5px;
+			}
+			
+			.mui-bar-tab {
+				background-color: #fff;
+				padding: 10px 0;
+			}
+			
+			.mui-bar-tab span {
+				font-size: 50px;
+			}
+			
+			.mui-bar-tab div {
+				font-size: 15px;
+				color: #676767;
+			}
+			
+			.ad {
+				width: 100%;
+				margin: 10px 0;
+			}
+			
+			.near {
+				padding-left: 10px;
+				background-color: #fff;
+				line-height: 40px;
+				color: #909090;
+			}
+			
+			.mem-item {
+				position: relative;
+				margin: 8px 0;
+				background-color: white;
+				font-size: 0;
+				height: 100px;
+				padding: 5px;
+				padding-left: 12px;
+			}
+			
+			.item-left {
+				width: 120px;
+				height: 90px;
+				float: left;
+			}
+			
+			.item-right {
+				width: calc(100% - 120px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: black;
+				padding-left: 4px;
+				font-size: 16px;
+			}
+			
+			.item-right p {
+				padding-top: 0px;
+				padding-left: 4px;
+				color: #313131;
+				height: 45px;
+				font-size: 14px;
+				line-height: 20px;
+			}
+			
+			.item-right div:last-child {
+				color: #999999;
+				font-size: 12px;
+				line-height: 16px;
+				padding-left: 4px;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header id="header" class="mui-bar mui-bar-transparent">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span style="background: rgba(0,0,0,.3);border: 0px solid  #000; padding:2px;border-radius: 20px;color:white;"  class="mui-icon mui-icon-left-nav"></span>
+			</button>
+			<div class="header-search" v-on:tap="goSearch">
+				<div>
+					<span><i class="y y-search"></i>&nbsp;骑乘</span>
+				</div>
+			</div>
+			<button class="mui-btn mui-btn-link mui-pull-right" style="color: white;" v-on:tap="pickcity">
+				{{curcity}}
+				<i class="mui-icon mui-icon-arrowdown" style="margin: 0;"></i>
+			</button>
+		</header>
+		<div class="mui-content">
+			<img id="headImage" src="../../img/qichebanner.png" />
+			<nav class="mui-bar-tab">
+				<a class="mui-tab-item" data-type="1" href="javascript:;">
+					<span class="y y-xiuxian" style="color: #75aff8;"></span>
+					<div>休闲骑乘</div>
+				</a>
+				<a class="mui-tab-item" data-type="2" href="javascript:;">
+					<span class="y y-tese" style="color: #f2b642;"></span>
+					<div>特色野骑</div>
+				</a>
+				<a class="mui-tab-item" data-type="3" href="javascript:;">
+					<span class="y y-banka" style="color: #74e792;"></span>
+					<div>办卡</div>
+				</a>
+				<a class="mui-tab-item" data-type="4" href="javascript:;">
+					<span class="y y-jiyang" style="color: #da99f8;"></span>
+					<div>马匹寄养</div>
+				</a>
+			</nav>
+			<!--<div style="padding: 5px;">
+				<iframe height="225px" width="100%" src="http://act.3g.yy.com/outEmbed/tttest?src=91" frameborder=0 allowfullscreen></iframe>
+			</div>-->
+			<!--<iframe height=225 width=300 src="http://act.3g.yy.com/outEmbed/tttest?src=292" frameborder=0 allowfullscreen></iframe>-->
+			<div id="slider" class="mui-slider ad">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item">
+						<a href="javascript:;">
+							<img src="../../img/ad.png" />
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="javascript:;">
+							<img src="../../img/guanggao.png" />
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator" style="z-index: 999;">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator "></div>
+				</div>
+			</div>
+			<div class="near">
+				<i class="y y-location" style="color: #389091;font-size: 20px;"></i> 附近俱乐部
+			</div>
+			<div v-for="item in idxlist" class="mem-item" data-id="{{item.UnitID}}" data-data='{\"id\":\"{{item.UnitID}}\",\"title\":\"{{item.Name}}\",\"img\":\"{{item.ImgUrl}}\"}'>
+				<div class="item-left">
+					<!--src="../../img/default_640x480.png"-->
+					<img data-img="{{item.ImgUrl+'?iopcmd=thumbnail&type=8&width=280&height=210'}}" src="../../img/default_640x480.png" />
+				</div>
+				<div class="item-right">
+					<div class="mui-ellipsis" v-text="item.Name"></div>
+					<p>
+						<span data-starid="{{item.UnitID}}" data-star="{{item.UnitLevel|f-star item.UnitID}}">
+					</span>
+					</p>
+					<div class="mui-ellipsis-2" v-text="item.Area+'|'+item.Distance+''+item.DUnit">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

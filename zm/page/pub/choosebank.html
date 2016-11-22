@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link href="../../css/mui.indexedlist.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/pub/choosebank']);
+			});
+		</script>
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.selbank div {
+				position: relative;
+				margin-left: 40px;
+				margin-top: -45px;
+				height: 45px;
+				padding-left: 5px;
+				line-height: 45px;
+			}
+			
+			.selbank img {
+				width: 38px;
+				height: 38px;
+				display: inline;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">选择银行</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div id='list' class="mui-indexed-list">
+				<div class="mui-indexed-list-search mui-input-row mui-search">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" maxlength="20" placeholder="搜索银行">
+				</div>
+				<div class="mui-indexed-list-bar">
+					<a>A</a>
+					<a>B</a>
+					<a>C</a>
+					<a>D</a>
+					<a>E</a>
+					<a>F</a>
+					<a>G</a>
+					<a>H</a>
+					<a>I</a>
+					<a>J</a>
+					<a>K</a>
+					<a>L</a>
+					<a>M</a>
+					<a>N</a>
+					<a>O</a>
+					<a>P</a>
+					<a>Q</a>
+					<a>R</a>
+					<a>S</a>
+					<a>T</a>
+					<a>U</a>
+					<a>V</a>
+					<a>W</a>
+					<a>X</a>
+					<a>Y</a>
+					<a>Z</a>
+				</div>
+				<div class="mui-indexed-list-alert"></div>
+				<div class="mui-indexed-list-inner">
+					<div class="mui-indexed-list-empty-alert">没有数据</div>
+					<ul id="bankList" class="mui-table-view">
+						<!--<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
+							<li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item mui-left selbank">
+								<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/yinlian-pay.png" />
+								<div>阿克苏机场</div>
+							</li>-->
+						<!--<li data-group="{{item.indextitle}}" class="mui-table-view-divider mui-indexed-list-group">{{item.indextitle}}</li>
+							<li v-for="im in item.children" data-value="{{im.value}}" data-tags="{{im.tags}}" class="mui-table-view-cell mui-indexed-list-item mui-left selbank">
+								<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/yinlian-pay.png" />
+								<div>{{im.name}}</div>
+							</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

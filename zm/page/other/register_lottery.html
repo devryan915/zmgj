@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/box_o.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/MB.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/Saddle.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/Saddle1.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/Horse1.png" />
+		<link rel="prefetch" href="http://chorse-sports.ufile.ucloud.com.cn/sys/Horse2.png" />
+		<style type="text/css">
+			.mui-content>img {
+				width: 100%;
+				min-height: 260px;
+				background-color: #ff5f17;
+			}
+			
+			.y-center {
+				margin-top: -60px;
+				background-color: #ff5f17;
+			}
+			
+			.y-center>* {
+				text-align: center;
+				background-color: #ff5f17;
+			}
+			
+			.y-center h5 {
+				color: #fff;
+				font-size: 13px;
+			}
+			
+			.y-center h1 {}
+			
+			.y-center .y-progress .mui-table .mui-table-cell {
+				vertical-align: bottom;
+				height: 45px;
+			}
+			
+			.y-center .y-progress .mui-table:last-child .mui-table-cell {
+				vertical-align: top;
+			}
+			
+			.y-center .y-progress .mui-table .mui-table-cell:empty {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/other/bulb.png);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center center;
+				text-align: center;
+				height: 30px;
+			}
+			
+			.y-color {
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/other/bulb1.png) !important;
+			}
+			
+			.y-center .y-progress .mui-table:last-child .mui-table-cell:empty {
+				-moz-transform: rotate(180deg);
+				-webkit-transform: rotate(180deg);
+				transform: rotate(180deg);
+			}
+			
+			.y-center .y-progress {
+				padding: 20px 0px;
+				color: #fff;
+				font-size: 12px;
+			}
+			
+			.y-center .y-progress>p {
+				height: 5px;
+				background-color: #fff;
+				margin: 0;
+			}
+			
+			.y-prize {
+				margin: 10px auto;
+			}
+			
+			.y-prize1 {
+				color: #fff;
+			}
+			
+			.y-center .y-prize>div {
+				border: solid 10px #ff9000;
+				height: 200px;
+				width: 200px;
+				border-radius: 100px;
+				margin: 0 auto;
+				background-color: #e96911;
+				box-shadow: 2px 2px 4px 2px #e94406 inset;
+			}
+			
+			.y-center .y-prize>div>div {
+				z-index: 999;
+			}
+			
+			.y-center .y-prize>div>div>img {
+				height: 130px;
+				margin: 25px 0;
+			}
+			
+			.y-center .y-prize>div>div#divPrize>img {
+				height: 130px;
+				margin: 25px 0;
+			}
+			
+			.y-center .y-prize>div>div>h2 {
+				height: 130px;
+				margin: 25px 0;
+				margin-top: 50%;
+			}
+			
+			.y-center .mui-btn {
+				margin-top: 10px;
+				background-image: url(http://chorse-sports.ufile.ucloud.com.cn/sys/other/btn.png);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center center;
+				width: 170px;
+				height: 50px;
+				border-radius: 30px;
+				border: none;
+				background-color: #ff5f17;
+			}
+			
+			.y-center>marquee {
+				height: 100px;
+				margin: 10px 30px;
+				text-align: left;
+				background-color: #F56B00;
+				/*border: solid 1px #fff;*/
+				box-shadow: 1px 1px 5px 1px #C33B00 inset;
+			}
+			
+			.y-center>marquee>p {
+				color: #fff;
+				margin: 0 0 0 10px;
+			}
+			
+			.y-footer {
+				background-color: #f1551b;
+				padding: 10px 0;
+				color: #fff;
+			}
+			
+			.y-footer>.mui-input-row {
+				margin: 0 20px;
+			}
+			
+			.y-footer>.mui-input-row>h4 {
+				position: absolute;
+				top: 0px;
+				left: calc(50% - 65px);
+				background-color: #f1551b;
+				padding: 0 10px;
+				font-weight: normal;
+				line-height: 12px;
+				z-index: 1;
+			}
+			
+			.y-footer>.mui-input-row>h5 {
+				font-size: 17px;
+				color: #fff;
+				padding: 10px 0;
+			}
+			
+			.y-footer>.mui-input-row>h4>i {
+				font-size: 14px;
+			}
+			
+			.y-footer>.mui-input-row>ol {
+				padding-left: 15px;
+				margin: 10px 0 20px 0;
+			}
+			
+			.y-footer>.mui-input-row>ol>li {
+				color: #fff;
+				font-size: 12px;
+				margin-bottom: 2px;
+			}
+			
+			.y-footer>.mui-input-row>ol.y-no-list-style {
+				list-style: none;
+				padding-left: 0;
+			}
+			
+			.mui-backdrop {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 998;
+				background-color: rgba(0, 0, 0, .8);
+			}
+			
+			#txtNum {
+				position: relative;
+				height: 45px;
+			}
+			
+			#txtNum td>div {
+				background-color: #fff950;
+				color: #333;
+				font-size: 36px;
+				margin: 0 2px;
+				height: 45px !important;
+			}
+			
+			#txtNum td>div span {
+				height: 45px !important;
+				line-height: 45px !important;
+			}
+			
+			.bounce-transition {
+				display: inline-block;
+				position: relative;
+				font-size: 14px;
+				color: #fff;
+			}
+			
+			.bounce-enter {
+				animation: bounce-in .5s;
+			}
+			
+			.bounce-leave {
+				/*animation: bounce-out 2.5s;*/
+			}
+			
+			@keyframes bounce-in {
+				0% {
+					transform: scale(0);
+				}
+				50% {
+					transform: scale(1.5);
+				}
+				100% {
+					transform: scale(1);
+				}
+			}
+			
+			@keyframes bounce-out {
+				/*0% {
+					transform: scale(1);
+					transform: rotateY(0deg);
+				}
+				50% {
+					transform: scale(1.5);
+					transform: rotateY(180deg);
+				}
+				100% {
+					transform: scale(0);
+					transform: rotateY(360deg);
+				}*/
+			}
+			
+			.lottery:disabled {
+				-webkit-filter: grayscale(100%);
+				-moz-filter: grayscale(100%);
+				-ms-filter: grayscale(100%);
+				-o-filter: grayscale(100%);
+				filter: grayscale(100%);
+				filter: gray;
+				filter: alpha(opacity=80);
+				-moz-opacity: 0.8;
+				-khtml-opacity: 0.8;
+				opacity: 0.8;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/other/register_lottery']);
+			});
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">注册抽奖活动</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<img src="http://chorse-sports.ufile.ucloud.com.cn/sys/header.png" />
+			<div class="y-center">
+				<h5>当前注册人数</h5>
+				<h1 id="txtNum"></h1>
+				<div class="y-progress">
+					<div class="mui-table">
+						<div class="mui-table-cell" :class="{'y-color':cNum>=1}"></div>
+						<div class="mui-table-cell">
+							第二轮
+						</div>
+						<div class="mui-table-cell" :class="{'y-color':cNum>=3}"></div>
+						<div class="mui-table-cell">
+							第四轮
+						</div>
+						<div class="mui-table-cell" :class="{'y-color':cNum>=5}"></div>
+						<div class="mui-table-cell">
+							第六轮
+						</div>
+					</div>
+					<p></p>
+					<div class="mui-table">
+						<div class="mui-table-cell">
+							第一轮
+						</div>
+						<div class="mui-table-cell" :class="{'y-color':cNum>=2}"></div>
+						<div class="mui-table-cell">
+							第三轮
+						</div>
+						<div class="mui-table-cell" :class="{'y-color':cNum>=4}"></div>
+						<div class="mui-table-cell">
+							第五轮
+						</div>
+						<div class="mui-table-cell" :class="{'y-color':cNum>=6}"></div>
+					</div>
+				</div>
+				<template v-if='State!=0'>
+					<div class="y-prize1" v-text='LukeyItem.ItemSource'></div>
+					<div class="y-prize">
+						<div>
+							<!--<div style="position: relative;">
+							<div class="mui-backdrop">
+								<img v-show="show" transition="bounce" style="z-index: 10000;" src="../../img/other/box.png" />
+							</div>
+						</div>-->
+							<div v-show="show1">
+								<img v-if='State==1' :src="'http://chorse-sports.ufile.ucloud.com.cn/sys/'+LukeyItem.ImgUrl+'.png'" />
+								<h2 v-if='State==2'>活动已结束</h2>
+							</div>
+							<div id="divPrize" v-show="show2" transition="bounce">
+								<img v-if='State==1' /> 
+							</div>
+							<!--<div v-show="show" transition="bounce">
+								<img v-if='State==1' :src="'http://chorse-sports.ufile.ucloud.com.cn/sys/'+LukeyItem.ImgUrl+'.png'" />
+								<h2 v-if='State==2'>活动已结束</h2>
+							</div>-->
+						</div>
+					</div>
+					<div class="y-prize1" v-text='LukeyItem.ItemName+"*"+LukeyItem.Qty'></div>
+					<div>
+						<button type="button" disabled="{{!isValid}}" v-on:tap='lottery' class="mui-btn lottery"></button>
+					</div>
+					<marquee hspace="" height="100px" scrollamount="1" direction="up">
+						<p v-for='s in listAwards' v-text='s'></p>
+					</marquee>
+				</template>
+
+			</div>
+			<div class="y-footer">
+				<div class="mui-input-row">
+					<h5>抽奖时间：2016.7.23 - 2016.7.24</h5>
+				</div>
+				<div class="mui-input-row">
+					<h4><i class="y y-star"></i> 活动规则 <i class="y y-star"></i></h4>
+					<hr />
+				</div>
+				<div class="mui-input-row">
+					<ol>
+						<li>每个注册用户在每个阶段有一次抽奖机会；</li>
+						<li>用户在活动期间注册，可以补抽前面阶段的奖品；</li>
+						<li>抽到的奖品请在规定的有效期内领取、兑换；</li>
+						<li>实物奖励数量有限，先到先得。若该轮奖品全部抽完，未抽奖用户直接领取阳光普照奖（马币）。</li>
+						<li>活动最终解释权归天马所有。</li>
+					</ol>
+				</div>
+				<div class="mui-input-row">
+					<h4><i class="y y-star"></i> 活动奖励 <i class="y y-star"></i></h4>
+					<hr />
+				</div>
+				<div class="mui-input-row">
+					<ol class="y-no-list-style">
+						<li>第一轮（累积注册达10000）：500马币</li>
+						<li>第二轮（累积注册达20000）：1000马币</li>
+						<li>第三轮（累积注册达50000）：2500马币</li>
+						<li>第四轮（累积注册达100000）：西部鞍</li>
+						<li>第五轮（累积注册达200000）：辉煌（阿帕卢萨马）</li>
+						<li>第六轮（累积注册达500000）：奇迹（汗血宝马）</li>
+					</ol>
+				</div>
+				<div class="mui-input-row">
+					<h4><i class="y y-star"></i> 领奖方式 <i class="y y-star"></i></h4>
+					<hr />
+				</div>
+				<div class="mui-input-row">
+					<ol>
+						<li>请获得实物奖励的用户主动联系《中马运营团队》郭亮，现场扫二维码领取。</li>
+						<li>注：获得马匹奖励的用户请在30个工作日内将马匹牵回，否则视为放弃。</li>
+						<li>郭亮 TEL：13564206470 QQ：2138542563</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

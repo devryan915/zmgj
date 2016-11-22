@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.previewimage.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//				require(['page/me/selclub']);
+				require(['../jsmax/page/rider/list']);
+			});
+		</script>
+		<style type="text/css">
+			html,
+			body,
+			.mui-content {
+				height: 100%;
+			}
+			
+			.mui-slider,
+			.mui-slider-group {
+				height: 100%;
+			}
+			/*下拉刷新Begin*/
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			/*下拉刷新end*/
+			
+			#sliderSegmentedControl {
+				background: #fff;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #DBB467;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.rider-item {
+				background: #fff;
+				width: 100%;
+				padding: 10px 15px;
+				margin: 5px 0;
+			}
+			
+			.item-name {
+				font-size: 17px;
+				margin: 10px 0 0 0;
+			}
+			
+			.item-footer1 {
+				height: 20px;
+				line-height: 20px;
+			}
+			
+			.item-footer1 span:first-child {
+				float: left;
+				color: #666;
+			}
+			
+			.item-footer1 span:last-child {
+				float: right;
+				color: #FFA44C;
+			}
+			
+			.item-footer2 {
+				height: 12px;
+				line-height: 25px;
+				clear: both;
+				color: #999;
+			}
+			
+			.item-footer2 span:first-child {
+				float: left;
+			}
+			
+			.item-footer2 span:last-child {
+				float: right;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title" style="font-size: 17px;">{{city}}
+				<span style="font-size: 12px;">切换城市</span>
+				<i class="mui-icon mui-icon-arrowdown" style="margin: 0;"></i>
+		</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1">全部</a>
+					<a class="mui-control-item" href="#item2">价格</a>
+					<a class="mui-control-item" href="#item3">距离最近</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4">
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="rider-item" v-for="item in parList[0].list" data-id='{{item.ShopID}}'>
+									<img src="../../img/default_640x320.png" data-img='{{item.ImgUrl|f-imgUrl 480 240}}' />
+									<span class="mui-ellipsis item-name" v-text="item.ShopName"></span>
+									<div class="item-footer1">
+										<span v-text="item.ClubName"></span>
+										<span v-text="item.Price+'马币/'+item.QUnit"></span>
+									</div>
+									<div class="item-footer2">
+										<span v-text="item.Area+'|'+item.Distance+''+data.DUnit"></span>
+										<span v-text="'0评价'"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item2" class="mui-slider-item mui-control-content">
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="rider-item" v-for="item in parList[1].list" data-id='{{item.ShopID}}'>
+									<img src="../../img/default_640x320.png" data-img='{{item.ImgUrl|f-imgUrl 480 240}}' />
+									<span class="mui-ellipsis item-name" v-text="item.ShopName"></span>
+									<div class="item-footer1">
+										<span v-text="item.ClubName"></span>
+										<span v-text="item.Price+'马币/'+item.QUnit"></span>
+									</div>
+									<div class="item-footer2">
+										<span v-text="item.Area+'|'+item.Distance+''+data.DUnit"></span>
+										<span v-text="'0评价'"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item3" class="mui-slider-item mui-control-content">
+						<div id="scroll3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="rider-item" v-for="item in parList[2].list" data-id='{{item.ShopID}}'>
+									<img src="../../img/default_640x320.png" data-img='{{item.ImgUrl|f-imgUrl 480 240}}' />
+									<span class="mui-ellipsis item-name" v-text="item.ShopName"></span>
+									<div class="item-footer1">
+										<span v-text="item.ClubName"></span>
+										<span v-text="item.Price+'马币/'+item.QUnit"></span>
+									</div>
+									<div class="item-footer2">
+										<span v-text="item.Area+'|'+item.Distance+''+data.DUnit"></span>
+										<span v-text="'0评价'"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+
+</html>

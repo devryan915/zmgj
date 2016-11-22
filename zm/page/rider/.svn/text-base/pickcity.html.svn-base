@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link href="../../css/mui.indexedlist.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/rider/pickcity']);
+			});
+		</script>
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.header-search {
+				background-color: inherit;
+				height: 44px;
+				position: fixed;
+				width: 100%;
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+			
+			.header-search input {
+				background-color: #fff;
+			}
+			
+			header.mui-bar.mui-bar-nav * {
+				color: #000000;
+			}
+			
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+			
+			#hotcity {
+				background-color: white;
+				width: 100%;
+			}
+			
+			#hotcity li {
+				border: none;
+			}
+			
+			#hotcity div {}
+			
+			#hotcity button {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body id="app">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="header-search">
+				<form id='frmSearch' onsubmit="return false;">
+					<div class="mui-input-row mui-search mui-active">
+						<!--<form action="#">-->
+						<input id="cityinput" v-model="par.search" type="search" class="mui-input-clear" placeholder="请输入城市名称">
+						<!--</form>-->
+					</div>
+				</form>
+			</div>
+		</header>
+		<div class="mui-content">
+			<div style="line-height: 40px;padding-left: 10px;">当前定位城市</div>
+			<div id="curcity" style="padding-left: 40px;line-height: 30px;height:30px;width: 100%;background: #fff;" data-id="{{curcity}}" v-text="curcity"></div>
+			<div style="line-height: 40px;padding-left: 10px;">热门城市</div>
+			<ul id="hotcity" class="mui-table-view mui-grid-view mui-grid-9">
+				<li v-for="item in hotList" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" data-id="{{item.code}}">
+					<div>
+						<button type="button" class="mui-btn mui-btn-warning mui-btn-outlined" v-text="item.name"></button>
+					</div>
+				</li>
+			</ul>
+			<div id='list' class="mui-indexed-list">
+				<div class="mui-indexed-list-search mui-input-row mui-search mui-hidden">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索城市">
+				</div>
+				<div class="mui-indexed-list-bar">
+					<a>A</a>
+					<a>B</a>
+					<a>C</a>
+					<a>D</a>
+					<a>E</a>
+					<a>F</a>
+					<a>G</a>
+					<a>H</a>
+					<a>I</a>
+					<a>J</a>
+					<a>K</a>
+					<a>L</a>
+					<a>M</a>
+					<a>N</a>
+					<a>O</a>
+					<a>P</a>
+					<a>Q</a>
+					<a>R</a>
+					<a>S</a>
+					<a>T</a>
+					<a>U</a>
+					<a>V</a>
+					<a>W</a>
+					<a>X</a>
+					<a>Y</a>
+					<a>Z</a>
+				</div>
+				<div class="mui-indexed-list-alert"></div>
+				<div class="mui-indexed-list-inner">
+					<div class="mui-indexed-list-empty-alert">没有数据</div>
+					<ul id="citylist" class="mui-table-view">
+						<!--<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
+						<li data-value="BPL" data-tags="ALaShanKou" class="mui-table-view-cell mui-indexed-list-item">阿拉山口机场</li>
+						<li data-value="MFM" data-tags="AoMenGuoJi" class="mui-table-view-cell mui-indexed-list-item">澳门国际机场</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

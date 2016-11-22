@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>注册</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">注册</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-input-group">
+				<div class="mui-input-row">
+					<input type="text" class="mui-input-clear" placeholder="账号">
+				</div>
+			</div>
+			<div class="mui-input-group">
+				<div class="mui-input-row">
+					<input type="text" class="mui-input-clear" placeholder="密码">
+				</div>
+			</div>
+			<div class="mui-button-row">
+				<button type="button" class="mui-btn mui-btn-green" id="btn_submit">提交</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+			mui.plusReady(function() {
+				// 事件，切换（注意是切换）回首页
+				document.getElementById("btn_submit").addEventListener("tap", function() {
+					// 根据id关闭指定的webview
+					// http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.close
+					plus.webview.close("login", "none");
+					// 关闭当前页
+					// http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.currentWebview
+					// http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.WebviewObject.close
+					// http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.AnimationTypeClose
+					plus.webview.currentWebview().close("slide-out-right");
+				});
+			});
+		</script>
+	</body>
+
+</html>

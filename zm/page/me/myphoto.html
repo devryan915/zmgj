@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/animation.css" />
+		<link rel="stylesheet" href="../../css/mui.previewimage.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				//require(['page/me/selclub']);
+				require(['../jsmax/page/me/myphoto']);
+			});
+		</script>
+		<style type="text/css">
+			#meNav img {
+				width: 100%;
+				z-index: 0;
+				position: relative;
+			}
+			
+			.me-head {
+				margin-top: -220px;
+				width: 100%;
+				height: 170px;
+			}
+			
+			.me-head img {
+				position: absolute;
+				left: 50%;
+				margin-left: -56px;
+				z-index: 2;
+			}
+			
+			.me-head #headPhoto {
+				position: absolute;
+				z-index: 1;
+				left: 50%;
+				margin-left: -50px;
+				width: 100px;
+				height: 100px;
+				border-radius: 50px;
+				margin-top: 7px;
+				background: url(../../img/head_bg.png);
+				background-size: 100px;
+			}
+			
+			.me-head p {
+				position: relative;
+				color: white;
+				font-size: 18px;
+				padding: 2px;
+				margin: 5px auto;
+				width: 120px;
+				border-radius: 10px;
+				text-align: center;
+				min-height: 25px;
+				background: rgba(0, 0, 0, .3);
+			}
+			
+			nav {
+				position: relative;
+				z-index: 1;
+				background-color: rgba(0, 0, 0, .6);
+			}
+			
+			nav.mui-bar-tab .mui-tab-item:after {
+				border-right: #666 1px solid;
+				content: '';
+				height: 40px;
+				display: block;
+				margin-top: -42px;
+			}
+			
+			nav.mui-bar-tab .mui-tab-item:last-child:after {
+				border-right: none;
+			}
+			/*nav.mui-bar-tab .mui-tab-item {
+				border-right: #666 1px solid;
+			}
+			nav.mui-bar-tab .mui-tab-item:last-child {
+				border-right: none;
+			}*/
+			/*控制tab默认字体颜色*/
+			
+			nav.mui-bar-tab .mui-tab-item {
+				color: white;
+			}
+			/*控制tab选中状态字体*/
+			
+			nav.mui-bar-tab .mui-tab-item.mui-active {
+				color: white;
+			}
+			
+			.p-sign {
+				background-color: #fff;
+				width: 100%;
+				display: block;
+				position: relative;
+			}
+			
+			.p-sign div {
+				font-size: 20px;
+				width: 100px;
+				max-width: 100px;
+				line-height: 60px;
+				text-align: center;
+				color: #f00;
+				text-shadow: 1px 1px 1px #999;
+			}
+			
+			.p-sign p {
+				margin: -55px 30px 10px 100px;
+				color: #333333;
+				font-size: 14px;
+				padding: 5px;
+			}
+			
+			.p-sign-single {
+				line-height: 42px;
+			}
+			
+			.p-sign a {
+				color: #008000;
+				/*position: absolute;
+				right: 0;*/
+				float: right;
+				padding-right: 5px;
+				margin-top: -35px;
+				font-size: 14px;
+			}
+			
+			.me-ellipsis {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: 10px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 2;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-media-body {
+				padding-left: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-transparent">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span style="background: rgba(0,0,0,.3);border: 0px solid  #000; padding:2px;border-radius: 20px;color:white;"  class="mui-icon mui-icon-left-nav"></span>
+			</button>
+			<h1 class="mui-title"></h1>
+		</header>
+		<div id="app" class="mui-content mui-scroll-wrapper" style="opacity: 0;">
+			<div class="mui-scroll y-card-list">
+				<div id="meNav">
+					<div id="slider" class="mui-slider mui-plus-visible" style="z-index: 0;">
+						<div class="mui-slider-group">
+							<div class="mui-slider-item">
+								<a href="javascript:;">
+									<img id="userPhoto1" v-on:tap="selImg('userPhoto1')" src="../../img/me-head-bg.png" data-img="{{oUser.ImgUrls&&oUser.ImgUrls.length>0?oUser.ImgUrls[0]:'../../img/me-head-bg.png'}}" />
+								</a>
+							</div>
+							<div class="mui-slider-item">
+								<a href="javascript:;">
+									<img id="userPhoto2" v-on:tap="selImg('userPhoto2')" src="../../img/me-head-bg.png" data-img="{{oUser.ImgUrls&&oUser.ImgUrls.length>1?oUser.ImgUrls[1]:'../../img/me-head-bg.png'}}" />
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator "></div>
+						</div>
+					</div>
+					<div class="me-head">
+						<img src="../../img/head_outline_silvery.png" style="width: 112px;" />
+						<i id="headPhoto" data-img='{{oUser.Img|f-imgUrl 100}}'></i>
+						<p v-text='oUser.Name'></p>
+					</div>
+					<!--<nav class="mui-bar-tab" style="opacity: {{oUser.UserID==user.UserID?'1':'0'}};">
+						<a class="mui-tab-item" href="javascript:;">
+							<span>粉丝</span>
+							<div v-text='user.FNums.length <= 0 ? "0" : user.FNums'> </div>
+						</a>
+						<a class="mui-tab-item" href="javascript:;">
+							<span>积分</span>
+							<div v-text='user.Points.length <= 0 ? "0" : user.Points'></div>
+						</a>
+						<a class="mui-tab-item" href="javascript:;">
+							<span>经验</span>
+							<div v-text='user.Exp.length <= 0 ? "0" : user.Exp'></div>
+						</a>
+						<a class="mui-tab-item" href="javascript:;">
+							<span>马币</span>
+							<div v-text='user.MB.length <= 0 ? "0" : user.MB'></div>
+						</a>
+					</nav>-->
+				</div>
+				<div class="p-sign" style="margin-top: 60px;">
+					<!--v-text='user.PersonSign'-->
+					<div>个性签名</div>
+					<p id="personSign" class="me-ellipsis " data-status='down' v-text='oUser.PersonSign&&oUser.PersonSign.length>0?oUser.PersonSign:"楼主啥也没写..."'>
+					</p>
+					<a id="showMore"></a>
+				</div>
+				<template v-for='(index, s) in list'>
+					<div class="mui-card  animated fadeInUp" data-id='{{s.PostId}}'>
+						<div class="mui-card-header mui-card-media">
+							<img src="../../img/head.png" data-img='{{s.ImgUrl|f-imgUrl 100}}' />
+							<div class="mui-media-body">
+								<button v-if="s.UserID!=user.UserID" type="button" data-userid='{{s.UserID}}' data-isattention={{s.IsFollow.toString()}} class=" mui-btn mui-btn-green mui-pull-right mui-btn-outlined y-attention" v-text='s.IsFollow?"取消关注":"+ 关注"'></button> {{s.Name}}
+								<p v-text='s.IssDT|f-time "MM-dd hh:mm"'></p>
+							</div>
+						</div>
+						<div class="mui-card-content y-ellipsis y-ellipsis-flag" v-text='s.Content' data-id='{{s.PostId}}' data-list-index='0' data-index='{{index}}'></div>
+						<div v-if='s.Imgs.length>0' class="mui-card-content " data-id='{{s.PostId}}' data-list-index='0' data-index='{{index}}'>
+							<div class="mui-row">
+								<template v-for='s1 in s.Imgs'>
+									<div v-if='s.Imgs.length==1'> <img src="../../img/default_640x320.png" data-img='{{s1}}' style="width: 210px;" data-preview-src="{{s1}}" data-preview-group="{{index}}" /> </div>
+									<div v-else class="mui-col-xs-4"> <img src="../../img/default_320x320.png" data-img='{{s1|f-imgUrl 210}}' data-preview-src="{{s1}}" data-preview-group="{{index}}" /> </div>
+								</template>
+							</div>
+						</div>
+						<div class="mui-card-footer" data-id='{{s.PostId}}' data-list-index='0' data-index='{{index}}'>
+							<a class="mui-card-link mui-col-xs-4" data-type='{{s.IsCollect?5:1}}'><i class="y y-2x {{s.IsCollect?'y-collect y-yellow':'y-collect-o'}}"></i> {{s.CNums||'收藏'}}</a>
+							<a class="mui-card-link mui-col-xs-4" data-type='101'><i class="y y-2x y-comment-o"></i> {{s.DNums||'评论'}}</a>
+							<a class="mui-card-link mui-col-xs-4" data-type='{{s.IsPoint?9:2}}'><i class="y y-2x {{s.IsPoint?'y-heart y-red':'y-heart-o'}}"></i> {{s.PNums||'点赞'}}</a>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</body>
+
+</html>

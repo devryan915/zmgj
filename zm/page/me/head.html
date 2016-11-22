@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<style type="text/css">
+			html {
+				height: 100%;
+			}
+			
+			body {
+				margin: 0;
+				text-align: center;
+				height: 100%;
+			}
+			
+			#clipArea {
+				/*margin: 20px;*/
+				height: 100%;
+				background-color: rgba(0, 0, 0, .9)
+			}
+			
+			#file,
+			#clipBtn {
+				/*margin: 20px;*/
+			}
+			
+			#view {
+				margin: 0 auto;
+				width: 200px;
+				height: 200px;
+			}
+			
+			.photo-clip-mask .photo-clip-area {
+				border: 1px solid rgb(221, 221, 221) !important;
+			}
+		</style>
+
+	</head>
+
+	<body id="app">
+
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title"></h1>
+			<button id="clipBtn" class="mui-btn mui-btn-green mui-pull-right">使用</button>
+		</header>
+		<div id="clipArea"></div>
+		<input type="file" style="display: none;" id="file">
+		<div id="view" style="display: none;"></div>
+	</body>
+	<script type="text/javascript" src="../../js/mui.js"></script>
+	<script src="../../js/jquery.js"></script>
+	<script src="../../js/iscroll-zoom.js"></script>
+	<script src="../../js/hammer.js"></script>
+	<script src="../../js/lrz.all.bundle.js"></script>
+	<script src="../../js/jquery.photoClip.js"></script>
+	<script type="text/javascript">
+		mui.ready(function() {
+			mui.back = function() {
+				//				plus.webview.currentWebview().hide();
+				plus.webview.currentWebview().close();
+			};
+			/*
+			var clipArea = null;
+			window.addEventListener('reload', function(e) {
+				var viewID = e.detail.viewID;
+				console.log('222::' + clipArea + ' ' + e.detail.img + ' ' + e.detail.headUrl + ' ');
+				//				clipArea && clipArea.destroy();
+				//add by ryan 清除数据
+				//				document.getElementById('view').style.backgroundImage = 'none';
+				//				document.getElementById('clipArea').innerHTML = '';
+				//指定默认尺寸
+				var ssize = [280, 280];
+				var osize = [300, 300];
+				//如果有指定尺寸则使用指定尺寸
+				if(e.detail.sizeParam && e.detail.sizeParam.size && e.detail.sizeParam.outputSize) {
+					ssize = e.detail.sizeParam.size;
+					osize = e.detail.sizeParam.outputSize;
+				}
+				console.log(ssize + ' ' + osize + ' ' + e.detail.headUrl);
+				clipArea = null;
+				clipArea = new bjj.PhotoClip("#clipArea", {
+					size: ssize,
+					outputSize: osize,
+					file: "#file",
+					source: e.detail.headUrl,
+					view: "#view",
+					ok: "#clipBtn",
+					loadStart: function() {
+						console.log("照片读取中");
+					},
+					loadComplete: function() {
+						console.log("照片读取完成");
+					},
+					clipFinish: function(dataURL) {
+						//						console.log(dataURL);
+						var w = plus.webview.getWebviewById(viewID);
+						//						console.log('完成推送' + e.detail.img);
+						mui.fire(w, 'uploadHead', {
+							headData: dataURL,
+							img: e.detail.img
+						});
+						plus.webview.currentWebview().hide();
+						//add by ryan 由于PhotoClip destroy不够彻底，导致此页面无法重用，因此暂时通过销毁来避免此问题
+						plus.webview.currentWebview().close();
+					}
+				}); //只能设置空值
+				//				document.getElementById('file').value = e.detail.headUrl;
+			});
+			*/
+		});
+		mui.plusReady(function() {
+			var clipArea = null;
+			var selfPage = plus.webview.currentWebview();
+			if(selfPage && selfPage.viewID) {
+				var viewID = selfPage.viewID;
+				//				console.log('222::' + clipArea + ' ' + selfPage.img + ' ' + selfPage.headUrl + ' ');
+				clipArea && clipArea.destroy();
+				//指定默认尺寸
+				var ssize = [260, 260];
+				var osize = [300, 300];
+				//如果有指定尺寸则使用指定尺寸
+				if(selfPage.sizeParam && selfPage.sizeParam.size && selfPage.sizeParam.outputSize) {
+					ssize = selfPage.sizeParam.size;
+					osize = selfPage.sizeParam.outputSize;
+				}
+				//				console.log(ssize + ' ' + osize + ' ' + selfPage.headUrl);
+				clipArea = null;
+				clipArea = new bjj.PhotoClip("#clipArea", {
+					size: ssize,
+					outputSize: osize,
+					//					size: [260, 260],
+					//					outputSize: [640, 640],
+					file: "#file",
+					//					source: '../../img_cloud/defaul_bg_16_9.png',
+					source: selfPage.headUrl,
+					view: "#view",
+					ok: "#clipBtn",
+					loadStart: function() {
+						//						console.log("照片读取中");
+					},
+					loadComplete: function() {
+						//						console.log("照片读取完成");
+					},
+					clipFinish: function(dataURL) {
+						//						console.log(dataURL);
+						var w = plus.webview.getWebviewById(viewID);
+						console.log('完成推送' + viewID+' '+selfPage.img);
+						mui.fire(w, 'uploadHead', {
+							headData: dataURL,
+							img: selfPage.img
+						});
+						//add by ryan 由于PhotoClip destroy不够彻底，导致此页面无法重用，因此暂时通过销毁来避免此问题
+						clipArea.destroy();
+						plus.webview.currentWebview().close();
+					}
+				}); //只能设置空值
+			}
+		});
+	</script>
+
+</html>

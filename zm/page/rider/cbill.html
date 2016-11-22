@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/rider/cbill']);
+			});
+		</script>
+		<style type="text/css">
+			.mem-item {
+				position: relative;
+				margin: 8px 0;
+				background-color: white;
+				font-size: 0;
+				height: 90px;
+				padding: 5px;
+				padding-left: 12px;
+			}
+			
+			.item-left {
+				height: 75px;
+				width: 75px;
+				float: left;
+			}
+			
+			.item-left img {
+				width: 100%;
+			}
+			
+			.item-right {
+				width: calc(100% - 100px);
+				float: left;
+				padding-left: 8px;
+			}
+			
+			.item-right div:first-child {
+				color: #333;
+				font-size: 17px;
+				height: 20px;
+			}
+			
+			.item-right p {
+				padding-top: 2px;
+				color: #666;
+				height: 30px;
+				font-size: 13px;
+			}
+			
+			.item-right div:last-child {
+				color: #FFA44C;
+				font-size: 14px;
+			}
+			
+			.buyinfo {
+				background: #fff;
+				height: 50px;
+				line-height: 50px;
+			}
+			
+			.buyinfo div:first-child {
+				font-size: 17px;
+				color: #333;
+				text-align: center;
+				width: 100px;
+				float: left;
+			}
+			
+			.buyop {
+				width: calc(100% - 100px);
+				float: right;
+				height: 50px;
+			}
+			
+			.footer {
+				position: fixed;
+				bottom: 0;
+				height: 50px;
+				background: #fff;
+				width: 100%;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav  mui-pull-left  "></a>
+			<!--<a id="search" class="mui-icon mui-icon-search  mui-pull-right"></a>-->
+			<h1 class="mui-title">确认订单</h1>
+		</header>
+		<div id="app" class="mui-content">
+			<div class="mem-item">
+				<div class="item-left">
+					<!--src="../../img/default_640x480.png"-->
+					<img data-img="{{data.NImgUrl+'?iopcmd=thumbnail&type=8&width=210&height=210'}}" src="../../img/default_320x320.png" />
+				</div>
+				<div class="item-right">
+					<div class="mui-ellipsis" v-text="data.ShopName"></div>
+					<p v-text="data.ClubName">
+					</p>
+					<div v-text="data.Prc+'马币'">
+					</div>
+				</div>
+			</div>
+			<div class="buyinfo">
+				<div>购买数量</div>
+				<div class="buyop">
+					<div class="buy-add" style="background: #e8e8e8;width: 30px;height: 30px;text-align: center;line-height: 30px;font-size: 20px;color: #999;float: right;margin: 10px;">
+						＋
+					</div>
+					<div class="buynum" style="float: right;" v-text="par.qty"></div>
+					<div class="buy-minus" style="background: #e8e8e8;width: 30px;height: 30px;text-align: center;line-height: 30px;font-size: 20px;color: #999;float: right;margin: 10px;">
+						－
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<button type="button" class="mui-btn-block mui-btn-yellow" style="width: 100px;height: 100%;border-radius: 0;float: right;">提交订单</button>
+				<div style="float: right;margin-right: 10px;">合计：<span style="color: #FFA44C;" v-text="tprice">1000马币</span></div>
+			</div>
+		</div>
+	</body>
+
+</html>

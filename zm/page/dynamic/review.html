@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../../css/mui.css" />
+		<link rel="stylesheet" href="../../css/app.css" />
+		<link rel="stylesheet" href="../../css/mui.previewimage.css" />
+		<style type="text/css">
+			.y-review .mui-media-body>p {
+				color: #333;
+				font-size: 15px;
+			}
+			
+			.mui-media-body {
+				padding-left: 12px;
+			}
+			
+			.y-review .mui-table-view-cell>a:not(.mui-btn) {
+				white-space: normal;
+			}
+			
+			.mui-bar-nav~.mui-content {
+				padding-bottom: 50px;
+			}
+			/*   底部样式   */
+			
+			#h {
+				background: #fff;
+				border: solid 1px #ddd;
+				padding: 10px !important;
+				font-size: 16px !important;
+				font-family: verdana !important;
+				line-height: 18px !important;
+				overflow: visible;
+				position: absolute;
+				left: -1000px;
+				right: 0px;
+				word-break: break-all;
+				word-wrap: break-word;
+				top: -1000px;
+			}
+			
+			footer {
+				position: fixed;
+				width: 100%;
+				height: 50px;
+				min-height: 50px;
+				border-top: solid 1px #bbb;
+				left: 0px;
+				bottom: 0px;
+				overflow: hidden;
+				padding: 0px 50px 0px 15px;
+				background-color: #fafafa;
+				z-index: 10;
+			}
+			
+			.footer-ios {
+				position: absolute;
+			}
+			
+			.footer-right {
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				right: 0px;
+				bottom: 0px;
+				text-align: center;
+				vertical-align: middle;
+				padding: 8px 5px;
+				display: inline-block;
+				line-height: 25px;
+				color: #53be1c;
+				border: none;
+				font-weight: 500;
+			}
+			
+			.footer-center {
+				height: 100%;
+				padding: 5px 0px;
+			}
+			
+			.footer-center [class*=input] {
+				width: 100%;
+				height: 100%;
+				border-radius: 5px;
+			}
+			
+			.footer-center .input-text {
+				background: #fff;
+				border: solid 1px #ddd;
+				padding: 10px !important;
+				font-size: 16px !important;
+				line-height: 18px !important;
+				font-family: verdana !important;
+				overflow: hidden;
+			}
+			
+			.footer-right button,
+			.footer-right button:disabled {
+				padding: 6px;
+				background-color: #53be1c;
+				color: #fff;
+			}
+			
+			.footer-center .input-sound {
+				background-color: #eee;
+			}
+			
+			.y-card-list>.mui-card>.mui-card-content {
+				margin-top: 2px;
+			}
+			
+			.y-card-list .mui-card .mui-card-header .mui-pull-right {
+				margin: 10px 0;
+			}
+			
+			.y-card-list>.mui-card>.mui-card-content>.mui-card {
+				background-color: #efeff4;
+				margin: 0 0 2px 0;
+			}
+			
+			.y-card-list>.mui-card>.mui-card-content>.mui-card>.mui-card-header>img {
+				width: 30px !important;
+				height: 30px !important;
+				border-radius: 18px;
+				background-color: #fff;
+			}
+			
+			.y-card-list .mui-card .mui-card .mui-card-header.mui-card-media .mui-media-body {
+				font-size: 14px;
+			}
+			
+			.y-attention {
+				height: 24px;
+				font-size: 13px;
+				padding-top: 2px;
+			}
+			
+			.y-card-list .mui-card {
+				margin: 0 0 1px 0;
+			}
+			
+			.y-card-list .mui-pull-right>a {
+				color: #333;
+				padding: 5px 10px;
+			}
+			/*.mui-slider{
+				z-index: 111;
+			}*/
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			require(['../../js/main'], function(con) {
+				require(['../jsmax/page/dynamic/review']);
+			});
+		</script>
+	</head>
+
+	<body id="app">
+		<pre id='h'></pre>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">评论</h1>
+		</header>
+		<div id="pr" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll y-card-list">
+				<div class="mui-card" style="margin-bottom: 5px; border-style: outset;border-color: #fff;border-width: 2px;">
+					<div class="mui-card-header mui-card-media">
+						<img src="../../img/head.png" data-img='{{o.ImgUrl|f-imgUrl 100}}' />
+						<div class="mui-media-body">
+							<button v-if="o.UserID!=user.UserID" type="button" data-userid='{{o.UserID}}' data-isattention={{o.IsFollow.toString()}} class="mui-btn mui-btn-green mui-pull-right mui-btn-outlined y-attention" v-text='o.IsFollow?"取消关注":"+ 关注"'></button> {{o.Name}}
+							<p v-text='o.IssDT|f-time "MM-dd hh:mm"'></p>
+						</div>
+					</div>
+					<div class="mui-card-content y-ellipsis y-ellipsis-flag" v-text='o.Content'>
+					</div>
+					<div v-if='o.Imgs.length>0' class="mui-card-content ">
+						<div class="mui-row">
+							<template v-for='s1 in o.Imgs'>
+								<div v-if='o.Imgs.length==1'> <img src="../../img/default_640x320.png" data-img='{{s1}}' style="width: 210px; " data-preview-src="{{s1}}" data-preview-group="999" /> </div>
+								<div v-else class="mui-col-xs-4"> <img src="../../img/default_320x320.png" data-img='{{s1|f-imgUrl 210}}' data-preview-src="{{s1}}" data-preview-group="999" /> </div>
+							</template>
+						</div>
+					</div>
+					<div class="mui-card-footer" data-id='{{o.PostId}}' data-list-index='1' data-index='{{index}}'>
+						<a class="mui-card-link mui-col-xs-4" data-type='{{o.IsCollect?5:1}}'><i class="y y-2x {{o.IsCollect?'y-collect y-yellow':'y-collect-o'}}"></i> {{o.CNums||'收藏'}}</a>
+						<a class="mui-card-link mui-col-xs-4" data-type='101'><i class="y y-2x y-comment-o"></i> {{o.DNums||'评论'}}</a>
+						<a class="mui-card-link mui-col-xs-4" data-type='{{o.IsPoint?9:2}}'><i class="y y-2x {{o.IsPoint?'y-heart y-red':'y-heart-o'}}"></i> {{o.PNums||'点赞'}}</a>
+						<!--<a class="mui-card-link mui-col-xs-3" data-type='100'><i class="y y-2x y-share"></i> 分享</a>-->
+					</div>
+				</div>
+				<template v-for='(index,s) in list'>
+					<div class="mui-card">
+						<div class="mui-card-header mui-card-media">
+							<img src="../../img/head.png" data-img='{{s.PDiscuss.ImgUrl|f-imgUrl 100}}' />
+							<div class="mui-media-body">
+								<div class="mui-pull-right" data-id='{{s.PDiscuss.DisId}}' data-index='{{index}}'>
+									<a class=" y y-2x y-comment-o " style="color: #999;font-size: 12px;" data-type='102' href="javascript:void(0);"> {{s.PDiscuss.DNums||'回复'}}</a>
+									<a class=" y y-2x {{s.PDiscuss.IsPoint?'y-heart y-red':'y-heart-o'}} " style="color: #999;font-size: 12px;" data-type='3' href="javascript:void(0);"> {{s.PDiscuss.PNums||'点赞'}}</a>
+								</div>
+								{{s.PDiscuss.Name}}
+								<p v-text='s.PDiscuss.IssDT|f-time "MM-dd hh:mm"'></p>
+							</div>
+						</div>
+						<div class="mui-card-content y-ellipsis y-ellipsis-flag" v-text='s.PDiscuss.Content' style="padding-left: 56px;"></div>
+						<div class="mui-card-content" style="padding-left: 0px;">
+							<template v-for='(i1,s1) in s.Replys'>
+								<div class="mui-card">
+									<div class="mui-card-header mui-card-media" style="padding-bottom: 0px;">
+										<img src="../../img/head.png" data-img='{{s1.ImgUrl|f-imgUrl 100}}' />
+										<div class="mui-media-body" style="margin-left: 35px; margin-bottom: -20px;">
+											<div class="mui-pull-right mui-hidden" data-id='{{s1.rplId}}' data-list-index='{{index}}' data-index='{{i1}}'>
+												<a class="y y-2x {{s1.IsPoint?'y-heart y-red':'y-heart-o'}}" style="color: #999;font-size: 12px;" data-type='4' href="javascript:void(0);"> {{s1.PNums||'点赞'}}</a>
+											</div>
+											{{s1.Name}}
+											<!--<p v-text='s1.IssDT|f-time' style="float: right;"></p>-->
+										</div>
+									</div>
+									<div class="mui-card-content y-ellipsis y-ellipsis-flag" v-text='s1.Content' style="padding-left: 17px;padding-top: 10px;"></div>
+								</div>
+							</template>
+						</div>
+					</div>
+				</template>
+			</div>
+
+		</div>
+		<footer id="footer" class="{{isIOS?'footer-ios':''}}">  
+			<div class="footer-center">
+				<textarea id='txtAsk' v-model='parReview.content' type="text" placeholder="发表评论" autofocus="autofocus" class='input-text' maxlength="120"></textarea>
+			</div>
+			<div class="footer-right">
+				<button id="btnSave" disabled="{{!isValid}}" type="button" class="mui-btn">发表</button>
+			</div>
+
+		</footer>
+	</body>
+
+</html>

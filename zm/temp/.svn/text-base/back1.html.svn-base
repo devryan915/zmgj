@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../css/mui.css" />
+		<link rel="stylesheet" href="../css/app.css" />
+		<style type="text/css">
+			.y-title.mui-table {
+				padding: 10px 15px;
+				background-color: #fff;
+			}
+			
+			.y-title.mui-table>h4 {
+				color: #dbb668;
+			}
+			
+			.y-title.mui-table>div {
+				background-image: url(../img/flower.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			
+			.y-title.mui-table>div:last-of-type {
+				-moz-transform: rotate(180deg);
+				-webkit-transform: rotate(180deg);
+				transform: rotate(180deg);
+			}
+			
+			#activity {
+				width: 100%;
+				margin: 5px 0;
+			}
+			
+			.y-img.mui-grid-view.mui-grid-9 {
+				background-color: #fff;
+			}
+			
+			.y-img.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				width: 33%;
+				height: auto;
+				padding: 0px;
+			}
+			
+			.y-img .mui-table-view-cell span {
+				display: block;
+				/*width: 32%;*/
+				height: 80px;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/require.js"></script>
+		<script type="text/javascript">
+			console.log('')
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">标题</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-table y-title">
+				<div class="mui-table-cell"></div>
+				<h4 class="mui-table-cell mui-col-xs-4 mui-text-center">积分换好礼</h4>
+				<div class="mui-table-cell"></div>
+			</div>
+			<iframe height=225 width=300 src="http://act.3g.yy.com/outEmbed/tttest?src=21" frameborder=0 allowfullscreen></iframe>
+			<ul class="mui-table-view mui-grid-view mui-grid-9 y-img">
+
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<span style="background-image: url(../img/mall_1.png);"></span>
+						<div class="mui-media-body">马术头盔</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<span style="background-image: url(../img/mall_2.png);"></span>
+						<div class="mui-media-body">剃须刀</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<span style="background-image: url(../img/mall_3.png);"></span>
+						<div class="mui-media-body">凝胶马鞍</div>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+
+		
+	</body>
+
+</html>
